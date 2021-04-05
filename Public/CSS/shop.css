@@ -28,7 +28,7 @@ body {
 }
 
 .main-nav > #search {
-    width: 50%;
+    width: 60%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -42,13 +42,17 @@ body {
     padding: 4px;
     padding-left: 20px; 
     border: 1px solid #252525;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .main-nav > #search > #search-bar::-webkit-input-placeholder,
 .main-nav > #search > #search-bar::-moz-placeholderr,
 .main-nav > #search > #search-bar::-ms-input-placeholder {
     color: #989797;
+    font-weight: 100;
+}
+
+::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder, :-moz-placeholder { 
     font-weight: 100;
 }
 
@@ -59,7 +63,7 @@ body {
     font-size: 20px;
     padding: 4px;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     outline: none;
     background-color: #41EFA4;
     color: #FFF;
