@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #252525;
+    color: #FFF;
+    height: 60px;
+    padding: 12px;
+}
+
+.main-nav > .logo {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.main-nav > #search {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.main-nav > #search > #search-bar {
+    width: 80%;
+    font-size: 20px;
+    outline: none;
+    padding: 4px;
+    padding-left: 20px; 
+    border: 1px solid #252525;
+    border-radius: 5px;
+}
+
+.main-nav > #search > #search-bar::-webkit-input-placeholder,
+.main-nav > #search > #search-bar::-moz-placeholderr,
+.main-nav > #search > #search-bar::-ms-input-placeholder {
+    color: #989797;
+    font-weight: 100;
+}
+
+.main-nav > #search > .search-button {
+    position: absolute;
+    right: 8%;
+    width: 18%;
+    font-size: 20px;
+    padding: 4px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: #41EFA4;
+    color: #FFF;
+    font-weight: 100;
+}
+
+.main-nav > #search > .search-button:hover {
+    background-color: #2ED47B;
+}
+
+.items {
+    height: 100%;
+    width: 20%;
+    display: flex; 
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#cart, #profile {
+    background-color: #252525;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    transition: 0.2s ease-in;
+}
+
+#cart:hover, #profile:hover {
+    background-color: #FFF;
+    color: #000;
+}
+
+#cart i, #profile i {
+    font-size: 36px;
+    display: block;
+}
