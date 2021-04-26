@@ -22,7 +22,7 @@ body {
     width: 2000px;
     height: 2000px;
     border-radius: 50%;
-    background: linear-gradient(-45deg, #32be8f, #38d39f, #32be8f);
+    background: linear-gradient(-45deg, #0B743F, #143653, #32be8f);
     top: -10%;
     right: 48%;
     transform: translateY(-50%);
@@ -73,7 +73,7 @@ form.sign-up {
 
 .title {
     font-size: 2.2rem;
-    color: #32be8f;
+    color: #148653;
     margin-bottom: 0.6rem;
 }
 
@@ -118,7 +118,7 @@ form.sign-up {
     outline: none;
     border-radius: 50px;
     cursor: pointer;
-    background-color: #32be8f;
+    background-color: #148653;
     color: #FFF;
     font-weight: 600;
     margin: 10px 0;
@@ -127,7 +127,7 @@ form.sign-up {
 }
 
 .btn:hover {
-    background-color: #148653;
+    background-color: #32be8f;
 }
 
 .panels-container {
