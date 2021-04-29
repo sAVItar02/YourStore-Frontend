@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- LINKS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7671d15937.js" crossorigin="anonymous"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./Public/CSS/home.css">
+    <link rel="stylesheet" href="./Public/CSS/navbar.css">
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="./Public/assets/logo.png" type="image/x-icon">
+    
+    <title>YourStore | Home</title>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/home.html" class="nav-link">
+                <img src="./Public/assets/logo.png" alt="#">
+                <p class="link-text">YourStore</p>
+            </a>
+        </div>
+        <div class="nav-item" id="location-btn">
+            <a href="#" class="nav-link">
+                <img src="https://img.icons8.com/office/80/000000/worldwide-location--v1.png"/>
+                <p class="link-text">Location</p>
+            </a>
+        </div>
+        
+        <div class="nav-group">
+            <div class="nav-item" id="search-out">
+                <a href="#" class="nav-link">
+                    <input type="text" name="search" id="search-bar-out" placeholder="Search for Shops or Products">
+                    <img src="https://img.icons8.com/fluent-systems-regular/48/000000/search--v1.png"/>
+                </a>
+            </div>
+            <div class="nav-item" id="profile">
+                <a href="#" class="nav-link">
+                    <img src="https://img.icons8.com/office/80/000000/user-male-circle.png"/>
+                    <p class="link-text">Profile</p>
+                </a>
+            </div>
+            <div class="nav-item" id="cart">
+                <a href="#" class="nav-link">
+                    <img src="https://img.icons8.com/cotton/64/000000/shopping-cart--v1.png"/>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="location-sidebar closed">
+        <p class="location-head">Enter your location</p>
+        <img class="cross" src="https://img.icons8.com/office/80/000000/delete-sign.png"/>
+        <div class="input-buffer">
+            <input type="text" name="location" id="location" placeholder="Search for area, street etc.">
+            <img src="https://img.icons8.com/office/80/000000/place-marker--v1.png"/>
+        </div>
+        <div class="current-location">
+            <img src="https://img.icons8.com/office/80/000000/define-location.png"/>
+            <div class="location-text-buffer">
+                <p class="current-location-text">Get current location</p>
+                <span>Using GPS</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <section class="main">
+    </section>
+
+
+    <footer> <p>Terms and conditions apply</p> </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="./Public/JS/home.js"></script>
+</body>
+</html>

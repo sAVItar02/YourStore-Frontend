@@ -1,0 +1,157 @@
+:root {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    --bg-primary: #E8EBF3;
+    --green-primary: #32be8f;
+    --blue-primary: #5C8AFF;
+    --blue-primary-translucent: #5c8affb0;
+    --gray-primary: #a5a5a5;
+    --name-color: #515D76;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+    color: #000;
+    position: relative;
+}
+
+.location-sidebar {
+    position: absolute;
+    top: 0;
+    z-index: 15;
+    left: 0;
+    background-color: #fff;
+    width: 35%;
+    height: 100vh;
+    padding: 2rem;
+    box-shadow: 0 0 0.5rem var(--gray-primary);
+    transition: 300ms ease-in-out;
+}
+
+.closed {
+    transition: 300ms ease-in-out;
+    left: -100%;
+}
+
+.location-head {
+    font-size: 1.5rem;
+    font-weight: 500;
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 1.5rem;
+}
+
+.cross {
+    height: 2rem;
+    width: auto;
+    display: inline-block;
+    float: right;
+    margin-bottom: 1.5rem;
+}
+
+.cross:hover {
+    transition: 150ms ease-in-out;
+    transform: scale(1.15);
+}
+
+.input-buffer {
+    position: relative;
+    height: 3.5rem;
+    width: 100%;
+}
+
+#location {
+    border: none; 
+    outline: none;
+    border-radius: 0.625em;
+    background-color: var(--bg-primary);
+    color: #252525;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.625rem;
+    padding-left: 1rem;
+    width: 100%;
+    height: 100%;
+    margin-top: 1rem;
+}
+
+#location:hover {
+    transition: 150ms ease-in-out;
+    box-shadow: 0 0 0.3rem var(--blue-primary-translucent);
+}
+
+.input-buffer img {
+    height: 2.5rem;
+    width: auto;
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-10%);
+}
+
+.current-location {
+    width: 100%;
+    padding: 1.5rem;
+    border: none;
+    border-radius: 0.625rem;
+    background-color: var(--bg-primary);
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    transition: 150ms ease-in-out;
+    cursor: pointer;
+}
+
+.current-location:hover {
+    box-shadow: 0 0.1rem 0.4rem var(--blue-primary-translucent);
+}
+
+.current-location img {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 1rem;
+}
+
+.location-text-buffer {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.current-location-text {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.current-location span {
+    display: block;
+    font-weight: 300;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 12;
+    transition: 200ms ease-in-out;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+}

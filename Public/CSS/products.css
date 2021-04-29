@@ -187,17 +187,4 @@ body::-webkit-scrollbar-thumb {
     text-align: left;
 }
 
-footer { 
-    background-color: var(--green-primary);
-    height: 4rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-footer p {
-    color: #FFF;
-    font-weight: 500;
-    font-size: 1.1rem;
-}
