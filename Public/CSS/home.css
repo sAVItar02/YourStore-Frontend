@@ -2,6 +2,7 @@
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     --bg-primary: #E8EBF3;
+    --bg-primary-translucent: #ced6ee;
     --green-primary: #32be8f;
     --blue-primary: #5C8AFF;
     --blue-primary-translucent: #5c8affb0;
@@ -34,11 +35,11 @@ body {
     height: 100vh;
     padding: 2rem;
     box-shadow: 0 0 0.5rem var(--gray-primary);
-    transition: 300ms ease-in-out;
+    transition: 400ms ease-in-out;
 }
 
 .closed {
-    transition: 300ms ease-in-out;
+    transition: 400ms ease-in-out;
     left: -100%;
 }
 
@@ -84,18 +85,51 @@ body {
     margin-top: 1rem;
 }
 
-#location:hover {
+#location:hover, #location:focus {
     transition: 150ms ease-in-out;
     box-shadow: 0 0 0.3rem var(--blue-primary-translucent);
 }
 
-.input-buffer img {
+/* .search-location {
+    height: 100%;
+    width: 2rem;
+} */
+
+.search-location {
+    height: 100%;
+    width: 4rem;
+    position: absolute;
+    right: 0%;
+    top: 50%;
+    transform: translateY(-21%);
+    border: none;
+    border-radius: 0.625rem;
+    background-color: var(--bg-primary);
+    cursor: pointer;
+}
+
+.search-location:hover {
+    transition: 150ms linear;
+    background-color: var(--bg-primary-translucent);
+}
+
+.search-location img {
     height: 2.5rem;
     width: auto;
-    position: absolute;
-    right: 3%;
-    top: 50%;
-    transform: translateY(-10%);
+}
+
+.location-result {
+    width: 100%;
+    height: fit-content;
+    border: none;
+    border-radius: 0.625rem;
+    padding: 1.5rem;
+    font-weight: normal;
+    font-size: 0.9rem;
+    background-color: var(--bg-primary);
+    transition: 150ms linear;
+    margin-top: 2rem;
+    cursor: pointer;
 }
 
 .current-location {
@@ -111,7 +145,7 @@ body {
     cursor: pointer;
 }
 
-.current-location:hover {
+.current-location:hover, .location-result:hover {
     box-shadow: 0 0.1rem 0.4rem var(--blue-primary-translucent);
 }
 

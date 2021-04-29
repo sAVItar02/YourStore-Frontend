@@ -94,6 +94,14 @@
     font-weight: 500;
 }
 
+#location-btn {
+    width: fit-content;
+    max-width: 12rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 #cart:hover {
     transform: scale(1.1);
     transition: 150ms ease-in-out;
