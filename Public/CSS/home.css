@@ -8,6 +8,9 @@
     --blue-primary-translucent: #5c8affb0;
     --gray-primary: #a5a5a5;
     --name-color: #515D76;
+    --yellow-primary: #F4D03F;
+    --yellow-hover: #F5B041;
+    --green-primary: #58D68D;
 }
 
 * {
@@ -18,9 +21,9 @@
 
 body {
     background-color: var(--bg-primary);
-    min-height: 100vh;
     width: 100%;
     height: 100%;
+    min-height: 100vh !important;
     color: #000;
     position: relative;
 }
@@ -185,7 +188,199 @@ body {
     transition: 200ms ease-in-out;
 }
 
+body.overlay-open {
+    overflow: hidden;
+}
+
 .main {
     height: 100%;
     width: 100%;
+    padding: 1rem 4rem 1rem 4rem;
+    padding-top: 7rem;
+    padding-bottom: 6rem;
+}
+
+.request-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 15rem;
+}
+
+.request {
+    padding: 1.5rem;
+    border: none;
+    border-radius: 0.45rem;
+    background-color: #fff;
+    width: 20rem;
+    text-align: center;
+    height: 100%;
+    transition: 150ms linear;
+}
+
+.request:hover {
+    box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
+.request-head {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-bottom: 0.625rem;
+}
+
+.request-desc {
+    font-weight: 300;
+}
+
+.request-btn {
+    width: 80%;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    background-color: #FFF;
+    color: var(--blue-primary);
+    border: 2px solid var(--blue-primary);
+    border-radius: 0.625rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 150ms linear;
+}
+
+.request-btn:hover {
+    background-color: var(--blue-primary);
+    color: #FFF;
+}
+
+.carousel {
+    position: relative;
+    margin-top: 2rem;
+    width: 70%;
+    height: 100%;
+}
+
+.slide {
+    width: 100%;
+    height: 15rem;
+    background-color: #FFF;
+    border: none;
+    border-radius: 0.45rem;
+
+}
+
+.slick-dots {
+    position: absolute;
+    text-align: left;
+    padding-left: 1rem;
+    left: 0;
+    bottom: 7%;
+}
+
+.slick-dots li button::before {
+    font-size: 0.625rem;
+}
+
+.trending-carousel {
+    height: 20rem;
+}
+
+.head-buffer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+
+.head-buffer .trending-head {
+    font-size: 2rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.view-all {
+    display: inline-block;
+    cursor: pointer;
+    transition: 100ms linear;
+}
+
+.view-all:hover {
+    font-size: 1.2rem;
+}
+
+hr {
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.trending-card {
+    background-color: #FFF;
+    height: 18.5rem;
+    width: 18rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.45rem;
+    transition: 150ms linear;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.trending-card:hover {
+    box-shadow: 0.3rem 0.3rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
+.trending-card img {
+    width: 100%;
+    height: 55%;
+}
+
+.name-rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 0 1rem;
+}
+
+.shop-name {
+    display: inline-block;
+    width: fit-content;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--name-color);
+}
+
+.shop-rating {
+    padding: 0.4rem 0.5rem;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: var(--green-primary);
+    color: #FFF;
+}
+
+.shop-distance {
+    font-size: 1rem;
+    font-weight: 300;
+    padding-left: 1rem;
+}
+
+.visit-shop {
+    background-color: var(--yellow-primary);
+    border: none;
+    border-radius: 0.45rem;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    margin-top: 0.625rem;
+    cursor: pointer;
+    transition: 100ms linear;
+}
+
+.visit-shop:hover {
+    background-color: var(--yellow-hover);
+}
+
+.slick-next::before, .slick-prev::before {
+    font-size: 1.75rem;
+    color: var(--blue-primary);
+    opacity: 1;
 }

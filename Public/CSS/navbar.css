@@ -13,6 +13,18 @@
     box-sizing: border-box;
 }
 
+body {
+    position: relative;
+}
+
+body::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--blue-primary);
+}
+
 .navbar {
     position: fixed;
     top: 0;
@@ -135,6 +147,8 @@
 }
 
 footer { 
+    /* position: absolute;
+    bottom: 0; */
     background-color: var(--green-primary);
     height: 4rem;
     width: 100%;
