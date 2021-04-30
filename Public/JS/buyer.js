@@ -10,7 +10,7 @@ $(document).ready(function() {
       info_btn.on('click',  function(e) {
             e.preventDefault();
             console.log('clicked')
-            $(this).parent().children('.description').removeClass('description-hidden');
+            $(this).parent().parent().children('.description').removeClass('description-hidden');
             
             $('.cross').on('click', function(e) {
                   e.preventDefault();
