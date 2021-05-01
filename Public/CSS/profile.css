@@ -1,0 +1,237 @@
+:root {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    --bg-primary: #E8EBF3;
+    --bg-primary-translucent: #ced6ee;
+    --green-primary: #32be8f;
+    --blue-primary: #5C8AFF;
+    --blue-primary-translucent: #5c8affb0;
+    --gray-primary: #a5a5a5;
+    --name-color: #515D76;
+    --yellow-primary: #F4D03F;
+    --yellow-hover: #F5B041;
+    --green-primary: #58D68D;
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-primary);
+    width: 100%;
+    height: 100%;
+    min-height: 100vh !important;
+    color: #000;
+    position: relative;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--blue-primary);
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    padding-top: 7rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
+}
+
+.sidebar {
+    position: fixed;
+    background-color: #FFF;
+    border-radius: 0.45rem;
+    border: none;
+    width: 20%;
+    padding: 1rem;
+    height: 80%;
+    box-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.2);
+}
+
+.side-item {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.45em;
+    transition: 150ms linear;
+    margin-top: 0.2rem;
+}
+
+.side-item p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.side-item img {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 1rem;
+}
+
+.side-item:hover {
+    background-color: var(--blue-primary-translucent);
+}
+
+.side-item.active {
+    background-color: var(--blue-primary-translucent);
+}
+
+.orders, .favorites, .payments, .addresses {
+    background-color: #FFF;
+    /* height: 97%; */
+    min-height: 97%;
+    width: 75%;
+    margin-left: 20rem;
+    overflow-y: scroll;
+    box-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 0.45rem;
+    padding: 2rem;
+}
+
+.prev-order {
+    background-color: #FFF;
+    width: 100%;
+    height: 50%;
+    border: 0.1rem solid var(--bg-primary-translucent);
+    border-radius: 0.45rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.favorites {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+}
+
+.favorite-card {
+    height: fit-content;
+    width: 100%;
+    background-color: var(--bg-primary-translucent);
+    padding: 0.625rem;
+    border: none;
+    border-radius: 0.45rem;
+    transition: 150ms linear;
+}
+
+.favorite-card:hover, .address-card:hover {
+    box-shadow: 0.3rem 0.3rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
+.favorite-card img {
+    width: 100%;
+    height: 55%;
+}
+
+.name-rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 0 1rem;
+}
+
+.shop-name {
+    display: inline-block;
+    width: fit-content;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--name-color);
+}
+
+.shop-rating {
+    padding: 0.4rem 0.5rem;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: var(--green-primary);
+    color: #FFF;
+}
+
+.shop-distance {
+    font-size: 1rem;
+    font-weight: 300;
+    padding-left: 1rem;
+}
+
+.visit-shop {
+    background-color: var(--yellow-primary);
+    border: none;
+    border-radius: 0.45rem;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    margin-top: 0.625rem;
+    cursor: pointer;
+    transition: 100ms linear;
+}
+
+.visit-shop:hover {
+    background-color: var(--yellow-hover);
+}
+
+.addresses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.address-card {
+    background-color: var(--bg-primary-translucent);
+    height: fit-content;
+    width: 100%;
+    border: none;
+    border-radius: 0.45rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    padding: 1rem;
+}
+
+.address-card i {
+    height: 100%;
+    padding-right: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--blue-primary);
+}
+
+.address-card p {
+    font-size: 0.75rem;
+}
+
+.address-card .home, .address-card .work, .address-card .other {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.delete-address {
+    background-color: #EC7063;
+    padding: 0.4rem 0.5rem;
+    border: none;
+    border-radius: 0.45rem;
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #FFF;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: 150ms linear;
+}
+
+.delete-address:hover {
+    background-color: #ee412d;
+}
+
