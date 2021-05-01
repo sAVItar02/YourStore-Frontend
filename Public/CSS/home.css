@@ -28,6 +28,15 @@ body {
     position: relative;
 }
 
+
+::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--blue-primary);
+}
+
 .location-sidebar {
     position: absolute;
     top: 0;
@@ -39,6 +48,7 @@ body {
     padding: 2rem;
     box-shadow: 0 0 0.5rem var(--gray-primary);
     transition: 400ms ease-in-out;
+    overflow-y: scroll;
 }
 
 .closed {
@@ -71,6 +81,7 @@ body {
     position: relative;
     height: 3.5rem;
     width: 100%;
+    margin-bottom: 2rem;
 }
 
 #location {
@@ -121,7 +132,7 @@ body {
     width: auto;
 }
 
-.location-result {
+.location-result, .location-result-error {
     width: 100%;
     height: fit-content;
     border: none;
@@ -131,8 +142,12 @@ body {
     font-size: 0.9rem;
     background-color: var(--bg-primary);
     transition: 150ms linear;
-    margin-top: 2rem;
+    margin-top: 1rem;
     cursor: pointer;
+}
+
+.location-result-error {
+    background-color: #EC7063;
 }
 
 .current-location {
