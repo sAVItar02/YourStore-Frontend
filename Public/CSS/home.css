@@ -307,7 +307,7 @@ body.overlay-open {
 }
 
 hr {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     opacity: 0.5;
 }
 
@@ -323,7 +323,7 @@ hr {
     margin-right: 1rem;
 }
 
-.trending-card:hover {
+.trending-card:hover, .shop-card:hover {
     box-shadow: 0.3rem 0.3rem 0.4rem rgba(0, 0, 0, 0.2);
 }
 
@@ -383,4 +383,34 @@ hr {
     font-size: 1.75rem;
     color: var(--blue-primary);
     opacity: 1;
+}
+
+.shops-around-you {
+    width: 100%;
+    height: 100%;
+}
+
+.around-head {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+
+.shops-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.shop-card {
+    height: 100%;
+    width: 100%;
+    background-color: #FFF;
+    padding: 0.625rem;
+    border: none;
+    border-radius: 0.45rem;
+    transition: 150ms linear;
 }
