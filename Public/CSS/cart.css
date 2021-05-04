@@ -1,0 +1,334 @@
+:root {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    width: 100%;
+    --bg-primary: #E8EBF3;
+    --bg-primary-translucent: #ced6ee;
+    --green-primary: #32be8f;
+    --blue-primary: #5C8AFF;
+    --blue-primary-translucent: #5c8affb0;
+    --gray-primary: #a5a5a5;
+    --name-color: #515D76;
+    --yellow-primary: #F4D03F;
+    --yellow-hover: #F5B041;
+    --green-primary: #58D68D;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-primary);
+    min-height: 100vh !important;
+    width: 100%;
+    height: fit-content;
+    color: #000;
+    position: relative;
+}
+
+
+::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--blue-primary);
+}
+
+.main {
+    padding: 6rem 4rem;
+    height: 100%;
+    width: 100%;
+}
+
+.address, .delivery-address {
+    display: inline-block;
+    background-color: #FFF;
+    width: 65%;
+    padding: 2rem;
+    border: none;
+    border-radius: 0.45rem;
+    margin-bottom: 3rem !important;
+}
+
+.address-head, .delivery-head {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--name-color);
+    margin-bottom: 2rem;
+}
+
+.address-head img, .delivery-head img {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.address-grid {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.address-card, .address-card-add {
+    background-color: var(--bg-primary-translucent);
+    height: fit-content;
+    width: 100%;
+    border: none;
+    border-radius: 0.45rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    padding: 1rem;
+}
+
+.address-card-add {
+    height: 100%;
+    justify-content: flex-start;
+}
+
+.address-card i, .address-card-add i {
+    height: 100%;
+    padding-right: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--blue-primary);
+}
+
+.address-card p {
+    font-size: 0.75rem;
+}
+
+.address-card .home, .address-card .work, .address-card .other, .address-card-add .add {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.choose-address {
+    background-color: #2ECC71;
+    padding: 0.4rem 0.5rem;
+    border: none;
+    border-radius: 0.45rem;
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #FFF;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: 150ms linear;
+    text-transform: uppercase;
+}
+
+.choose-address:hover {
+    background-color: #58D68D;
+}
+
+.add-address {
+    padding: 1rem 2rem;
+    border: 2px dashed #2ECC71;
+    border-radius: 0.45rem;
+    background: none;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2ECC71;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: 100ms linear;
+}
+
+.add-address:hover {
+    background-color: #2ECC71;
+    border: 2px solid #2ECC71;
+    color: #FFF;
+}
+
+.delivery-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delivery-head .change {
+    background-color: #2ECC71;
+    border: none;
+    border-radius: 0.45rem;
+    padding: 0.4rem 0.6rem;
+    color: #FFF;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 100ms linear;
+}
+
+.delivery-head .change:hover {
+    background-color: #32be8f;
+}
+
+.delivery-main .type {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.delivery-main .type-address {
+    font-size: 1rem;
+    font-weight: 200;
+    width: 60%;
+}
+
+.down-arrow {
+    width: 65%;
+    height: 5rem;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.down-arrow img {
+    position: absolute;
+    left: 50%;
+    /* top: 50%; */
+    transform: translate(-50%, -50%);
+    -webkit-animation: arrow 3s ease-in-out infinite;
+}
+
+@-webkit-keyframes arrow {
+    0% {
+        top: 20%;
+    }
+
+    50% {
+        top: 80%;
+    }
+
+    100% {
+        top: 20%;
+    }
+}
+
+.payment-initial {
+    height: fit-content;
+    width: 65%;
+    padding: 2rem;
+    display: inline-block;
+    background-color: #FFF;
+    border: none;
+    border-radius: 0.45rem;
+    color: var(--name-color);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 5rem;
+}
+
+.payment-initial img {
+    height: 3rem;
+    width: 3rem;
+    margin-right: 1rem;
+}
+
+.payment-methods {
+    background-color: #FFF;
+    padding: 2rem;
+    padding-bottom: 4rem;
+    border: none;
+    border-radius: 0.54rem;
+    width: 65%;
+    height: fit-content;
+    display: inline-block;
+    margin-bottom: 5rem !important;
+}
+
+.payment-head {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--name-color);
+    margin-bottom: 2rem;
+}
+
+.payment-head img {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.payments-main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.payments-sidebar {
+    width: 35%;
+    height: 100%;
+    background-color: var(--bg-primary-translucent);
+    border: none;
+    border-radius: 0.45rem;
+    padding: 1rem;
+}
+
+.payment-option {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--name-color);
+    padding: 1rem;
+    margin-bottom: 0.2rem;
+    border: none;
+    border-radius: 0.45rem;
+    cursor: pointer;
+    transition: 150ms linear;
+}
+
+.chosen {
+    background-color: var(--blue-primary-translucent);
+}
+
+.payment-option:hover {
+    background-color: var(--blue-primary-translucent);
+}
+
+.payments-all {
+    width: 50%;
+    height: 100%;
+}
+
+.cod, .netbanking{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cod img, .netbanking img {
+    height: 15rem;
+    width: 15rem;
+}
+
+.cod-text, .netbanking-text {
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: var(--gray-primary);
+}
+
+.pay-btn {
+    border: none;
+    border-radius: 0.45rem;
+    padding: 1rem;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #FFF;
+    background-color: #2ECC71;
+    cursor: pointer;
+    transition: 150ms linear;
+}
+
+.pay-btn:hover {
+    background-color: #32be8f;
+}

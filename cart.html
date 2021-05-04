@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- LINKS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7671d15937.js" crossorigin="anonymous"></script>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./Public/CSS/cart.css">
+    <link rel="stylesheet" href="./Public/CSS/navbar.css">
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="./Public/assets/logo.png" type="image/x-icon">
+
+    <title>YourStore | Cart </title>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="./home.html" class="nav-link">
+                <img src="./Public/assets/logo.png" alt="#">
+                <p class="link-text">YourStore</p>
+            </a>
+        </div>
+        
+        <div class="nav-group">
+            <div class="nav-item" id="profile">
+                <a href="#" class="nav-link">
+                    <img src="https://img.icons8.com/office/80/000000/user-male-circle.png"/>
+                    <p class="link-text">Profile</p>
+                </a>
+            </div>
+            <div class="nav-item" id="cart">
+                <a href="#" class="nav-link">
+                    <img src="https://img.icons8.com/cotton/64/000000/shopping-cart--v1.png"/>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="main">
+
+        <div class="address">
+            <div class="address-head"> <img src="https://img.icons8.com/plasticine/100/000000/address.png"/> Choose a delivery address</div>
+            <div class="address-grid">
+                <div class="address-card">
+                    <i class="fas fa-home"></i>
+                    <div class="address-text">
+                        <p class="home address-tag">Home</p>
+                        <p class="address-main">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo excepturi temporibus et recusandae facere dolorem quidem quae, ratione exercitationem consequuntur?</p>
+                        <button class="choose-address">deliver here</button>
+                    </div>
+                </div>
+                <div class="address-card">
+                    <i class="fas fa-briefcase"></i>
+                    <div class="address-text">
+                        <p class="work address-tag">Work</p>
+                        <p class="address-main">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo excepturi temporibus et recusandae facere dolorem quidem quae, ratione exercitationem consequuntur?</p>
+                        <button class="choose-address">deliver here</button>
+                    </div>
+                </div>
+                <div class="address-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="address-text">
+                        <p class="other address-tag">Other</p>
+                        <p class="address-main">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo excepturi temporibus et recusandae facere dolorem quidem quae, ratione exercitationem consequuntur?</p>
+                        <button class="choose-address">deliver here</button>
+                    </div>
+                </div>
+                <div class="address-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="address-text">
+                        <p class="other address-tag">Other</p>
+                        <p class="address-main">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo excepturi temporibus et recusandae facere dolorem quidem quae, ratione exercitationem consequuntur?</p>
+                        <button class="choose-address">deliver here</button>
+                    </div>
+                </div>
+                <div class="address-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="address-text">
+                        <p class="other address-tag">Other</p>
+                        <p class="address-main">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo excepturi temporibus et recusandae facere dolorem quidem quae, ratione exercitationem consequuntur?</p>
+                        <button class="choose-address">deliver here</button>
+                    </div>
+                </div>
+                <div class="address-card-add">
+                    <i class="fas fa-map-pin"></i>
+                    <div class="address-text">
+                        <p class="add">Add New Address</p>
+                        <button class="add-address">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="delivery-address">
+            <div class="delivery-head">
+                <p>Delivery address</p>
+                <button class="change">Change</button>
+            </div>
+            <div class="delivery-main">
+                <p class="type">Home</p>
+                <div class="type-address">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti fugit sint nobis illo aliquid et perferendis at distinctio nemo commodi!
+                </div>
+            </div>
+        </div>
+
+        <div class="down-arrow"><img src="https://img.icons8.com/dusk/64/000000/low-priority.png"/></div>
+
+        <div class="payment-initial">
+            <img src="https://img.icons8.com/fluent/96/000000/card-wallet.png"/>
+            Payment
+        </div>
+
+        <div class="payment-methods">
+            <div class="payment-head"><img src="https://img.icons8.com/fluent/96/000000/card-wallet.png"/> Choose payment method</div>
+            <div class="payments-main">
+                <div class="payments-sidebar">
+                    <div class="payment-option cod-btn chosen">Cash on delivery</div>
+                    <div class="payment-option netbanking-btn">Netbanking</div>
+                </div>
+                <div class="payments-all">
+                    <div class="cod">
+                        <img src="./Public/assets/cash-payment.svg" alt="Image not found">
+                        <p class="cod-text">Pay using cash</p>
+                        <button class="pay-btn">Pay <span class="amount">&#8377; 200</span></button>
+                    </div>
+                    <div class="netbanking">
+                        <img src="./Public/assets/cashless-payment.svg" alt="Image not found">
+                        <p class="netbanking-text">Pay via the internet</p>
+                        <button class="pay-btn">Pay <span class="amount">&#8377; 200</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer> <p>Terms and conditions apply</p> </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="./Public/JS/cart.js"></script>
+</body>
+</html>
