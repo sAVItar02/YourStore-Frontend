@@ -332,3 +332,129 @@ body {
 .pay-btn:hover {
     background-color: #32be8f;
 }
+
+.cart-items {
+    display: inline-block;
+    height: fit-content;
+    max-height: 40rem;
+    width: 30%;
+    padding: 1rem;
+    background-color: #FFF;
+    border: none;
+    border-radius: 0.45rem;
+    position: absolute;
+    right: 4rem;
+}
+
+.shop-details {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: fit-content;
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 0 0.3rem 0.5rem -0.5rem rgba(0, 0, 0, 0.8);
+}
+
+.shop-details img {
+    height: 5rem;
+    width: 5rem;
+    object-fit: cover;
+}
+
+.shop-name {
+    font-size: 1.2rem;
+    color: var(--name-color);
+    font-weight: 500;
+    display: inline-block;
+    padding-left: 2rem;
+}
+
+hr {
+    color: var(--name-color);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cart-container {
+    width: 100%;
+    height: 24rem;
+    overflow-y: scroll;
+}
+
+.items-container {
+    max-height: 30rem;
+    padding: 1rem;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 1.5rem;
+}
+
+.item-name {
+    width: 50%;
+    display: inline-block;
+    height: fit-content;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.item-quantity {
+    width: 10%;
+    font-size: 1rem;
+    padding-left: 1rem;
+}
+
+.item-cost {
+    width: fit-content;
+    font-size: 1rem;
+    padding-left: 1rem;
+}
+
+.billing-container {
+    height: fit-content;
+    width: 100%;
+    padding: 1rem;
+    padding-bottom: 3rem;
+}
+
+.bill-head {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--name-color);
+    margin-bottom: 0.5rem;
+}
+
+.total, .delivery-fee {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+}
+
+.total p, .delivery-fee p {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--name-color);
+}
+
+.to-pay {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    box-shadow: 0 -0.3rem 0.5rem -0.5rem rgba(0, 0, 0, 0.8);
+}
+
+.to-pay div {
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
