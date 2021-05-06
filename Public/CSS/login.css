@@ -6,6 +6,18 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .container {
@@ -87,6 +99,11 @@ form.sign-up {
     display: grid;
     grid-template-columns: 15% 85%;
     padding: 0 0.4rem;
+    transition: 150ms linear;
+}
+
+.input-field:hover, .input-field:focus {
+    box-shadow: 0 0 0.3em #32be8f;
 }
 
 .input-field i {
@@ -96,7 +113,7 @@ form.sign-up {
     font-size: 1.1rem;
 }
 
-.input-field input {
+.input-field input, .input-field select {
     background: none;
     border: none;
     outline: none;
@@ -109,6 +126,31 @@ form.sign-up {
 .input-field input::placeholder {
     color: #aaa;
     font-weight: 500;
+}
+
+.age-gender {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.age-gender .input-field {
+    width: 11.5rem;
+    margin-right: 0.5rem;
+}
+
+.age-gender .input-field input, .age-gender .input-field select {
+    padding-left: 1rem;
+}
+
+.age-gender .input-field i {
+    margin-right: 1rem;
+}
+
+.age-gender .input-field select option {
+    font-size: 1.2rem;
+    color: #333;
 }
 
 .btn {
@@ -233,4 +275,116 @@ form.sign-up {
 .container.sign-up-mode form.sign-up {
     z-index: 2;
     opacity: 1;
+}
+
+.sign-in-as-shop, .sign-up-as-shop {
+    cursor: pointer;
+    text-align: center;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-in-as-shop:hover, .sign-up-as-shop:hover {
+    color: #32be8f;
+}
+
+.sign-in-as-shop img, .sign-up-as-shop img {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 1rem;
+}
+
+.sign-in-as-shop p, .sign-up-as-shop p {
+    display: inline-block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+    transform: scale(0);
+    transition: 200ms linear;
+}
+
+.sign-up-container, .sign-in-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 12;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: #FFF;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border: none;
+    border-radius: 0.45rem;
+    width: 80%;
+    transition: 200ms linear;
+}
+
+.open {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.open-overlay {
+    transform: scale(1);
+}
+
+.shop-sign-up {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.shop-sign-up .input-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 0.5rem;
+}
+
+.shop-sign-up .input-field {
+    display: inline-block;
+}
+
+.shop-sign-up .input-field i {
+    padding-left: 1rem;
+}
+
+.shop-sign-up .input-field input{
+    display: inline-block;
+    padding-left: 0.8rem;
+    width: 80%;
+}
+
+.shop-sign-up .input-row .title, .shop-sign-in .title {
+    margin-bottom: 2rem;
+}
+
+.shop-sign-up .input-row .btn, .shop-sign-in .btn {
+    margin-top: 2rem;
+}
+
+.cross {
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    font-size: 1.5rem;
+    color: #EC7063;
+    cursor: pointer;
+    transition: 150ms linear;
+}
+
+.cross:hover {
+    transform: scale(1.5);
+    color: #E74C3C;
+}
+
+.sign-in-container {
+    width: 40%;
 }

@@ -16,7 +16,7 @@
     <!-- FAVICON -->
     <link rel="shortcut icon" href="./Public/assets/logo.png" type="image/x-icon">
 
-    <title>YourStore|Authorize</title>
+    <title>YourStore | Authorize</title>
 </head>
 <body>
     <section class="container">
@@ -34,6 +34,11 @@
                     </div>
 
                     <input type="submit" value="Login" class="btn solid">
+
+                    <div class="sign-in-as-shop">
+                        <img src="https://img.icons8.com/officel/80/000000/shop.png"/>
+                        <p>Sign in as a Shop</p>
+                    </div>
                 </form>
 
                 <form action="" class="sign-up">
@@ -50,8 +55,31 @@
                         <i class="fas fa-lock"></i>
                         <input type="password" name="password" placeholder="Password" autocomplete="off">
                     </div>
+                    <div class="age-gender">
+                        <div class="input-field">
+                            <i class="fas fa-user-clock"></i>
+                            <input type="number" name="age" placeholder="Age" autocomplete="off">
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-user-secret"></i>
+                            <select name="gender" id="gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-phone"></i>
+                        <input type="number" name="phone" placeholder="Phone" autocomplete="off">
+                    </div>
 
                     <input type="submit" value="Sign Up" class="btn solid">
+
+                    <div class="sign-up-as-shop">
+                        <img src="https://img.icons8.com/officel/80/000000/shop.png"/>
+                        <p>Sign up as a Shop</p>
+                    </div>
                 </form>
             </div>
         </div>
@@ -78,6 +106,65 @@
         </div>
     </section>
 
+    <div class="overlay"></div>
+    <div class="sign-up-container">
+        <i class="fas fa-times cross"></i>
+        <form class="shop-sign-up">
+            <div class="input-row">
+                <h2 class="title">Sign up as a Shop</h2>
+            </div>
+            <div class="input-row">
+                <div class="input-field">
+                    <i class="fas fa-store"></i>
+                    <input type="text" name="shop-name" id="shop-name" placeholder="Shop Name" autocomplete="off">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-sticky-note"></i>
+                    <input type="text" name="shop-desc" id="shop-desc" placeholder="Shop Description" autocomplete="off">
+                </div>
+            </div>
+            <div class="input-row">
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="shop-email" id="shop-email" placeholder="Email" autocomplete="off">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="shop-password" id="shop-password" placeholder="Password" autocomplete="off">
+                </div>
+            </div>
+            <div class="input-row">
+                <div class="input-field">
+                    <i class="fas fa-phone"></i>
+                    <input type="number" name="shop-phone" id="shop-phone" placeholder="Phone" autocomplete="off">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="shop-owner" id="shop-owner" placeholder="Owner name" autocomplete="off">
+                </div>
+            </div>
+            <div class="input-row"><input type="submit" value="Sign Up" class="btn solid" id="shop-sign-up-btn"></div>
+        </form>
+    </div> 
+
+    <div class="sign-in-container">
+        <i class="fas fa-times cross"></i>
+        <form class="shop-sign-in">
+            <h2 class="title">Sign In as a Shop</h2>
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Username" autocomplete="off">
+            </div>
+            <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password" autocomplete="off">
+            </div>   
+            
+            <input type="submit" value="Sign In" class="btn solid" id="shop-sign-in-btn">
+        </form>
+    </div>    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="./Public/JS/login.js"></script>
 </body>
 </html>
