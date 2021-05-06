@@ -56,4 +56,36 @@ $(document).ready(function() {
 
         $('.cod-btn').addClass('chosen');
     })
+
+    // ADD NEW ADDRESS 
+
+    $('.overlay').hide();
+    $('.add-new-address-container').hide();
+
+    $('.add-address').on('click', function(e) {
+        e.preventDefault();
+
+        $('.overlay').show();
+        $('.add-new-address-container').show();
+
+        $('body').addClass('overlay-open');
+    })
+
+    $('.cross').on('click', function(e) {
+        e.preventDefault();
+
+        $('.overlay').hide();
+        $(this).parent().hide();
+
+        $('body').removeClass('overlay-open');
+    })
+
+    $('.overlay').on('click', function(e) {
+        e.preventDefault();
+
+        $(this).hide();
+        $(this).parent('body').children('.add-new-address-container').hide();
+
+        $('body').removeClass('overlay-open');
+    })
 })

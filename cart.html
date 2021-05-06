@@ -209,6 +209,35 @@
 
     </section>
 
+    <div class="overlay"></div>
+    <div class="add-new-address-container">
+        <i class="fas fa-times cross"></i>
+        <form class="add-address-form">
+            <div class="title">Add new address</div>
+            <div class="input-field">
+                <i class="fas fa-home"></i>
+                <input type="text" name="flat-no" id="flat-no" placeholder="Door / Flat No." autocomplete="off">
+            </div>
+            <div class="input-field">
+                <i class="fas fa-map-marker-alt"></i>
+                <input type="text" name="locality" id="locality" placeholder="Locality" autocomplete="off">
+            </div>
+            <div class="input-field">
+                <i class="fas fa-map-pin"></i>
+                <input type="text" name="landmark" id="landmark" placeholder="Landmark" autocomplete="off">
+            </div>
+            <div class="radio">
+                <input class="radio-input" type="radio" name="type" id="home" value="home">
+                <label class="radio-label" for="home"><i class="fas fa-home"></i> Home</label>
+                <input class="radio-input" type="radio" name="type" id="work" value="work">
+                <label class="radio-label" for="work"><i class="fas fa-briefcase"></i> Work</label>
+                <input class="radio-input" type="radio" name="type" id="other" value="other">
+                <label class="radio-label" for="other"><i class="fas fa-map-marker-alt"></i> Other</label>
+            </div>
+            <button class="add-new-address-btn">Add</button>
+        </form>
+    </div>
+
     <footer> <p>Terms and conditions apply</p> </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
