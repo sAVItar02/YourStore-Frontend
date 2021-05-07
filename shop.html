@@ -89,10 +89,70 @@
         </ul>
     </nav>
 
+    <div class="overlay"></div>
+    <div class="add-products-container">
+        <i class="fas fa-times cross"></i>
+        <div class="title">Add Products</div>
+        <form class="product-form">
+            <div class="main-container">
+                <div class="general-container">
+                    <div class="input-field">
+                        <i class="fas fa-carrot"></i>
+                        <input type="text" name="item-name" id="item-name" placeholder="Item Name">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-sticky-note"></i>
+                        <input type="text" name="item-desc" id="item-desc" placeholder="Item Description">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <input type="number" name="item-cost" id="item-cost" placeholder="Item Cost">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-box-open"></i>
+                        <input type="number" name="item-quantity" id="item-quantity" placeholder="Item Quantity">
+                    </div>
+                </div>
+                <div class="image-container">
+                    <div class="image-preview" id="imagePreview">
+                        <img src="" alt="Image Preview" class="preview-image">
+                        <span class="preview-text">Image Preview</span>
+                    </div>
+                    <input type="file" name="inpFile" id="inpFile" accept="image/*">
+                    <div class="custom-input">Choose an image</div>
+                </div>
+            </div>
+            <div class="radio">
+                <input class="radio-input" type="radio" name="tag" id="fruits" value="fruits">
+                <label class="radio-label" for="fruits"><i class="fas fa-apple-alt"></i> Fruits</label>
+
+                <input class="radio-input" type="radio" name="tag" id="vegetables" value="work">
+                <label class="radio-label" for="vegetables"><i class="fas fa-pepper-hot"></i> Vegetables</label>
+
+                <input class="radio-input" type="radio" name="tag" id="meat" value="meat">
+                <label class="radio-label" for="meat"><i class="fas fa-drumstick-bite"></i> Meat</label>
+
+                <input class="radio-input" type="radio" name="tag" id="dairy" value="dairy">
+                <label class="radio-label" for="dairy"><i class="fas fa-bread-slice"></i> Dairy</label>
+
+                <input class="radio-input" type="radio" name="tag" id="snacks" value="snacks">
+                <label class="radio-label" for="snacks"><i class="fas fa-cookie"></i> Snacks</label>
+
+                <input class="radio-input" type="radio" name="tag" id="drinks" value="drinks">
+                <label class="radio-label" for="drinks"><i class="fas fa-beer"></i> Drinks</label>
+            </div>
+            <div class="btn-container"><button class="add-button">Add Product</button></div>
+        </form>
+    </div>
+
     <section class="main">
         
         <section class="products">
-            <div class="head"> <img src="https://img.icons8.com/dusk/64/000000/open-box.png"/> My Products</div>
+            <div class="head"> 
+                <img src="https://img.icons8.com/dusk/64/000000/open-box.png"/> My Products 
+                <div class="add-products-btn">Add Products</div>
+            </div>
+
             <div class="filter-tags">
                 <div class="tag active">All</div>
                 <div class="tag">Fruits and Veg</div>
