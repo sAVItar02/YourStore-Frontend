@@ -41,40 +41,40 @@
                     </div>
                 </form>
 
-                <form action="" class="sign-up">
+                <form action="" class="sign-up" id="user-signup-form">
                     <h2 class="title">Sign Up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="username" placeholder="Username" autocomplete="off">
+                        <input type="text" id="username-signup" name="username" placeholder="Username" autocomplete="off" required>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="Email" placeholder="Email" autocomplete="off">
+                        <input type="email" id="email-signup" name="email" placeholder="Email" autocomplete="off" required>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password" autocomplete="off">
+                        <input type="password" id="password-signup" name="password" placeholder="Password" autocomplete="off" required>
                     </div>
                     <div class="age-gender">
                         <div class="input-field">
                             <i class="fas fa-user-clock"></i>
-                            <input type="number" name="age" placeholder="Age" autocomplete="off">
+                            <input type="number" id="age-signup" name="age" placeholder="Age" autocomplete="off" required>
                         </div>
                         <div class="input-field">
                             <i class="fas fa-user-secret"></i>
-                            <select name="gender" id="gender">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Other</option>
+                            <select name="gender" id="gender-signup" required>
+                                <option value="m">Male</option>
+                                <option value="f">Female</option>
+                                <option value="o">Other</option>
                             </select>
                         </div>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-phone"></i>
-                        <input type="number" name="phone" placeholder="Phone" autocomplete="off">
+                        <input type="number" id="phone-signup" name="phone" placeholder="Phone" autocomplete="off" required>
                     </div>
 
-                    <input type="submit" value="Sign Up" class="btn solid">
+                    <input type="submit" value="Sign Up" class="btn solid" id="user-signup">
 
                     <div class="sign-up-as-shop">
                         <img src="https://img.icons8.com/officel/80/000000/shop.png"/>
@@ -165,6 +165,7 @@
     </div>    
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./Public/JS/login.js"></script>
 </body>
 </html>
