@@ -34,7 +34,7 @@ input[type=number] {
     width: 2000px;
     height: 2000px;
     border-radius: 50%;
-    background: linear-gradient(-45deg, #0B743F, #143653, #32be8f);
+    background: linear-gradient(-45deg, #3e5ca8, #1d4e79, #a2bbfa);
     top: -10%;
     right: 48%;
     transform: translateY(-50%);
@@ -62,6 +62,14 @@ input[type=number] {
     transition: 1s 0.7s ease-in-out;
 }
 
+.invalid {
+    box-shadow: 0 0 0.3rem #E74C3C;
+}
+
+.valid {
+    box-shadow: 0 0 0.3rem #32be8f;
+}
+
 form {
     display: flex;
     align-items: center;
@@ -85,7 +93,7 @@ form.sign-up {
 
 .title {
     font-size: 2.2rem;
-    color: #148653;
+    color: #5C8AFF;
     margin-bottom: 0.6rem;
 }
 
@@ -102,9 +110,9 @@ form.sign-up {
     transition: 150ms linear;
 }
 
-.input-field:hover, .input-field:focus {
-    box-shadow: 0 0 0.3em #32be8f;
-}
+/* .input-field:hover, .input-field:focus {
+    box-shadow: 0 0 0.3rem #5C8AFF;
+} */
 
 .input-field i {
     text-align: center;
@@ -160,7 +168,7 @@ form.sign-up {
     outline: none;
     border-radius: 50px;
     cursor: pointer;
-    background-color: #148653;
+    background-color: #5C8AFF;
     color: #FFF;
     font-weight: 600;
     margin: 10px 0;
@@ -169,7 +177,7 @@ form.sign-up {
 }
 
 .btn:hover {
-    background-color: #32be8f;
+    background-color: #5c8affb0;
 }
 
 .panels-container {
@@ -228,7 +236,7 @@ form.sign-up {
 }
 
 .btn.transparent:hover {
-    background-color: #58AF9B;
+    background-color: #5c8affb0;
 }
 
 .image {
@@ -287,7 +295,7 @@ form.sign-up {
 }
 
 .sign-in-as-shop:hover, .sign-up-as-shop:hover {
-    color: #32be8f;
+    color: #5c8affb0;
 }
 
 .sign-in-as-shop img, .sign-up-as-shop img {
