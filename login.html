@@ -22,18 +22,18 @@
     <section class="container">
         <div class="forms-container">
             <div class="signin-signup">
-                <form action="" class="sign-in">
+                <form action="" class="sign-in" id="user-signin-form">
                     <h2 class="title">Sign In</h2>
                     <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" name="username" placeholder="Username" autocomplete="off">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="email" id="email-signin" placeholder="Email" autocomplete="off" required>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password" autocomplete="off">
+                        <input type="password" id="password-signin" name="password" placeholder="Password" autocomplete="off" required>
                     </div>
 
-                    <input type="submit" value="Login" class="btn solid">
+                    <input type="submit" value="Login" class="btn solid" id="user-signin">
 
                     <div class="sign-in-as-shop">
                         <img src="https://img.icons8.com/officel/80/000000/shop.png"/>
@@ -109,58 +109,71 @@
     <div class="overlay"></div>
     <div class="sign-up-container">
         <i class="fas fa-times cross"></i>
-        <form class="shop-sign-up">
+        <form class="shop-sign-up" id="shop-signup-form">
             <div class="input-row">
                 <h2 class="title">Sign up as a Shop</h2>
             </div>
             <div class="input-row">
                 <div class="input-field">
                     <i class="fas fa-store"></i>
-                    <input type="text" name="shop-name" id="shop-name" placeholder="Shop Name" autocomplete="off">
+                    <input type="text" name="username" id="shop-name" placeholder="Shop Name" autocomplete="off" required>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-sticky-note"></i>
-                    <input type="text" name="shop-desc" id="shop-desc" placeholder="Shop Description" autocomplete="off">
+                    <input type="text" name="description" id="shop-desc" placeholder="Shop Description" autocomplete="off">
                 </div>
             </div>
             <div class="input-row">
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" name="shop-email" id="shop-email" placeholder="Email" autocomplete="off">
+                    <input type="email" name="email" id="shop-email" placeholder="Email" autocomplete="off">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="shop-password" id="shop-password" placeholder="Password" autocomplete="off">
+                    <input type="password" name="password" id="shop-password" placeholder="Password" autocomplete="off">
                 </div>
             </div>
             <div class="input-row">
                 <div class="input-field">
                     <i class="fas fa-phone"></i>
-                    <input type="number" name="shop-phone" id="shop-phone" placeholder="Phone" autocomplete="off">
+                    <input type="number" name="phone" id="shop-phone" placeholder="Phone" autocomplete="off">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" name="shop-owner" id="shop-owner" placeholder="Owner name" autocomplete="off">
+                    <input type="text" name="owner" id="shop-owner" placeholder="Owner name" autocomplete="off">
                 </div>
             </div>
-            <div class="input-row"><input type="submit" value="Sign Up" class="btn solid" id="shop-sign-up-btn"></div>
+            <div class="input-row">
+                <div class="input-field">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" name="address" id="shop-address" placeholder="Address/Shop No. (name)" autocomplete="off" required>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-map-pin"></i>
+                    <input type="text" name="landmark" id="shop-landmark" placeholder="Landmark" autocomplete="off" required>
+                </div>
+            </div>
+
+            <div class="input-row"><button class="btn solid" id="get-address"><i class="fas fa-crosshairs"></i> Locate me</button></div>
+
+            <div class="input-row"><input type="submit" value="Sign Up" class="btn solid" id="shop-signup-btn"></div>
         </form>
     </div> 
 
     <div class="sign-in-container">
         <i class="fas fa-times cross"></i>
-        <form class="shop-sign-in">
+        <form class="shop-sign-in" id="shop-signin-form">
             <h2 class="title">Sign In as a Shop</h2>
             <div class="input-field">
-                <i class="fas fa-user"></i>
-                <input type="text" name="username" placeholder="Username" autocomplete="off">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" id="shop-email-signin" placeholder="Email" autocomplete="off" required>
             </div>
             <div class="input-field">
                 <i class="fas fa-lock"></i>
-                <input type="password" name="password" placeholder="Password" autocomplete="off">
+                <input type="password" name="password" id="shop-password-signin" placeholder="Password" autocomplete="off" required>
             </div>   
             
-            <input type="submit" value="Sign In" class="btn solid" id="shop-sign-in-btn">
+            <input type="submit" value="Sign In" class="btn solid" id="shop-signin-btn">
         </form>
     </div>    
 

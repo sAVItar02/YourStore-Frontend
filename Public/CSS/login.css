@@ -180,6 +180,19 @@ form.sign-up {
     background-color: #5c8affb0;
 }
 
+#get-address {
+    margin-top: 0rem;
+    background-color: #32be8f;
+}
+
+#shop-signup-btn {
+    margin-top: 0.5rem;
+}
+
+#get-address:hover {
+    background-color: #24e0a1;
+}
+
 .panels-container {
     position: absolute;
     width: 100%;
@@ -353,7 +366,7 @@ form.sign-up {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
 }
 
 .shop-sign-up .input-field {
