@@ -33,6 +33,10 @@ inpFile.addEventListener("change", function(e) {
 })
 
 $(document).ready(function() {
+    $('.products').hide();
+
+    //-----------ADD PRODUCTS----------------
+
     $('.overlay').hide();
     $('.add-products-container').hide();
     $('body').removeClass('overlay-open');
@@ -57,5 +61,13 @@ $(document).ready(function() {
 
         $('body').removeClass('overlay-open');
     })
+    
+    //------------------------------------------
+
+    //-----------------PROFILE------------------
+    $('.count').counterUp({
+        delay: 10,
+        time: 1000
+    });
 })
 

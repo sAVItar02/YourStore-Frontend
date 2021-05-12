@@ -56,6 +56,7 @@ body::-webkit-scrollbar-thumb {
     width: 5rem;
     height: 100vh;
     position: fixed;
+    z-index: 10;
     background-color: #FFF;
     transition: 200ms ease;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
@@ -477,6 +478,69 @@ body::-webkit-scrollbar-thumb {
 
 .add-button:hover {
     background-color: var(--blue-primary-translucent);
+}
+
+.profile {
+    height: 100%;
+    min-height: 12rem;
+    width: 100%;
+    padding: 4rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.img-container {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #aaa;
+}
+
+.profile-img img {
+    height: 10rem;
+    width: 10rem;
+    border: none;
+    border-radius: 50%;
+}
+
+.items-sold, .total-clicks {
+    margin-left: 4rem;
+    background-color: #FFF;
+    border: none;
+    border-radius: 0.45rem;
+    padding: 1rem 2rem;
+}
+
+.total-clicks {
+    margin-left: 1rem;
+}
+
+.sold-head, .clicks-head {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--name-color);
+}
+
+.count {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+@-webkit-keyframes slide {
+    0% {
+        transform: translateX(-1000%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
 }
 
 /* MEDIA QUERIES */
