@@ -424,6 +424,67 @@ $(document).ready(function() {
         }
     }
 
+    //-------------------DELETE ITEM--------------------
+
+    $(".products").on('click', '.delete-item-btn' ,function(e) {
+        e.preventDefault();
+        showLoader();
+        const id = $(this).parent('.delete-item').parent('.details').children('#item-id').text();
+        const delete_item_url = `https://yourstore-swe.herokuapp.com/myProducts/delete/${id}`;
+        
+
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem('shopAuth')}`);
     
+        let requestOptions = {
+            method: 'PATCH',
+            headers: myHeaders,
+        }
+
+        try {
+            fetch(delete_item_url, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                hideLoader();
+                swal("Item deleted!", "" ,"success");
+
+                if($(this).parents(".all-container").length > 0) {
+                    getProducts().then((result) => {
+                        createAllCard(result);
+                    })
+                } else if ($(this).parents(".fruits-veggies-container").length > 0) {
+                    getProducts().then((result) => {
+                        createFruitsAndVegCard(result);
+                    })
+                } else if ($(this).parents(".meat-container").length > 0) {
+                    getProducts().then((result) => {
+                        createTaggedCard(result, "meat", $('.meat-container'));
+                    });
+                } else if ($(this).parents(".dairy-container").length > 0) {
+                    getProducts().then((result) => {
+                        createTaggedCard(result, "dairy", $('.dairy-container'));
+                    });
+                } else if ($(this).parents(".snacks-container").length > 0) {
+                    getProducts().then((result) => {
+                        createTaggedCard(result, "snacks", $('.snacks-container'));
+                    });
+                } else if ($(this).parents(".drinks-container").length > 0) {
+                    getProducts().then((result) => {
+                        createTaggedCard(result, "drinks", $('.drinks-container'));
+                    });
+                }
+            })
+            .catch((e) => {
+                console.log(e);
+                hideLoader();
+                swal("Aww snap!", "Some error occurred" ,"success");
+            })
+        } catch (e) {
+            console.log(e);
+            hideLoader();
+            swal("Aww snap!", "Some error occurred" ,"success");
+        }
+    })
+
 })
 
