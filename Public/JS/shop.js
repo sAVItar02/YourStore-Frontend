@@ -98,6 +98,7 @@ $(document).ready(function() {
             return fetch(get_products, requestOptions)
             .then((response) => response.json())
             .then((result) => {
+                console.log(result);
                 hideLoader();
                 return (result);
             })
@@ -322,6 +323,8 @@ $(document).ready(function() {
                         <div class="product-cost">Cost: <span class="cost">&#8377;${result[i].cost}</span></div>
                         <div class="product-quantity">Quantity: <span class="quantity">${result[i].quantity} Kg</span></div>
                         <div class="product-tag">${result[i].tags}</div>
+                        <div id="item-id">${result[i]._id}</div>
+                        <div class="delete-item"><button class="delete-item-btn">Delete</button></div>
                     </div>
                 </div>
                 `
@@ -363,6 +366,8 @@ $(document).ready(function() {
                             <div class="product-name">${result[i].itemName}</div>
                             <div class="product-cost">Cost: <span class="cost">&#8377;${result[i].cost}</span></div>
                             <div class="product-quantity">Quantity: <span class="quantity">${result[i].quantity} Kg</span></div>
+                            <div id="item-id">${result[i]._id}</div>
+                            <div class="delete-item"><button class="delete-item-btn">Delete</button></div>
                         </div>
                     </div>
                     `
@@ -405,6 +410,8 @@ $(document).ready(function() {
                             <div class="product-name">${result[i].itemName}</div>
                             <div class="product-cost">Cost: <span class="cost">&#8377;${result[i].cost}</span></div>
                             <div class="product-quantity">Quantity: <span class="quantity">${result[i].quantity} Kg</span></div>
+                            <div id="item-id">${result[i]._id}</div>
+                            <div class="delete-item"><button class="delete-item-btn">Delete</button></div>
                         </div>
                     </div>
                     `
@@ -416,5 +423,7 @@ $(document).ready(function() {
             }    
         }
     }
+
+    
 })
 
