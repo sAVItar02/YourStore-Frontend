@@ -227,12 +227,19 @@ body::-webkit-scrollbar-thumb {
     background-color: #FFF;
 }
 
-.all {
+.all-container, .fruits-veggies-container, .meat-container, .dairy-container, .snacks-container, 
+.drinks-container {
     height: 100%;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
+}
+
+.no-products-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--name-color);
 }
 
 .card {
@@ -280,6 +287,19 @@ body::-webkit-scrollbar-thumb {
 
 .overlay-open {
     overflow: hidden;
+}
+
+.spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: 100%;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .add-products-container {
@@ -484,16 +504,17 @@ body::-webkit-scrollbar-thumb {
     height: 100%;
     min-height: 12rem;
     width: 100%;
-    padding: 4rem 5rem;
+    padding: 4rem 4rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .img-container {
     height: fit-content;
-    width: fit-content;
+    width: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -530,6 +551,49 @@ body::-webkit-scrollbar-thumb {
 .count {
     font-size: 2rem;
     font-weight: 500;
+}
+
+.details-container {
+    height: fit-content;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-top: 1.5rem;
+}
+
+.input-row {
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.row-elements {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 48%;
+}
+
+.row-elements label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--name-color);
+    margin-bottom: 0.2rem;
+}
+
+.input-row input {
+    width: 100%;
+    border: none;
+    border-radius: 0.45rem;
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: var(--bg-primary-translucent);
 }
 
 @-webkit-keyframes slide {

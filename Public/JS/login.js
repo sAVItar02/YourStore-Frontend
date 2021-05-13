@@ -398,7 +398,7 @@ $(document).ready(function() {
                     if(result.error || result.status == "failure") {
                         swal("Check again!", "" ,"error");
                     } else {
-                        localStorage.setItem('authToken', result.data.token);
+                        localStorage.setItem('shopAuth', result.data.token);
                         window.location.replace('./shop.html');
                         $('#shop-signup-form')[0].reset();
                         swal("Success", "You're all set!", "success");
@@ -446,7 +446,7 @@ $(document).ready(function() {
                     if(result.error || result.status == "failure") {
                         swal("Check again!", "" ,"error");
                     } else {
-                        localStorage.setItem('authToken', result.data.token);
+                        localStorage.setItem('shopAuth', result.data.token);
                         window.location.replace('./shop.html');
                         $('#shop-signin-form')[0].reset();
                         swal("Success", "You're all set!", "success");
