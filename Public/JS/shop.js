@@ -80,10 +80,37 @@ $(document).ready(function() {
         time: 1000
     });
 
-    //-----------------GET PROFILE--------------
+    //-----------------GET PROFILE/PRODUCTS--------------
 
     const get_profile_url = 'https://yourstore-swe.herokuapp.com/stores/myStore';
     const get_products = 'https://yourstore-swe.herokuapp.com/myProducts';
+
+    function getProducts() {
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem('shopAuth')}`);
+    
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+        }
+
+        try {
+            return fetch(get_products, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                console.log(result);
+                hideLoader();
+                return (result);
+            })
+            .catch((e) => {
+                console.log(e);
+                hideLoader();
+            })
+        } catch (e) {
+            console.log(e);
+            hideLoader();
+        }
+    }
 
     $("#profile-btn").on('click', function(e) {
         e.preventDefault();
@@ -142,30 +169,31 @@ $(document).ready(function() {
         $('.products').show();
         $('.all-container').show();
 
-        let myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${localStorage.getItem('shopAuth')}`);
-    
-        let requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-        }
+        getProducts().then((result) => {
+            createAllCard(result);
+        });
 
-        try {
-            fetch(get_products, requestOptions)
-            .then((response) => response.json())
-            .then((result) => {
-                console.log(result);
-                createAllCard(result);
-                hideLoader();
-            })
-            .catch((e) => {
-                console.log(e);
-                hideLoader();
-            })
-        } catch (e) {
-            console.log(e);
-            hideLoader();
-        }
+    })
+
+    $("#all-products").on('click', function(e) {
+        e.preventDefault();
+        showLoader();
+
+        $('.tag').removeClass('active')
+        $('#all-products').addClass('active')
+
+        $('.fruits-veggies-container').hide();
+        $('.meat-container').hide();
+        $('.dairy-container').hide();
+        $('.snacks-container').hide();
+        $('.drinks-container').hide();
+
+        $('.all-container').show();
+
+        getProducts().then((result) => {
+            createAllCard(result);
+        });
+
     })
 
     $("#fruits-and-veg").on('click', function(e) {
@@ -183,30 +211,93 @@ $(document).ready(function() {
 
         $('.fruits-veggies-container').show();
 
-        let myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${localStorage.getItem('shopAuth')}`);
-    
-        let requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-        }
+        getProducts().then((result) => {
+            createFruitsAndVegCard(result);
+        });
 
-        try {
-            fetch(get_products, requestOptions)
-            .then((response) => response.json())
-            .then((result) => {
-                console.log(result);
-                createFruitsAndVegCard(result);
-                hideLoader();
-            })
-            .catch((e) => {
-                console.log(e);
-                hideLoader();
-            })
-        } catch (e) {
-            console.log(e);
-            hideLoader();
-        }
+    })
+
+    $("#meat-products").on('click', function(e) {
+        e.preventDefault();
+        showLoader();
+
+        $(".tag").removeClass('active');
+        $(this).addClass('active');
+
+        $('.all-container').hide();
+        $('.fruits-veggies-container').hide();
+        $('.dairy-container').hide();
+        $('.snacks-container').hide();
+        $('.drinks-container').hide();
+
+        $('.meat-container').show();
+
+        getProducts().then((result) => {
+            createTaggedCard(result, "meat", $('.meat-container'));
+        });
+
+    })
+
+    $("#dairy-products").on('click', function(e) {
+        e.preventDefault();
+        showLoader();
+
+        $(".tag").removeClass('active');
+        $(this).addClass('active');
+
+        $('.all-container').hide();
+        $('.fruits-veggies-container').hide();
+        $('.meat-container').hide();
+        $('.snacks-container').hide();
+        $('.drinks-container').hide();
+
+        $('.dairy-container').show();
+
+        getProducts().then((result) => {
+            createTaggedCard(result, "dairy", $('.dairy-container'));
+        });
+
+    })
+
+    $("#snacks-products").on('click', function(e) {
+        e.preventDefault();
+        showLoader();
+
+        $(".tag").removeClass('active');
+        $(this).addClass('active');
+
+        $('.all-container').hide();
+        $('.fruits-veggies-container').hide();
+        $('.dairy-container').hide();
+        $('.meat-container').hide();
+        $('.drinks-container').hide();
+
+        $('.snacks-container').show();
+
+        getProducts().then((result) => {
+            createTaggedCard(result, "snacks", $('.snacks-container'));
+        });
+
+    })
+
+    $("#drinks-products").on('click', function(e) {
+        e.preventDefault();
+        showLoader();
+
+        $(".tag").removeClass('active');
+        $(this).addClass('active');
+
+        $('.all-container').hide();
+        $('.fruits-veggies-container').hide();
+        $('.dairy-container').hide();
+        $('.snacks-container').hide();
+        $('.meat-container').hide();
+
+        $('.drinks-container').show();
+
+        getProducts().then((result) => {
+            createTaggedCard(result, "drinks", $('.drinks-container'));
+        });
 
     })
 
@@ -285,5 +376,48 @@ $(document).ready(function() {
             }
         }
     }    
+
+    function createTaggedCard(result, tag, container) {
+        let count = 0;
+
+        for(i=0; i<result.length; i++) {
+            if(result[i].tags == tag) {
+                count++;
+            }
+        }
+
+        if(count==0) {
+            container.empty();
+            container.html("<div class='no-products-text'>No products yet!</div>");
+        } else {
+            let img = '';
+            let output = ``;
+
+            for(i=0; i<result.length; i++) {
+                if(!result[i].picture) {
+                    img = './Public/assets/default.jpg';
+                } else {
+                    img = result[i].picture;
+                }
+
+                if(result[i].tags == tag) {
+                    output += `
+                    <div class="card">
+                        <img src="${img}">
+                        <div class="details">
+                            <div class="product-name">${result[i].itemName}</div>
+                            <div class="product-cost">Cost: <span class="cost">&#8377;${result[i].cost}</span></div>
+                            <div class="product-quantity">Quantity: <span class="quantity">${result[i].quantity} Kg</span></div>
+                        </div>
+                    </div>
+                    `
+                }
+
+                container.empty();
+                container.html(output);
+        
+            }    
+        }
+    }
 })
 
