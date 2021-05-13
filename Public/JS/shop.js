@@ -98,7 +98,6 @@ $(document).ready(function() {
             return fetch(get_products, requestOptions)
             .then((response) => response.json())
             .then((result) => {
-                console.log(result);
                 hideLoader();
                 return (result);
             })
@@ -341,8 +340,6 @@ $(document).ready(function() {
                 count++;
             }
         }
-
-        console.log(count);
 
         if(count == 0) {
             $('.fruits-veggies').empty();

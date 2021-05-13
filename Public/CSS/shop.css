@@ -249,6 +249,7 @@ body::-webkit-scrollbar-thumb {
     border-radius: 00.45rem;
     height: 18rem;
     width: 100%;
+    position: relative;
 }
 
 .card img {
@@ -273,6 +274,22 @@ body::-webkit-scrollbar-thumb {
     color: var(--name-color);
     font-weight: 600;
     padding-left: 0.1rem;
+}
+
+.product-tag {
+    background-color: var(--blue-primary);
+    color: #FFF;
+    font-weight: 300;
+    font-size: 0.8rem;
+    padding: 0.4rem;
+    width: fit-content;
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 0.45rem;
+    position: absolute;
+    top: 0;
+    left: -2%;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.4);
 }
 
 .overlay {
