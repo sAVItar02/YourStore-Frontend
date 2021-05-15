@@ -35,6 +35,7 @@ inpFile.addEventListener("change", function(e) {
 $(document).ready(function() {
     $('.overlay').hide();
     $('.add-products-container').hide();
+    $('.not-logged-in').hide();
     $('body').removeClass('overlay-open');
 
     const get_profile_url = 'https://yourstore-swe.herokuapp.com/stores/myStore';
@@ -65,7 +66,13 @@ $(document).ready(function() {
         }
     }
 
-    getShop();
+    if(!localStorage.getItem('shopAuth')) {
+        $(".overlay-white").show();
+        $(".not-logged-in").show();
+    } else {
+        getShop();
+    }
+
 
     $('.spinner').hide();
     $('.profile').hide();
@@ -933,6 +940,47 @@ $(document).ready(function() {
             hideLoader($(".overlay"));
             swal("Aww snap!", "Some error occurred" ,"success");
         }
+    })
+
+    //-------------------LOGOUT-------------------------
+
+    $(".logout").on('click', function(e) {
+        e.preventDefault();
+
+        showLoader($('.overlay'));
+
+        const logout_api = 'https://yourstore-swe.herokuapp.com/store/logout';
+
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem('shopAuth')}`);
+    
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+        }
+
+        try {
+            fetch(logout_api, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                alert("yo");
+                console.log(result);
+                swal("Logged Out", "", "seccess");
+                localStorage.removeItem('shopAuth');
+                window.location.reload();
+                hideLoader($(".overlay"));
+            })
+            .catch((e) => {
+                console.log(e);
+                swal("Oops something went wrong", "" + e, "error");
+                hideLoader($(".overlay"));
+            })
+        } catch (e) {
+            console.log(e);
+            swal("Oops something went wrong", "" + e, "error");
+            hideLoader($(".overlay"));
+        }
+
     })
 
 })

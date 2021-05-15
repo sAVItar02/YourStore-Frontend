@@ -325,7 +325,7 @@ body::-webkit-scrollbar-thumb {
     background-color: #E74C3C;
 }
 
-/* ---------------------OVERLAY AND SPINNER------------------ */
+/* ---------------------OVERLAY, SPINNER AND LOGOUT------------------ */
 
 .overlay, .overlay-white {
     position: absolute;
@@ -356,6 +356,19 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.not-logged-in {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+    width: 100%;
+    color: var(--name-color);
 }
 
 /* -----------------ADD PRODUCTS-------------------- */
@@ -908,6 +921,28 @@ body::-webkit-scrollbar-thumb {
     padding: 1rem;
     font-size: 1.2rem;
     background-color: var(--bg-primary-translucent);
+}
+
+.logout-btn-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.logout {
+    background-color: #EC7063;
+    color: #FFF;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 0.45rem;
+    cursor: pointer;
+    transition: 100ms ease;
+}
+
+.logout:hover {
+    background-color: #E74C3C;
 }
 
 
