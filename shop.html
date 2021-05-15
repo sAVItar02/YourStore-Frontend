@@ -68,6 +68,12 @@
                     <span class="link-text">Orders</span>
                 </a>
             </li>
+            <li class="nav-item" id="history-btn">
+                <a href="#" class="nav-link" >
+                    <i class="fas fa-history"></i>
+                    <span class="link-text">History</span>
+                </a>
+            </li>
             <li class="nav-item" id="products-btn">
                 <a href="#" class="nav-link">
                     <i class="fas fa-carrot"></i>
@@ -89,29 +95,33 @@
         </ul>
     </nav>
 
+    <div id="shop-id"></div>
+
     <div class="overlay"></div>
+    <div class="overlay-white"></div>
     <div class="spinner"><img src="./Public/assets/loader.gif" alt=""></div>
-    <div class="add-products-container">
+
+    <div class="add-products-container hidden">
         <i class="fas fa-times cross"></i>
         <div class="title">Add Products</div>
-        <form class="product-form">
+        <form class="product-form" id="add-products-form">
             <div class="main-container">
                 <div class="general-container">
                     <div class="input-field">
                         <i class="fas fa-carrot"></i>
-                        <input type="text" name="item-name" id="item-name" placeholder="Item Name">
+                        <input type="text" name="name" id="item-name" placeholder="Item Name" autocomplete="off">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-sticky-note"></i>
-                        <input type="text" name="item-desc" id="item-desc" placeholder="Item Description">
+                        <input type="text" name="desc" id="item-desc" placeholder="Item Description" autocomplete="off">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-money-bill-wave"></i>
-                        <input type="number" name="item-cost" id="item-cost" placeholder="Item Cost">
+                        <input type="number" name="cost" id="item-cost" placeholder="Item Cost" autocomplete="off">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-box-open"></i>
-                        <input type="number" name="item-quantity" id="item-quantity" placeholder="Item Quantity">
+                        <input type="number" name="quantity" id="item-quantity" placeholder="Item Quantity" autocomplete="off">
                     </div>
                 </div>
                 <div class="image-container">
@@ -124,7 +134,7 @@
                 </div>
             </div>
             <div class="radio">
-                <input class="radio-input" type="radio" name="tag" id="fruits" value="fruits">
+                <input class="radio-input" type="radio" name="tag" id="fruits" value="fruits" checked="checked">
                 <label class="radio-label" for="fruits"><i class="fas fa-apple-alt"></i> Fruits</label>
 
                 <input class="radio-input" type="radio" name="tag" id="vegetables" value="vegetables">
@@ -169,6 +179,36 @@
             <div class="dairy-container"></div>
             <div class="snacks-container"></div>
             <div class="drinks-container"></div>
+        </section>
+
+        <section class="requests">
+            <div class="head"> 
+                <img src="https://img.icons8.com/officel/80/000000/demand.png"/> Requests 
+            </div>
+            <div class="requests-container"></div>
+        </section>
+
+        <section class="orders">
+            <div class="head"> 
+                <img src="./Public/assets/box.svg"/> Pending Orders 
+            </div>
+            <div class="orders-container"></div>
+            
+        </section>
+
+        <section class="history">
+            <div class="history-head"> 
+                <div class="order-history history-active">
+                    <img src="https://img.icons8.com/dusk/64/000000/order-history.png"/> Order History 
+                </div>
+                <div class="payment-history">
+                    <img src="https://img.icons8.com/dusk/64/000000/payment-history.png"/> Payment History
+                </div>
+            </div>
+            <div class="order-history-container"></div>
+
+            <div class="payment-history-container"></div>
+            
         </section>
 
         <section class="profile">

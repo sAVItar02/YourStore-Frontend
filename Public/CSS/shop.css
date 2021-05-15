@@ -52,6 +52,10 @@ body::-webkit-scrollbar-thumb {
     padding: 1rem;
 }
 
+#shop-id {
+    display: none;
+}
+
 .navbar {
     width: 5rem;
     height: 100vh;
@@ -156,6 +160,8 @@ body::-webkit-scrollbar-thumb {
 .fa-primary, .fa-secondary {
     transition: 400ms;
 }
+
+/* --------------------PRODUCTS------------------ */
 
 .products {
     height: 100%;
@@ -319,7 +325,9 @@ body::-webkit-scrollbar-thumb {
     background-color: #E74C3C;
 }
 
-.overlay {
+/* ---------------------OVERLAY AND SPINNER------------------ */
+
+.overlay, .overlay-white {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -327,6 +335,10 @@ body::-webkit-scrollbar-thumb {
     right: 0;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 20;
+}
+
+.overlay-white {
+    background-color: #FFF;
 }
 
 .overlay-open {
@@ -346,6 +358,8 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
 }
 
+/* -----------------ADD PRODUCTS-------------------- */
+
 .add-products-container {
     position: fixed;
     top: 50%;
@@ -358,6 +372,10 @@ body::-webkit-scrollbar-thumb {
     border: none;
     border-radius: 0.45rem;
     z-index: 30;
+}
+
+.add-products-container.hidden {
+    display: none;
 }
 
 .main-container {
@@ -544,6 +562,258 @@ body::-webkit-scrollbar-thumb {
     background-color: var(--blue-primary-translucent);
 }
 
+.invalid {
+    box-shadow: 0 0 0.3rem #E74C3C;
+}
+
+.valid {
+    box-shadow: 0 0 0.3rem #32be8f;
+}
+
+/* --------------------------REQUESTS--------------------------- */
+
+.requests {
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+}
+
+.requests .head {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #a5a5a5;
+}
+
+.requests-container {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.requests-card {
+    background-color: #FFF;
+    border: none;
+    border-radius: 0.45rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+.req-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--blue-primary);
+}
+
+.req-desc {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--name-color);
+}
+
+.req-quantity {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: #FFF;
+    background-color: #32be8f;
+    padding: 0.5rem;
+    border: none; 
+    border-radius: 2rem;
+    width: fit-content;
+}
+
+/* --------------------------PENDING ORDERS--------------------- */
+
+.orders {
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+}
+
+.orders .head {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #a5a5a5;
+}
+
+.orders-container, .order-history-container {
+    padding: 1rem;
+    height: 100%;
+    width: 100%;
+}
+
+.order-card, .order-history-card {
+    margin-bottom: 2rem;
+}
+
+.user-info {
+    background-color: #fff;
+    padding: 1.5rem;
+    border: none;
+    border-radius: 0.45rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.regular-info {
+    width: fit-content;
+    display: inline-block;
+    padding-right: 1rem;
+}
+
+.user-address {
+    width: fit-content;
+    max-width: 25rem;
+    padding: 0rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 300;
+    height: fit-content;
+    transition: 1s linear;
+}
+
+.user-address.hide {
+    display: none;
+    overflow: hidden;
+}
+
+.address-btn-container {
+    width: 20%;
+    padding: 0rem 1rem;
+}
+
+.view-address-btn, #view-order-btn {
+    background-color: #32be8f;
+    color: #FFF;
+    border: none;
+    width: 100%;
+    border-radius: 0.45rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 100ms linear;
+    text-align: center;
+}
+
+.view-address-btn {
+    margin-bottom: 1rem;
+}
+
+.view-address-btn:hover, #view-order-btn:hover {
+    background-color: #58D68D;
+}
+
+.user-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--blue-primary);
+    margin-bottom: 0.5rem;
+}
+
+.order-id, .user-phone {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--name-color);
+}
+
+.order-items {
+    background-color: var(--bg-primary-translucent);
+    padding: 1rem;
+    border-bottom-right-radius: 0.45rem;
+    border-bottom-left-radius: 0.45rem;
+}
+
+.items-card {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #a5a5a5;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.items-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.item-image {
+    display: inline-block;
+}
+
+.item-image img {
+    height: 5rem;
+    width: 5rem;
+    object-fit: contain;
+}
+
+.item-info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-left: 1rem;
+}
+
+.item-name {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--name-color);
+}
+
+.item-quantity {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--name-color);
+}
+
+/* --------------------------ORDER HISTORY---------------------- */
+
+.history {
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    padding-top: 0.5rem;
+}
+
+.history-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.order-history img, .payment-history img {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.5rem;
+}
+
+.order-history, .payment-history {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--name-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    cursor: pointer;
+    transition: 100ms ease;
+}
+
+.order-history:hover, .payment-history:hover {
+    color: var(--blue-primary);
+}
+
+.order-history.history-active {
+    border-bottom: 0.4rem solid var(--blue-primary);
+}
+
+/* --------------------------PROFILE---------------------------- */
+
 .profile {
     height: 100%;
     min-height: 12rem;
@@ -640,16 +910,6 @@ body::-webkit-scrollbar-thumb {
     background-color: var(--bg-primary-translucent);
 }
 
-@-webkit-keyframes slide {
-    0% {
-        transform: translateX(-1000%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-}
 
 /* MEDIA QUERIES */
 @media only screen and (max-width: 600px) {
