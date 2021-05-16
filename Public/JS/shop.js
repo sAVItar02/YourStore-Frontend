@@ -232,6 +232,12 @@ $(document).ready(function() {
         $(this).parent().parent().children('.user-address').toggleClass("hide");
     })
 
+    $(".order-history-container").on('click', '.view-address-btn' ,function(e) {
+        e.preventDefault();
+
+        $(this).parent().parent().children('.user-address').toggleClass("hide");
+    })
+
     //-----------------GET PROFILE/PRODUCTS/ORDERS/REQUESTS--------------
 
     const get_products = 'https://yourstore-swe.herokuapp.com/myProducts';
@@ -444,6 +450,8 @@ $(document).ready(function() {
             fetch(get_profile_url, requestOptions)
             .then((response) => response.json())
             .then((result) => {
+                $("#total-sold").text(result.totalItemsSold);
+                $("#total-clicks").text(result.totalClicks);
                 $("#shop-name").val(result.shopName);
                 $("#shop-desc").val(result.shopDescription);
                 $("#shop-email").val(result.email);
