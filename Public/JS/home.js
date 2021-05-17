@@ -1,14 +1,73 @@
 $(document).ready( function() {
-    //--------------------SIDEBAR-----------------
+    $(".overlay").hide();
 
+    // ------------VARS-------------------
     const location_btn = $('#location-btn');
     const location_sidebar = $('.location-sidebar');
     const cross = $('.cross');
     const overlay = $('.overlay');
 
-    overlay.hide();
 
+    if(!localStorage.getItem('authToken'))
+    {
+        $("#profile-text").text("Profile");
+        hideLoader($('.overlay-white'));
+        openLocationSidebar();
+    } else {
+        getProfile();
+        openLocationSidebar();
+    }
+
+    function showLoader(overlay) {
+        overlay.show();
+        $('.spinner').show();
+        $('body').addClass('overlay-open');
+    }
+
+    function hideLoader(overlay) {
+        overlay.hide();
+        $('.spinner').hide();
+        if(location_sidebar.hasClass("closed")) {
+            $('body').removeClass('overlay-open');
+        }
+    }
+
+    function hideOverlay(elementClass, classToHide) {
+        overlay.parent().children(elementClass).addClass(classToHide);
+        overlay.hide();
+        $('body').removeClass('overlay-open');
+    }
+
+    function validate(element) {
+        let name = element[0].name;
+        if(name == "name") {
+            if(element[0].value == "" || element[0].value.length == 0) {
+                element.parent('.input-field').addClass('invalid');
+                throw Error("name");
+            }
+        } else if(name == "desc") {
+            if(element[0].value == "" || element[0].value.length == 0) {
+                element.parent('.input-field').addClass('invalid');
+                throw Error("desc");
+            }
+        } else if(name == "cost") {
+            if(element[0].value == "" || element[0].value.length == 0) {
+                element.parent('.input-field').addClass('invalid');
+                throw Error("cost");
+            }
+        } else if(name == "quantity") {
+            if(element[0].value == "" || element[0].value <= 0) {
+                element.parent('.input-field').addClass('invalid');
+                throw Error("quantity");
+            }
+        }
+    }
+    //--------------------SIDEBAR-----------------
     location_btn.on('click', function() {
+        openLocationSidebar();
+    });
+
+    function openLocationSidebar() {
         location_sidebar.removeClass('closed');
         overlay.show();
         $('body').addClass('overlay-open');
@@ -17,18 +76,81 @@ $(document).ready( function() {
         $('#location').val('');
         $('.gps-location-buffer').empty();
 
-        overlay.on('click', function() {
-            $(this).parent().children('.location-sidebar').addClass('closed');
-            overlay.hide();
-            $('body').removeClass('overlay-open');
-        })
-
         cross.on('click', function() {
             $(this).parent().addClass('closed');
             overlay.hide();
             $('body').removeClass('overlay-open');
         })
-    });
+    }
+
+    //----------------REQUEST POPUP/ SEND REQUEST---------------
+
+    $(".post-request-btn").on("click", function(e) {
+        e.preventDefault();
+
+        $(".overlay").show();
+        $("body").addClass("overlay-open");
+        $(".request-popup").removeClass("hidden");
+    })
+    
+    $(".cross-req").on("click", function(e) {
+        e.preventDefault();
+        
+        $(".overlay").hide();
+        $("body").removeClass("overlay-open");
+        $(".request-popup").addClass("hidden");
+    })
+
+    $(".request-button").on("click", function(e) {
+        e.preventDefault();
+
+        const request_api = "https://yourstore-swe.herokuapp.com/user/requestItem";
+
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem('authToken')}`);
+
+        let data = {
+            name: $('#item-name').val(),
+            desc: $('#item-desc').val(),
+            quantity: $('#item-quantity').val(),
+        }
+
+        let json = JSON.stringify(data);
+
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: json,
+        };
+
+        try {
+            validate($('#item-name'));
+            validate($('#item-desc'));
+            validate($('#item-quantity'));
+
+            try {
+                fetch(request_api, requestOptions)
+                .then((response) => response.json())
+                .then((result) => {
+                    if(result.error || result.status == "failure") {
+                        swal("Check again!", "" ,"error");
+                    } else {
+                        $(".overlay").hide();
+                        $("body").removeClass("overlay-open");
+                        $(".request-popup").addClass("hidden");
+                        $('.request-form')[0].reset();
+                        swal("Success", "You're all set!", "success");
+                    }
+                })
+            } catch (e) {
+                swal("Oops something went wrong!", "some error occurred!", "error");
+            }
+
+        } catch(e) {
+            swal("Oops you missed something", "Check " + e.message, "error");
+        }
+    })
 
     //----------------GEOCODE---------------------
     
@@ -166,4 +288,25 @@ $(document).ready( function() {
       });
 
     
+    //----------------PROFILE------------------
+
+    function getProfile() {
+        const profile_api = "https://yourstore-swe.herokuapp.com/users/me";
+
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+        myHeaders.append("Authorization", `${localStorage.getItem('authToken')}`);
+
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+        }
+
+        fetch(profile_api, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+            $("#profile-text").text(result.name);
+            hideLoader($(".overlay-white"));
+        })
+    }
 }); 

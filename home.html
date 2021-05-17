@@ -21,7 +21,11 @@
     
     <title>YourStore | Home</title>
 </head>
-<body>
+<body class="overlay-open">
+
+    <div class="overlay"></div>
+    <div class="overlay-white"></div>
+    <div class="spinner"><img src="./Public/assets/loader.gif" alt=""></div>
 
     <nav class="navbar">
         <div class="logo">
@@ -47,7 +51,7 @@
             <div class="nav-item" id="profile">
                 <a href="#" class="nav-link">
                     <img src="https://img.icons8.com/office/80/000000/user-male-circle.png"/>
-                    <p class="link-text">Profile</p>
+                    <p class="link-text" id="profile-text">Profile</p>
                 </a>
             </div>
             <div class="nav-item" id="cart">
@@ -78,25 +82,44 @@
         <div class="gps-location-buffer"></div>
     </div>
 
-    <div class="overlay"></div>
-
     <section class="main">
-         <div class="request-carousel">
-             <div class="request">
-                 <p class="request-head">Need something?</p>
-                 <p class="request-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae, optio!</p>
-                 <button class="request-btn">Post a Request</button>
-             </div>
-             <div class="carousel">
-                 <div class="slide">Slide 1</div>
-                 <div class="slide">Slide 2</div>
-                 <div class="slide">Slide 3</div>
-                 <div class="slide">Slide 4</div>
-                 <div class="slide">Slide 5</div>
-             </div>
-         </div>
+        <div class="request-carousel">
+            <div class="request">
+                <p class="request-head">Need something?</p>
+                <p class="request-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae, optio!</p>
+                <button class="post-request-btn">Post a Request</button>
+            </div>
+            <div class="carousel">
+                <div class="slide">Slide 1</div>
+                <div class="slide">Slide 2</div>
+                <div class="slide">Slide 3</div>
+                <div class="slide">Slide 4</div>
+                <div class="slide">Slide 5</div>
+            </div>
+        </div>
 
-         <div class="trending-shops">
+        <div class="request-popup hidden">
+            <img class="cross-req" src="https://img.icons8.com/office/80/000000/delete-sign.png"/>
+            <form class="request-form">
+                <div class="title"><img src="./Public/assets/delivery-man.svg" alt=""> What do you need? </div>
+                <div class="input-field">
+                    <i class="fas fa-carrot"></i>
+                    <input type="text" name="name" id="item-name" placeholder="Item Name" autocomplete="off">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-sticky-note"></i>
+                    <input type="text" name="desc" id="item-desc" placeholder="Item Description" autocomplete="off">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-box-open"></i>
+                    <input type="number" name="quantity" id="item-quantity" placeholder="Item Quantity" autocomplete="off">
+                </div>
+
+                <div class="btn-container"><button class="request-button">Send Request</button></div>
+            </form>
+        </div>
+
+        <section class="trending-shops">
             <div class="head-buffer">
                 <p class="trending-head">Trending shops</p>
                 <div class="view-all">View all <i class="fas fa-arrow-right"></i></div>
@@ -203,9 +226,9 @@
                      <button class="visit-shop">Visit Shop <i class="fas fa-store"></i></button>
                  </div>
             </div>
-         </div>
+        </section>
 
-         <div class="shops-around-you">
+        <section class="shops-around-you">
             <p class="around-head">Shops around you</p>
             <hr>
             <div class="shops-container">
@@ -255,7 +278,7 @@
                      <button class="visit-shop">Visit Shop <i class="fas fa-store"></i></button>
                 </div>
             </div>
-        </div> 
+        </section> 
     </section>
 
 
@@ -263,6 +286,7 @@
     
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./Public/JS/home.js"></script>
 </body>
 </html>
