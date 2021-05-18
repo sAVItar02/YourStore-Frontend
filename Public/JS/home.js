@@ -291,7 +291,7 @@ $(document).ready( function() {
     //----------------PROFILE------------------
 
     function getProfile() {
-        const profile_api = "https://yourstore-swe.herokuapp.com/users/me";
+        const profile_api = "https://yourstore-swe.herokuapp.com/user/me";
 
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'application/json');

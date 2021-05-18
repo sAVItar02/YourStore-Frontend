@@ -87,7 +87,7 @@ input[type=number] {
     height: 1.2rem;
 }
 
-.cross:hover, .cross-req {
+.cross:hover, .cross-req:hover {
     transition: 150ms ease-in-out;
     transform: scale(1.15);
 }
