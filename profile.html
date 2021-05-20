@@ -42,8 +42,33 @@
         </div>
     </nav>
 
-    <div class="not-logged-in">
+    <div class="not-logged-in hidden">
         You're not logged in! <span class="login">Please <a href="./login.html">Login</a> to continue</span>
+    </div>
+
+    <div class="overlay"></div>
+    <div class="overlay-white"></div>
+    <div class="spinner"><img src="./Public/assets/loader.gif" alt=""></div>
+
+    <div class="profile-sidebar closed">
+        
+        <img class="cross-profile" src="https://img.icons8.com/office/80/000000/delete-sign.png"/>
+       
+        <div class="profile-img"><img src="./Public/assets/male_avatar.svg" alt="Image not found"></div>
+        <form class="profile-form" >
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" id="user-name" autocomplete="off" placeholder="Username" disabled>
+            </div>
+            <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input type="text" name="email" id="user-email" autocomplete="off" placeholder="Email" disabled>
+            </div>
+            <div class="input-field">
+                <i class="fas fa-phone"></i>
+                <input type="text" name="phone" id="user-phone" autocomplete="off" placeholder="Phone" disabled>
+            </div>
+        </form>
     </div>
 
     <section class="main">

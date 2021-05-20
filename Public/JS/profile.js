@@ -1,14 +1,48 @@
 $(document).ready(function() {
-    $(".not-logged-in").hide();
+    $(".overlay").hide();
+    $("body").removeClass("overlay-open");
 
     if(!localStorage.getItem('authToken')) {
-        $(".not-logged-in").show();
+        $(".not-logged-in").addClass("hidden");
     } else {
         getProfile().then((result) => {
             $("#profile-text").text(result.name);
+            $("#user-name").val(result.name);
+            $("#user-email").val(result.email);
+            $("#user-phone").val(result.phone);
             getOrders();
         })
     }
+
+    // ----------------LOADER FUNCTIONS---------------------
+
+    function showLoader(overlay) {
+        overlay.show();
+        $('.spinner').show();
+        $('body').addClass('overlay-open');
+    }
+
+    function hideLoader(overlay) {
+        overlay.hide();
+        $('.spinner').hide();
+        $('body').removeClass('overlay-open');
+    }
+
+    // --------------PROFILE---------------------------------
+
+    $("#profile").on('click', function(e) {
+        $(".profile-sidebar").removeClass("closed");
+        $(".overlay").show();
+        $("body").addClass("overlay-open");
+
+        $(".cross-profile").on('click', function() {
+            $(this).parent().addClass('closed');
+            $(".overlay").hide();
+            $('body').removeClass('overlay-open');
+        })
+    })
+
+    // --------------SECTION DISPLAY-------------------------
 
     $('.payments').hide();
     $('.favorites').hide();
@@ -182,34 +216,7 @@ $(document).ready(function() {
                     $('.orders-container').append(output);
                 });
                 
-                // for(i=0; i<result.PendingOrders.length; i++) {
-                //     let output = ``;
-                //     for(j=0; j<result.PendingOrders[i].order.items.length; i++) {
-                //         let img;
-                //         if(result.PendingOrders[i].order.items[j].picture) {
-                //             img = result.PendingOrders[i].order.items[j].picture;
-                //         } else {
-                //             img = './Public/assets/default.jpg';
-                //         }
-
-                        // output += `
-                        // <div class="order-card">
-                        //     <div class="order-name-container">
-                        //         <img src="${img}" alt="No image found">
-                        //         ${result.PendingOrders[i].order.items[j].itemName}
-                        //     </div>
-                        //     <div class="order-quantity">
-                        //         <strong>Quantity: </strong> ${result.PendingOrders[i].order.items[j].quantity}
-                        //     </div>
-                        //     <div class="order-cost">
-                        //         <strong>Cost: </strong> ${result.PendingOrders[i].order.items[j].cost}
-                        //     </div>
-                        // </div>
-                        // `
-                //     }
-
-                //     $('.orders-container').append(output);
-                // }
+                hideLoader($(".overlay-white"));
             }
         })
     }
