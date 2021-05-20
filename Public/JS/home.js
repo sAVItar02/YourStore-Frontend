@@ -1,7 +1,8 @@
 $(document).ready( function() {
     $(".overlay").hide();
 
-    // ------------VARS-------------------
+    // -------------------------VARS-------------------------------
+
     const location_btn = $('#location-btn');
     const location_sidebar = $('.location-sidebar');
     const cross = $('.cross');
@@ -14,8 +15,22 @@ $(document).ready( function() {
         hideLoader($('.overlay-white'));
         openLocationSidebar();
     } else {
-        getProfile();
         openLocationSidebar();
+        getProfile();
+    }
+
+    if(!sessionStorage.getItem("latitude") || sessionStorage.getItem("longitude")) {
+        const empty_text = `
+            <div class="empty-text"> 
+                Please enter a valid location!
+                <img src="./Public/assets/map.svg" alt="Image not found">
+            </div>
+        `
+
+        $(".shops-container").empty();
+        $(".shops-container").html(empty_text)
+    } else {
+        getShopsAround(sessionStorage.getItem("latitude"), sessionStorage.getItem("longitude"));
     }
 
     function showLoader(overlay) {
@@ -62,7 +77,9 @@ $(document).ready( function() {
             }
         }
     }
-    //--------------------SIDEBAR-----------------
+
+    //--------------------------SIDEBAR---------------------------
+
     location_btn.on('click', function() {
         openLocationSidebar();
     });
@@ -152,7 +169,7 @@ $(document).ready( function() {
         }
     })
 
-    //----------------GEOCODE---------------------
+    //----------------GEOCODE---------------------------
     
     function geoCode(address) {
         // const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY'
@@ -178,7 +195,11 @@ $(document).ready( function() {
               const place_name = data.features[i].place_name;
               
               let location_div = `
-                  <div class="location-result"> <p> ${place_name} </p> </div>
+                    <div class="location-result"> 
+                        <p> ${place_name} </p>
+                        <p class="latitude"> ${latitude} </p> 
+                        <p class="longitude"> ${longitude} </p> 
+                    </div>
               `
               $('.location-buffer').append(location_div);
             }
@@ -190,9 +211,14 @@ $(document).ready( function() {
 
                 $(this).parents('body').children('.navbar').children('#location-btn').children('.nav-link').children('.link-text').text($(this).text());
                 $('body').removeClass('overlay-open')
-            })
 
-            // $('body').removeClass('overlay-open');
+                sessionStorage.setItem("latitude", $(this).children(".latitude").text())
+                sessionStorage.setItem("longitude", $(this).children(".longitude").text())
+
+                console.log(sessionStorage.getItem("latitude"), sessionStorage.getItem("longitude"));
+
+                getShopsAround(sessionStorage.getItem("latitude"), sessionStorage.getItem("longitude"));
+            })
         })
     }
 
@@ -203,7 +229,7 @@ $(document).ready( function() {
         $('body').removeClass('overlay-open');
     })
 
-    //----------------REVERSE GEOCODE--------------
+    //----------------REVERSE GEOCODE-------------------
 
     
     $('.current-location').on('click', function(e) {
@@ -243,7 +269,7 @@ $(document).ready( function() {
     }
 
 
-    //----------------SLICK--------------------
+    //----------------SLICK-----------------------------
     
     $('.carousel').slick({
         autoplay: true,
@@ -288,7 +314,7 @@ $(document).ready( function() {
       });
 
     
-    //----------------PROFILE------------------
+    //----------------PROFILE---------------------------
 
     function getProfile() {
         const profile_api = "https://yourstore-swe.herokuapp.com/user/me";
@@ -308,5 +334,62 @@ $(document).ready( function() {
             $("#profile-text").text(result.name);
             hideLoader($(".overlay-white"));
         })
+    }
+
+    //----------------SHOPS AROUND YOU------------------
+    function getShopsAround(latitude, longitude) {
+        let shops_around_api = `https://yourstore-swe.herokuapp.com/shops-within/10/center/${latitude}, ${longitude}/`
+
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+        myHeaders.append("Authorization", `${localStorage.getItem('authToken')}`);
+
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+        }
+
+        fetch(shops_around_api, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+            console.log(result.data.data);
+
+            let output = ``;
+
+            if(result.data.data.length == 0) {
+                output += `
+                <div class="empty-text"> 
+                    No shops around you 
+                    <img src="./Public/assets/sad.svg" alt="Image not found">
+                </div>
+                `
+            } else {
+                result.data.data.forEach(shop => {
+                    if(!shop.picture) {
+                        img = "./Public/assets/default.jpg";
+                    } else {
+                        img = shop.picture;
+                    }
+    
+                    output += `
+                    <div class="shop-card">
+                        <img src="${img}" alt="Image not found">
+                        <div class="name-rating">
+                            <div class="shop-name">${shop.shopName}</div>
+                            <div class="shop-rating"><i class="fas fa-star"></i> ${shop.shopRating}</div>
+                        </div>
+                        <div class="shopID">${shop._id}</div>
+                        <div class="shop-distance"><span class="distance">10</span> km</div>
+                        <button class="visit-shop">Visit Shop <i class="fas fa-store"></i></button>
+                    </div>
+                    `
+                })
+            }
+            
+
+            $(".shops-container").empty();
+            $(".shops-container").html(output);
+        })
+
     }
 }); 
