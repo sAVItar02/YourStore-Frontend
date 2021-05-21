@@ -1,13 +1,12 @@
 $(document).ready( function() {
     $(".overlay").hide();
-
+    
     // -------------------------VARS-------------------------------
-
+    
     const location_btn = $('#location-btn');
     const location_sidebar = $('.location-sidebar');
     const cross = $('.cross');
     const overlay = $('.overlay');
-
 
     if(!localStorage.getItem('authToken'))
     {
@@ -222,6 +221,12 @@ $(document).ready( function() {
         })
     }
 
+    $(document).keyup(function (e) {
+        if ($("#location").is(":focus") && (e.keyCode == 13)) {
+            $(".search-location").click();
+        }
+    });
+
     $('.search-location').on('click', function() {
         $('body').addClass('overlay-open');
         let address = $('#location').val();
@@ -252,7 +257,11 @@ $(document).ready( function() {
                 const place_name = data.features[i].place_name;
                 
                 let location_div = `
-                    <div class="location-result"> <p> ${place_name} </p> </div>
+                    <div class="location-result"> 
+                        <p> ${place_name} </p>
+                        <p class="latitude"> ${latitude} </p> 
+                        <p class="longitude"> ${longitude} </p>  
+                    </div>
                 `
                 $('.gps-location-buffer').append(location_div);
             }
@@ -263,7 +272,14 @@ $(document).ready( function() {
                 $(this).parents('.location-sidebar').addClass('closed');
 
                 $(this).parents('body').children('.navbar').children('#location-btn').children('.nav-link').children('.link-text').text($(this).text());
-                $('body').removeClass('overlay-open')
+                $('body').removeClass('overlay-open');
+
+                sessionStorage.setItem("latitude", $(this).children(".latitude").text())
+                sessionStorage.setItem("longitude", $(this).children(".longitude").text())
+
+                console.log(sessionStorage.getItem("latitude"), sessionStorage.getItem("longitude"));
+
+                getShopsAround(sessionStorage.getItem("latitude"), sessionStorage.getItem("longitude"));
             })
         })
     }
@@ -338,6 +354,7 @@ $(document).ready( function() {
 
     //----------------SHOPS AROUND YOU------------------
     function getShopsAround(latitude, longitude) {
+        showLoader($(".overlay"));
         let shops_around_api = `https://yourstore-swe.herokuapp.com/shops-within/10/center/${latitude}, ${longitude}/`
 
         let myHeaders = new Headers();
@@ -389,7 +406,145 @@ $(document).ready( function() {
 
             $(".shops-container").empty();
             $(".shops-container").html(output);
+
+            hideLoader($(".overlay"));
         })
 
+    }
+
+    //-----------------SEARCH ITEMS/SHOPS----------------
+
+    $("#search-btn").on('click', function(e) {
+        $(".search-section").removeClass("hidden");
+        $(".main").addClass("hidden");
+        $(".recent-tag").text(localStorage.getItem("recentSearch"));
+    })
+
+    $("#esc-btn").on('click', function(e) {
+        $(".main").removeClass("hidden");
+        $(".search-section").addClass("hidden");
+    })
+
+    $(document).on("keyup", function(e) {
+        if(e.key == "Escape") $("#esc-btn").click();
+    })
+
+    $(document).keyup(function (e) {
+        if ($("#search-input").is(":focus") && (e.keyCode == 13)) {
+            $("#search-input-btn").click();
+        }
+    })
+
+    $(".recent-tag").on('click', function(e) {
+        e.preventDefault();
+
+        $("#search-input").val($(this).text());
+        $("#search-input-btn").click();
+    })
+
+    $("#shops-btn").on("click", function(e) {
+        e.preventDefault();
+
+        $("#shops-btn").addClass("active");
+        $("#products-btn").removeClass("active");
+        $(".search-product-results").addClass("hidden");
+        $(".search-shop-results").show();
+    })
+
+    $("#products-btn").on("click", function(e) {
+        e.preventDefault();
+
+        $("#shops-btn").removeClass("active");
+        $("#products-btn").addClass("active");
+        $(".search-shop-results").hide();
+        $(".search-product-results").removeClass("hidden");
+    })
+
+    $("#search-input-btn").on("click", function(e) {
+        e.preventDefault();
+
+        showLoader($('.overlay'));
+
+        let searchQuery = $("#search-input").val();
+
+        if(searchQuery == "" || searchQuery == " ") {
+            $(".search-options").addClass("hidden");
+            $(".search-shop-results").addClass("hidden");
+            $(".recent-search").removeClass("hidden");
+            hideLoader($('.overlay'));
+        } else {
+            localStorage.setItem("recentSearch", searchQuery);
+    
+            $(".recent-search").addClass("hidden");
+            $(".search-options").removeClass("hidden");
+            $(".search-shop-results").removeClass("hidden");
+    
+            searchShops(searchQuery).then((result) => {
+                console.log(result);
+    
+                if(result.data.shopData.length == 0) {
+                    $(".search-shop-results").empty();
+                    $(".search-shop-results").html(`<div class="no-results-found">No shops found, try a different search!</div>`);
+                    hideLoader($('.overlay'));
+                } else {
+                    let output = ``;
+                    result.data.shopData.shops.forEach(shop => {
+                        let img;
+                        if(!shop.picture) {
+                            img = "./Public/assets/default.jpg";
+                        } else {
+                            img = shop.picture;
+                        }
+    
+                        output += `
+                        <div class="shop-card">
+                            <img src="${img}" alt="Image not found">
+                            <div class="name-rating">
+                                <div class="shop-name">${shop.shopName}</div>
+                                <div class="shop-rating"><i class="fas fa-star"></i> ${shop.shopRating}</div>
+                            </div>
+                            <div class="shopID">${shop._id}</div>
+                            <div class="shop-distance"><span class="distance"><10</span> km</div>
+                            <button class="visit-shop">Visit Shop <i class="fas fa-store"></i></button>
+                        </div>
+                        `
+                    });
+    
+                    $(".search-shop-results").empty();
+                    $(".search-shop-results").html(output);
+                    hideLoader($('.overlay'));
+                }
+    
+                if(result.data.itemsData.length == 0) {
+                    $(".search-product-results").empty();
+                    $(".search-product-results").html(`<div class="no-results-found">No products found, try a different search!</div>`);
+                    hideLoader($('.overlay'));
+                } else {
+    
+                }
+            })
+        }
+
+    })
+
+    function searchShops(searchQuery) {
+        const search_api = `https://yourstore-swe.herokuapp.com/searchShops?search=${searchQuery}`;
+
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+        }
+
+        return fetch(search_api, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+            return result;
+        })
+        .catch((e) => {
+            console.log(e);
+        })
     }
 }); 

@@ -72,7 +72,7 @@ body::-webkit-scrollbar-thumb {
     width: 102%;
 }
 
-.nav-group #search-out::after, .nav-group #cart::after {
+.nav-group #cart::after {
     content: '';
     display: none;
 }
