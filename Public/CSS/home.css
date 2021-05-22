@@ -315,6 +315,20 @@ input[type=number] {
     background-color: var(--blue-primary-translucent);
 }
 
+.search-input-container .clear-btn {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.search-input-container .clear-btn:hover {
+    color: #E74C3C;
+}
+
 .search-main {
     height: 100%;
     width: 100%;

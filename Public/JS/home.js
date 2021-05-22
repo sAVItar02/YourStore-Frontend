@@ -435,6 +435,16 @@ $(document).ready( function() {
         }
     })
 
+    $(".clear-btn").on('click', function(e) {
+        e.preventDefault();
+
+        $("#search-input").val("");
+        $(".recent-search").removeClass("hidden");
+        $(".search-options").addClass("hidden");
+        $(".search-shop-results").addClass("hidden");
+        $(".search-product-results").addClass("hidden");
+    })
+
     $(".recent-tag").on('click', function(e) {
         e.preventDefault();
 
@@ -470,6 +480,7 @@ $(document).ready( function() {
         if(searchQuery == "" || searchQuery == " ") {
             $(".search-options").addClass("hidden");
             $(".search-shop-results").addClass("hidden");
+            $(".search-product-results").addClass("hidden");
             $(".recent-search").removeClass("hidden");
             hideLoader($('.overlay'));
         } else {
@@ -520,7 +531,52 @@ $(document).ready( function() {
                     $(".search-product-results").html(`<div class="no-results-found">No products found, try a different search!</div>`);
                     hideLoader($('.overlay'));
                 } else {
+                    result.data.itemsData.items.forEach(item => {
+                        let output = ``;
+                        output += `
+                            <div class="shop-item-card">
+                            <div class="product-results-shop">
+                                <div class="shop-result-name">${item.shopName}</div>
+                                <div class="shop-result-rating"><i class="fas fa-star"></i> ${item.shopRating}</div>
+                                <div class="shopID">${item._id}</div>
+                                <button class="visit-shop">Visit Shop <i class="fas fa-store"></i></button>
+                            </div>
+                            <div class="product-results">
+                        `
+                        let matched = [];
+                        item.items.forEach(element => {
+                            const regex = new RegExp(`${searchQuery}`,"i");
+                            if(regex.test(element.itemName)) {
+                                matched.push(element)
+                            }})
     
+                            matched.forEach(item => {
+                                let img = "./Public/assets/default.jpg";
+                                if(item.picture) {
+                                    img = item.picture
+                                }
+                                output += `
+                                <div class="product-results-card">
+                                    <img src="${img}" alt="">
+                                    <div class="product-result-details">
+                                        <div class="product-result-name">${item.itemName}</div>
+                                        <div class="product-result-desc">${item.itemDesc}</div>
+                                        <div class="product-result-cost">&#8377; ${item.cost}</div>
+                                    </div>
+                                </div>
+                                `
+                            })
+
+                        output += `
+                                </div>
+                            </div>
+                            `
+                        console.log(matched)
+                            
+                        $(".search-product-results").empty();
+                        $(".search-product-results").append(output);
+
+                    })
                 }
             })
         }
