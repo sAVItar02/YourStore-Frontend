@@ -603,4 +603,14 @@ $(document).ready( function() {
             console.log(e);
         })
     }
+
+    //------------------------VISIT SHOP---------------------------
+
+    $("body").on('click', ".visit-shop",function(e) {
+        e.preventDefault();
+
+        let shopID = $(this).parent().children(".shopID").text();
+        sessionStorage.setItem("shopID", shopID);
+        window.location.replace("./products.html");
+    })
 }); 
