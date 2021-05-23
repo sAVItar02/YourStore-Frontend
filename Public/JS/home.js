@@ -32,6 +32,8 @@ $(document).ready( function() {
         getShopsAround(sessionStorage.getItem("latitude"), sessionStorage.getItem("longitude"));
     }
 
+    //-----------------------OVERLAY FUNCTIONS---------------------
+
     function showLoader(overlay) {
         overlay.show();
         $('.spinner').show();

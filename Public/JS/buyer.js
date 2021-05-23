@@ -3,14 +3,17 @@ $(function(){
 });
 
 $(document).ready(function() {
+      $(".overlay").hide();
+      hideLoader($(".overlay-white"));
+
       const card = $('.card');
       const info_btn = $('.info');
 
-      //INFO DISPLAY
+      //--------------------INFO DISPLAY-----------------------------
+
       info_btn.on('click',  function(e) {
             e.preventDefault();
-            console.log('clicked')
-            $(this).parent().parent().children('.description').removeClass('description-hidden');
+            $(this).parent().parent().parent().children('.description').removeClass('description-hidden');
             
             $('.cross').on('click', function(e) {
                   e.preventDefault();
@@ -18,7 +21,27 @@ $(document).ready(function() {
             })
       })
 
-      //SECTION CHANGE
+      //--------------------OVERLAY FUNCTIONS-------------------------
+      function showLoader(overlay) {
+            overlay.show();
+            $('.spinner').show();
+            $('body').addClass('overlay-open');
+        }
+    
+        function hideLoader(overlay) {
+            overlay.hide();
+            $('.spinner').hide();
+            $("body").removeClass("overlay-open");
+        }
+    
+        function hideOverlay(elementClass, classToHide) {
+            overlay.parent().children(elementClass).addClass(classToHide);
+            overlay.hide();
+            $('body').removeClass('overlay-open');
+        }
+
+      //--------------------SECTION CHANGE----------------------------
+
       const fruits = $('.fruits');
       const meat  = $('.meat');
       const dairy = $('.dairy');
