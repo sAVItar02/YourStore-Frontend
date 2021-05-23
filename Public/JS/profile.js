@@ -3,7 +3,7 @@ $(document).ready(function() {
     $("body").removeClass("overlay-open");
 
     if(!localStorage.getItem('authToken')) {
-        $(".not-logged-in").addClass("hidden");
+        $(".not-logged-in").removeClass("hidden");
     } else {
         getProfile().then((result) => {
             $("#profile-text").text(result.name);

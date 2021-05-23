@@ -45,6 +45,31 @@ body::-webkit-scrollbar-thumb {
     background: var(--blue-primary);
 }
 
+/* --------------------SELECT A SHOP------------------------- */
+
+.select-a-shop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #FFF;
+    z-index: 21;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.select-a-shop p {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--name-color);
+}
+
+.hidden {
+    display: none;
+}
+
 /* --------------------OVERLAY AND SPINNER------------------- */
 .overlay, .overlay-white {
     position: absolute;
@@ -277,6 +302,10 @@ body::-webkit-scrollbar-thumb {
     font-size: 0.9rem;
     padding: 0.625rem;
     text-align: left;
+}
+
+.itemID {
+    display: none;
 }
 
 

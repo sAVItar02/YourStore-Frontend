@@ -347,7 +347,13 @@ $(document).ready( function() {
         }
 
         fetch(profile_api, requestOptions)
-        .then((response) => response.json())
+        .then((response) => {
+            if(!response.ok) {
+                hideLoader($(".overlay-white"));
+                localStorage.removeItem("authToken");
+            }
+            response.json()
+        })
         .then((result) => {
             $("#profile-text").text(result.name);
             hideLoader($(".overlay-white"));
