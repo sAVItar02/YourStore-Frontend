@@ -216,8 +216,8 @@ $(document).ready(function() {
                     $('.orders-container').append(output);
                 });
                 
-                hideLoader($(".overlay-white"));
             }
+            hideLoader($(".overlay-white"));
         })
     }
     
@@ -239,13 +239,16 @@ $(document).ready(function() {
             .then((response) => response.json())
             .then((result) => {
                 console.log(result);
+                hideLoader($(".overlay-white"));
                 return result
             })
             .catch((e) => {
                 console.log(e);
+                hideLoader($(".overlay-white"));
             })
         } catch (e) {
             console.log(e);
+            hideLoader($(".overlay-white"));
         }
     }
 });

@@ -11,14 +11,22 @@ $(document).ready( function() {
     if(!localStorage.getItem('authToken'))
     {
         $("#profile-text").text("Profile");
+        $("#profile").hide();
+        $("#login-btn").show();
         hideLoader($('.overlay-white'));
-        openLocationSidebar();
+        if(!sessionStorage.getItem("latitude") || !sessionStorage.getItem("longitude")) {
+            openLocationSidebar();
+        }
     } else {
-        openLocationSidebar();
+        $("#login-btn").hide();
+        $("#profile").show();
+        if(!sessionStorage.getItem("latitude") || !sessionStorage.getItem("longitude")) {
+            openLocationSidebar();
+        }
         getProfile();
     }
 
-    if(!sessionStorage.getItem("latitude") || sessionStorage.getItem("longitude")) {
+    if(!sessionStorage.getItem("latitude") || !sessionStorage.getItem("longitude")) {
         const empty_text = `
             <div class="empty-text"> 
                 Please enter a valid location!
@@ -30,6 +38,7 @@ $(document).ready( function() {
         $(".shops-container").html(empty_text)
     } else {
         getShopsAround(sessionStorage.getItem("latitude"), sessionStorage.getItem("longitude"));
+        $("#location-text").text(sessionStorage.getItem("recentLocation"));
     }
 
     //-----------------------OVERLAY FUNCTIONS---------------------
@@ -197,7 +206,7 @@ $(document).ready( function() {
               
               let location_div = `
                     <div class="location-result"> 
-                        <p> ${place_name} </p>
+                        <p class="place-name"> ${place_name} </p>
                         <p class="latitude"> ${latitude} </p> 
                         <p class="longitude"> ${longitude} </p> 
                     </div>
@@ -213,10 +222,9 @@ $(document).ready( function() {
                 $(this).parents('body').children('.navbar').children('#location-btn').children('.nav-link').children('.link-text').text($(this).text());
                 $('body').removeClass('overlay-open')
 
-                sessionStorage.setItem("latitude", $(this).children(".latitude").text())
-                sessionStorage.setItem("longitude", $(this).children(".longitude").text())
-
-                console.log(sessionStorage.getItem("latitude"), sessionStorage.getItem("longitude"));
+                sessionStorage.setItem("latitude", $(this).children(".latitude").text());
+                sessionStorage.setItem("longitude", $(this).children(".longitude").text());
+                sessionStorage.setItem("recentLocation", $(this).children(".place-name").text());
 
                 getShopsAround(sessionStorage.getItem("latitude"), sessionStorage.getItem("longitude"));
             })
@@ -260,7 +268,7 @@ $(document).ready( function() {
                 
                 let location_div = `
                     <div class="location-result"> 
-                        <p> ${place_name} </p>
+                        <p class="place-name"> ${place_name} </p>
                         <p class="latitude"> ${latitude} </p> 
                         <p class="longitude"> ${longitude} </p>  
                     </div>
@@ -278,8 +286,7 @@ $(document).ready( function() {
 
                 sessionStorage.setItem("latitude", $(this).children(".latitude").text())
                 sessionStorage.setItem("longitude", $(this).children(".longitude").text())
-
-                console.log(sessionStorage.getItem("latitude"), sessionStorage.getItem("longitude"));
+                sessionStorage.setItem("recentLocation", $(this).children(".place-name").text());
 
                 getShopsAround(sessionStorage.getItem("latitude"), sessionStorage.getItem("longitude"));
             })
@@ -347,15 +354,10 @@ $(document).ready( function() {
         }
 
         fetch(profile_api, requestOptions)
-        .then((response) => {
-            if(!response.ok) {
-                hideLoader($(".overlay-white"));
-                localStorage.removeItem("authToken");
-            }
-            response.json()
-        })
+        .then((response) => response.json())
         .then((result) => {
-            $("#profile-text").text(result.name);
+            let name = result.name.split(" ")
+            $("#profile-text").text(name[0]);
             hideLoader($(".overlay-white"));
         })
     }

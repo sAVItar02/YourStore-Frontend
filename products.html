@@ -21,15 +21,7 @@
     <title>YourStore | Buy</title>
 </head>
 <body class="overlay-open">
-
-    <div class="select-a-shop hidden">
-        <p>Select a valid shop from <a href="./home.html">here</a></p>
-    </div>
-
-    <div class="overlay"></div>
-    <div class="overlay-white"></div>
-    <div class="spinner"><img src="./Public/assets/loader.gif" alt=""></div>
-
+    
     <nav class="navbar">
         <div class="logo">
             <a href="/home.html" class="nav-link">
@@ -73,6 +65,18 @@
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/search--v1.png"/>
                 </a>
             </div>
+            <div class="nav-item" id="profile">
+                <a href="./profile.html" class="nav-link">
+                    <img src="https://img.icons8.com/office/80/000000/user-male-circle.png"/>
+                    <p class="link-text" id="profile-text">Profile</p>
+                </a>
+            </div>
+            <div class="nav-item" id="login-btn">
+                <a href="./login.html" class="nav-link">
+                    <img src="https://img.icons8.com/office/80/000000/user-male-circle.png"/>
+                    <p class="link-text" id="profile-text">Login</p>
+                </a>
+            </div>
             <div class="nav-item">
                 <a href="#" class="nav-link">
                     <img src="https://img.icons8.com/cotton/64/000000/shopping-cart--v1.png"/>
@@ -80,6 +84,25 @@
             </div>
         </div>
     </nav>
+
+    <div class="select-a-shop hidden">
+        <p>Select a valid shop from <a href="./home.html">here</a></p>
+    </div>
+
+    <div class="not-logged-in hidden">
+        <img class="cross" src="https://img.icons8.com/office/80/000000/delete-sign.png"/>
+        You're not logged in! <span class="login">Please <a href="./login.html">Login</a> to continue</span>
+    </div>
+
+    <div class="overlay"></div>
+    <div class="overlay-white"></div>
+    <div class="spinner"><img src="./Public/assets/loader.gif" alt=""></div>
+
+    <div class="one-shop closed">
+        <div class="one-shop-text">You can add products from only one shop!</div>
+        <div class="view-cart">View cart</div>
+    </div>
+    
 
     <section class="main">
         <!-- FRUITS -->
