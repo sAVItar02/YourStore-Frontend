@@ -330,6 +330,8 @@ $(document).ready(function() {
         if(!localStorage.getItem("authToken")) {
             $(".not-logged-in").removeClass("hidden");
             $("body").addClass("overlay-open");
+            $(this).parents(".card").children(".card-overlay").hide();
+            $(this).parents(".card").children(".card-spinner").hide();
         } else {
             const itemID = $(this).parent().children(".itemID").text();
             let shopID = sessionStorage.getItem("shopID");

@@ -245,7 +245,7 @@ body {
 
 /* ---------------ORDERS AND OTHER SECTIONS----------------- */
 
-.orders, .favorites, .payments, .addresses, .profile {
+.orders, .favorites, .payments, .addresses, .profile, .order-history {
     background-color: #FFF;
     /* height: 97%; */
     min-height: 97%;

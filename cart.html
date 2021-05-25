@@ -20,7 +20,16 @@
 
     <title>YourStore | Cart </title>
 </head>
-<body>
+<body class="overlay-open">
+
+    <div class="overlay"></div>
+    <div class="overlay-white"></div>
+    <div class="spinner"><img src="./Public/assets/loader.gif" alt=""></div>
+
+    <div class="not-logged-in hidden">
+        <img class="cross" src="https://img.icons8.com/office/80/000000/delete-sign.png"/>
+        You're not logged in! <span class="login">Please <a href="./login.html">Login</a> to continue</span>
+    </div>
 
     <nav class="navbar">
         <div class="logo">
@@ -32,9 +41,9 @@
         
         <div class="nav-group">
             <div class="nav-item" id="profile">
-                <a href="#" class="nav-link">
+                <a href="./profile.html" class="nav-link">
                     <img src="https://img.icons8.com/office/80/000000/user-male-circle.png"/>
-                    <p class="link-text">Profile</p>
+                    <p class="link-text" id="profile-text">Profile</p>
                 </a>
             </div>
             <div class="nav-item" id="cart">
@@ -49,98 +58,29 @@
 
         <div class="address">
             <div class="address-head"> <img src="https://img.icons8.com/plasticine/100/000000/address.png"/> Choose a delivery address</div>
-            <div class="address-grid">
-                <div class="address-card">
-                    <i class="fas fa-home"></i>
-                    <div class="address-text">
-                        <p class="home address-tag">Home</p>
-                        <p class="address-main">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo excepturi temporibus et recusandae facere dolorem quidem quae, ratione exercitationem consequuntur?</p>
-                        <button class="choose-address">deliver here</button>
-                    </div>
-                </div>
-                <div class="address-card">
-                    <i class="fas fa-briefcase"></i>
-                    <div class="address-text">
-                        <p class="work address-tag">Work</p>
-                        <p class="address-main">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo excepturi temporibus et recusandae facere dolorem quidem quae, ratione exercitationem consequuntur?</p>
-                        <button class="choose-address">deliver here</button>
-                    </div>
-                </div>
-                <div class="address-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div class="address-text">
-                        <p class="other address-tag">Other</p>
-                        <p class="address-main">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo excepturi temporibus et recusandae facere dolorem quidem quae, ratione exercitationem consequuntur?</p>
-                        <button class="choose-address">deliver here</button>
-                    </div>
-                </div>
-                <div class="address-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div class="address-text">
-                        <p class="other address-tag">Other</p>
-                        <p class="address-main">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo excepturi temporibus et recusandae facere dolorem quidem quae, ratione exercitationem consequuntur?</p>
-                        <button class="choose-address">deliver here</button>
-                    </div>
-                </div>
-                <div class="address-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div class="address-text">
-                        <p class="other address-tag">Other</p>
-                        <p class="address-main">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo excepturi temporibus et recusandae facere dolorem quidem quae, ratione exercitationem consequuntur?</p>
-                        <button class="choose-address">deliver here</button>
-                    </div>
-                </div>
-                <div class="address-card-add">
-                    <i class="fas fa-map-pin"></i>
-                    <div class="address-text">
-                        <p class="add">Add New Address</p>
-                        <button class="add-address">+</button>
-                    </div>
-                </div>
-            </div>
+            <div class="address-grid"></div>
         </div>
 
         <div class="cart-items">
+            <div class="cart-overlay hidden"></div>
+            <div class="cart-spinner hidden"><img src="./Public/assets/loader.gif" alt=""></div>
+            
             <div class="shop-details">
-                <img src="./Public/assets/fruit-shop.jpg" alt="Image not found">
-                <div class="shop-name">My shop</div>
+                <img class="shop-image" src="./Public/assets/fruit-shop.jpg" alt="Image not found">
+            <div class="shop-name">My shop</div>
             </div>
             
             <div class="cart-container">
                 <div class="items-container">
                     <div class="item">
                         <div class="item-name">Spring onions</div>
-                        <div class="item-quantity">2</div>
-                        <div class="item-cost">&#8377;200</div>
-                    </div>
-                    <div class="item">
-                        <div class="item-name">Spring onions</div>
-                        <div class="item-quantity">2</div>
-                        <div class="item-cost">&#8377;200</div>
-                    </div>
-                    <div class="item">
-                        <div class="item-name">Spring onions</div>
-                        <div class="item-quantity">2</div>
-                        <div class="item-cost">&#8377;200</div>
-                    </div>
-                    <div class="item">
-                        <div class="item-name">Spring onions</div>
-                        <div class="item-quantity">2</div>
-                        <div class="item-cost">&#8377;200</div>
-                    </div>
-                    <div class="item">
-                        <div class="item-name">Potato potato ching chong tomato</div>
-                        <div class="item-quantity">2</div>
-                        <div class="item-cost">&#8377;200</div>
-                    </div>
-                    <div class="item">
-                        <div class="item-name">Potato potato ching chong tomato</div>
-                        <div class="item-quantity">2</div>
-                        <div class="item-cost">&#8377;200</div>
-                    </div>
-                    <div class="item">
-                        <div class="item-name">Potato potato ching chong tomato</div>
-                        <div class="item-quantity">2</div>
+                        <div class="item-quantity">
+                            <div class="increase-container">
+                                <div class="decrease-quantity">-</div>
+                                <div class="current-quantity">x</div>
+                                <div class="increase-quantity">+</div>
+                            </div>
+                        </div>
                         <div class="item-cost">&#8377;200</div>
                     </div>
                 </div>
@@ -209,8 +149,7 @@
 
     </section>
 
-    <div class="overlay"></div>
-    <div class="add-new-address-container">
+    <div class="add-new-address-container hidden">
         <i class="fas fa-times cross"></i>
         <form class="add-address-form">
             <div class="title">Add new address</div>
@@ -231,7 +170,7 @@
                 <label class="radio-label" for="home"><i class="fas fa-home"></i> Home</label>
                 <input class="radio-input" type="radio" name="type" id="work" value="work">
                 <label class="radio-label" for="work"><i class="fas fa-briefcase"></i> Work</label>
-                <input class="radio-input" type="radio" name="type" id="other" value="other">
+                <input class="radio-input" type="radio" name="type" id="other" value="other" checked>
                 <label class="radio-label" for="other"><i class="fas fa-map-marker-alt"></i> Other</label>
             </div>
             <button class="add-new-address-btn">Add</button>
@@ -241,6 +180,7 @@
     <footer> <p>Terms and conditions apply</p> </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./Public/JS/cart.js"></script>
 </body>
 </html>

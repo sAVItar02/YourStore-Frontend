@@ -45,6 +45,7 @@ $(document).ready(function() {
     // --------------SECTION DISPLAY-------------------------
 
     $('.payments').hide();
+    $('.payment-history').hide();
     $('.favorites').hide();
     $('.addresses').hide();
 
@@ -53,12 +54,14 @@ $(document).ready(function() {
         $('.orders').hide();
         $('.favorites').hide();
         $('.addresses').hide();
+        $('.order-history').hide();
 
         $('.payments').show();
 
         $('.orders-btn').removeClass('active');
         $('.favorites-btn').removeClass('active');
         $('.addresses-btn').removeClass('active');
+        $('.order-history-btn').removeClass('active');
 
         $('.payments-btn').addClass('active');
 
@@ -97,17 +100,36 @@ $(document).ready(function() {
         }
     })
 
+    $('.order-history-btn').on('click', function(e) {
+        e.preventDefault();
+        $('.orders').hide();
+        $('.payments').hide();
+        $('.addresses').hide();
+        $('.favirites').hide();
+
+        $('.order-history').show();
+
+        $('.orders-btn').removeClass('active');
+        $('.payments-btn').removeClass('active');
+        $('.addresses-btn').removeClass('active');
+        $('.favorites-btn').removeClass('active');
+
+        $('.order-history-btn').addClass('active');
+    })
+
     $('.favorites-btn').on('click', function(e) {
         e.preventDefault();
         $('.orders').hide();
         $('.payments').hide();
         $('.addresses').hide();
+        $('.order-history').hide();
 
         $('.favorites').show();
 
         $('.orders-btn').removeClass('active');
         $('.payments-btn').removeClass('active');
         $('.addresses-btn').removeClass('active');
+        $('.order-history-btn').removeClass('active');
 
         $('.favorites-btn').addClass('active');
     })
@@ -117,12 +139,14 @@ $(document).ready(function() {
         $('.orders').hide();
         $('.payments').hide();
         $('.favorites').hide();
+        $('.order-history').hide();
 
         $('.addresses').show();
 
         $('.orders-btn').removeClass('active');
         $('.payments-btn').removeClass('active');
         $('.favorites-btn').removeClass('active');
+        $('.order-history-btn').removeClass('active');
         
         $('.addresses-btn').addClass('active');
 
@@ -162,12 +186,15 @@ $(document).ready(function() {
         $('.favorites').hide();
         $('.payments').hide();
         $('.addresses').hide();
+        $('.order-history').hide();
 
         $('.orders').show();
 
         $('.favorites-btn').removeClass('active');
         $('.payments-btn').removeClass('active');
         $('.addresses-btn').removeClass('active');
+        $('.order-history-btn').removeClass('active');
+        
         
         $('.orders-btn').addClass('active');
 
@@ -238,17 +265,13 @@ $(document).ready(function() {
             return fetch(profile_api, requestOptions)
             .then((response) => response.json())
             .then((result) => {
-                console.log(result);
-                hideLoader($(".overlay-white"));
                 return result
             })
             .catch((e) => {
                 console.log(e);
-                hideLoader($(".overlay-white"));
             })
         } catch (e) {
             console.log(e);
-            hideLoader($(".overlay-white"));
         }
     }
 });
