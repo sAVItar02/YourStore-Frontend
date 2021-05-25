@@ -67,32 +67,33 @@ $(document).ready(function() {
 
         try {
             getProfile().then((result) => {
+                console.log(result);
                 if(result.paymentHistory.length == 0) {
                     $('.payments').empty();
                     $('.payments').html("<div class='no-products-text'>No payments yet!</div>");
                 } else {
+                    let output = ``;
                     result.paymentHistory.forEach(item => {
-                        let output = ``;
 
                         date = item.date.split("T");
 
                         output += `
                         <div class="payment-card">
                             <div class="payments-shopID">
-                            <strong class="shopID-text">ShopID: </strong>${item.shopID}
+                            <strong class="shopID-text">Shop Name: </strong>${item.shopName}
                             </div>
                             <div class="payments-date">
                                 <strong>Date: </strong> ${date[0]}
                             </div>
                             <div class="paments-cost">
-                                <strong>Total cost: </strong> ${item.totalCost}
+                                <strong>Total cost: </strong> ${"&#8377;"+item.totalCost}
                             </div>
                         </div>
                         `
 
-                        $(".payments-container").empty();
-                        $(".payments-container").html(output);
                     })
+                    $(".payments-container").empty();
+                    $(".payments-container").html(output);
                 }
             })
         } catch(e) {
@@ -224,6 +225,8 @@ $(document).ready(function() {
                             img = './Public/assets/default.jpg';
                         }
 
+                        let cost  = item.quantity * item.cost;
+
                         output += `
                         <div class="order-card">
                             <div class="order-name-container">
@@ -234,7 +237,7 @@ $(document).ready(function() {
                                 <strong>Quantity: </strong> ${item.quantity}
                             </div>
                             <div class="order-cost">
-                                <strong>Cost: </strong> ${item.cost}
+                                <strong>Cost: </strong> ${"&#8377;" +cost}
                             </div>
                         </div>
                         `

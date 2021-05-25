@@ -126,15 +126,6 @@ $(document).ready(function() {
         $('body').removeClass('overlay-open');
     })
 
-    $('.overlay').on('click', function(e) {
-        e.preventDefault();
-
-        $(this).hide();
-        $(this).parent('body').children('.add-new-address-container').addClass("hidden");
-
-        $('body').removeClass('overlay-open');
-    })
-
     $(".add-new-address-btn").on("click", function(e) {
         e.preventDefault();
 
@@ -377,6 +368,7 @@ $(document).ready(function() {
                 let to_pay = totalCost + delivery_cost;
     
                 $(".to-pay-cost").html(`&#8377; ${to_pay}`);
+                $(".amount").html(`&#8377; ${to_pay}`);
     
                 $(".items-container").empty();
                 $(".items-container").html(output);
@@ -454,4 +446,65 @@ $(document).ready(function() {
     })
 
     getCart();
+
+    //------------------------SHOW CONFIRMATION-------------------------------
+    
+    $(".pay-btn").on("click", function(e) {
+        e.preventDefault();
+        $(".payment-confirmation").removeClass("hidden");
+        $(".overlay").show();
+        $("body").addClass("overlay-open");
+    })
+
+    $(".decline").on("click", function(e) {
+        e.preventDefault();
+        $(".payment-confirmation").addClass("hidden");
+        $(".overlay").hide();
+        $("body").removeClass("overlay-open");
+    })
+
+    //------------------------CHECKOUT------------------------------------------
+    $(".confirm").on("click", function(e) {
+        e.preventDefault();
+
+        showLoader($(".overlay"));
+
+        const checkout_api = `https://yourstore-swe.herokuapp.com/user/checkout`;
+
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+        myHeaders.append("Authorization", `${localStorage.getItem('authToken')}`);
+
+        let address = $(".type-address").text();
+        let cost = $(".to-pay-cost").text().split(" ")[1];
+
+        let body = {
+            address: address,
+            cost: cost,
+        }
+        
+        let json = JSON.stringify(body);
+
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: json,
+        }
+
+        fetch(checkout_api, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+            console.log(result)
+            $(".payment-confirmation").addClass("hidden");
+            $(".overlay").hide();
+            $("body").removeClass(".overlay-open");
+            hideLoader($(".overlay"));
+            swal("Order placed successfully", "You're all set!", "success");
+            getCart();
+        })
+        .catch((e) => {
+            swal("Oops something went wrong", "" + e, "error");
+        })
+
+    })
 })

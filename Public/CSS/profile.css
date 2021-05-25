@@ -272,7 +272,7 @@ body {
 }
 
 .order-name-container {
-    width: fit-content;
+    width: 30%;
     height: fit-content;
     display: flex;
     align-items: center;
@@ -280,6 +280,10 @@ body {
     font-size: 1.25rem;
     font-weight: 600;margin-right: 1rem;
     color: var(--name-color-dark);
+}
+
+.order-cost {
+    width: 15%;
 }
 
 .order-name-container img {

@@ -582,6 +582,99 @@ body.overlay-open {
     background-color: #32be8f;
 }
 
+.payment-confirmation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 22;
+    transform: translate(-50%, -50%);
+
+    width: 20rem;
+    height: fit-content;
+    background-color: var(--blue-primary);
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.45rem;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.payment-confirmation.hidden {
+    display: none;
+}
+
+.confirm-img-container {
+    height: fit-content;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.confirm-img-container img {
+    height: 10rem;
+    width: 10rem;
+}
+
+.confirm-head {
+    color: #FFF;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.confirm-text {
+    padding: 1rem;
+    color: #FFF;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+.confirm-btn-container {
+    padding: 0.4rem;
+    background-color: #FFF;
+    width: 100%;
+    border-radius: 0.45rem;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-btn, .decline-btn {
+    width: 49%;
+}
+
+.confirm-btn {
+    border-right: 1px solid #a5a5a5;
+}
+
+.confirm, .decline {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #FFF;
+    border: none;
+    border-radius: 0.45rem;
+    cursor: pointer;
+    background-color: #FFF;
+    width: 100%;
+}
+
+.confirm {
+    color: var(--green-primary);
+}
+
+.decline {
+    color: #E74C3C;
+}
+
+.confirm:hover, .decline:hover {
+    font-weight: 600;
+}
+
 .cart-items {
     display: inline-block;
     height: fit-content;
