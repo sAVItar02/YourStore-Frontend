@@ -285,40 +285,45 @@ $(document).ready(function() {
 
     //---------------------GET CART---------------------------
     function getCart() {
-        const cart_api = `https://yourstore-swe.herokuapp.com/user/Cart`;
-        const get_shop_api = `https://yourstore-swe.herokuapp.com/shop/${sessionStorage.getItem("shopInCart")}`;
-
-        let myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/json');
-        myHeaders.append("Authorization", `${localStorage.getItem('authToken')}`);
-
-        let requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-        }
-
-        try {
-            fetch(get_shop_api, requestOptions)
-            .then((response) => response.json())
-            .then((result) => {
-                let img = `./Public/assets/default.jpg`;
-                if(result.data.picture) {
-                    img = result.data.picture;
-                }
-
-                $(".shop-image").attr("src", img);
-                $(".shop-name").text(result.data.shopName);
-            })
-            .catch((e) => {
-                console.log(e);
-                swal("Oops something went wrong", "" + e, "error");
-            })
-
-            getCartItems();
-
-        } catch (e) {
-            console.log(e)
-            swal("Oops something went wrong!", "" + e, "error");
+        if(sessionStorage.getItem("shopInCart") == "undefined") {
+            $(".no-items-in-cart").removeClass("hidden");
+            console.log(sessionStorage.getItem("shopInCart"));
+        } else {
+            const get_shop_api = `https://yourstore-swe.herokuapp.com/shop/${sessionStorage.getItem("shopInCart")}`;
+    
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'application/json');
+            myHeaders.append("Authorization", `${localStorage.getItem('authToken')}`);
+    
+            let requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+            }
+    
+            try {
+                fetch(get_shop_api, requestOptions)
+                .then((response) => response.json())
+                .then((result) => {
+                    console.log(result);
+                    let img = `./Public/assets/default.jpg`;
+                    if(result.data.picture) {
+                        img = result.data.picture;
+                    }
+    
+                    $(".shop-image").attr("src", img);
+                    $(".shop-name").text(result.data.shopName);
+                })
+                .catch((e) => {
+                    console.log(e);
+                    swal("Oops something went wrong", "" + e, "error");
+                })
+    
+                getCartItems();
+    
+            } catch (e) {
+                console.log(e)
+                swal("Oops something went wrong!", "" + e, "error");
+            }
         }
     }
 
@@ -340,39 +345,43 @@ $(document).ready(function() {
         .then((response) => response.json())
         .then((result) => {
             console.log(result);
-            let output = ``;
-            let totalCost = 0;
-            let delivery_cost = 0;
-            result.forEach(item => {
-                let cost;
-                cost = item.cost * item.quantity;
-
-                totalCost += cost;
-
-                output += `
-                <div class="item">
-                    <div class="itemID">${item._id}</div>
-                    <div class="item-name">${item.itemName}</div>
-                    <div class="item-quantity">
-                        <div class="increase-container">
-                            <div class="decrease-quantity">-</div>
-                            <div class="current-quantity">${item.quantity}</div>
-                            <div class="increase-quantity">+</div>
+            if(result.length == 0) {
+                $(".no-items-in-cart").removeClass("hidden");
+            } else {
+                let output = ``;
+                let totalCost = 0;
+                let delivery_cost = 0;
+                result.forEach(item => {
+                    let cost;
+                    cost = item.cost * item.quantity;
+    
+                    totalCost += cost;
+    
+                    output += `
+                    <div class="item">
+                        <div class="itemID">${item._id}</div>
+                        <div class="item-name">${item.itemName}</div>
+                        <div class="item-quantity">
+                            <div class="increase-container">
+                                <div class="decrease-quantity">-</div>
+                                <div class="current-quantity">${item.quantity}</div>
+                                <div class="increase-quantity">+</div>
+                            </div>
                         </div>
+                        <div class="item-cost">&#8377;${cost}</div>
                     </div>
-                    <div class="item-cost">&#8377;${cost}</div>
-                </div>
-                `
-            })
-
-            $(".item-total-cost").html(`&#8377; ${totalCost}`)
-            let to_pay = totalCost + delivery_cost;
-
-            $(".to-pay-cost").html(`&#8377; ${to_pay}`);
-
-            $(".items-container").empty();
-            $(".items-container").html(output);
-
+                    `
+                })
+    
+                $(".item-total-cost").html(`&#8377; ${totalCost}`)
+                let to_pay = totalCost + delivery_cost;
+    
+                $(".to-pay-cost").html(`&#8377; ${to_pay}`);
+    
+                $(".items-container").empty();
+                $(".items-container").html(output);
+    
+            }
             $(".cart-overlay").addClass("hidden");
             $(".cart-spinner").addClass("hidden");
         })
