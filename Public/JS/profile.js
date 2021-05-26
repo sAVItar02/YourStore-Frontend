@@ -152,33 +152,10 @@ $(document).ready(function() {
         $('.addresses-btn').addClass('active');
 
         try {
-            getProfile().then((result) => {
-                console.log(result.address.length == 0)
-                if(result.address.length == 0) {
-                    $('.address-container').empty();
-                    $('.address-container').html("<div class='no-products-text'>No addresses added!</div>");
-                } else {
-                    let output = ``;
-
-                    for(i=0; i<result.address.length; i++) {
-                        output += `
-                        <div class="address-card">
-                            <i class="fas fa-home"></i>
-                            <div class="address-text">
-                                <p class="home">Home</p>
-                                <p>${result.address[i]}</p>
-                                <button class="delete-address">Delete</button>
-                            </div>
-                        </div>
-                        `
-                    }
-
-                    $('.address-container').empty();
-                    $('.address-container').html(output);
-                }
-            })
+            getAddress();
         } catch(e) {
             console.log(e);
+            swal("Oops something went wrong!", "" + e, "error");
         }
     })
 
@@ -277,4 +254,94 @@ $(document).ready(function() {
             console.log(e);
         }
     }
+
+    function getAddress() {
+        getProfile().then((result) => {
+            if(result.address.length == 0) {
+                $('.address-container').empty();
+                $('.address-container').html("<div class='no-products-text'>No addresses added!</div>");
+            } else {
+                
+                let output = ``;    
+                
+                result.address.forEach(address => {
+                    let icon = "fas fa-home"
+                    let top_text = "Home"
+                    if(address.type == "work") {
+                        icon = "fas fa-briefcase"
+                        top_text = "Work"
+                    } else if(address.type == "other") {
+                        icon = "fas fa-map-marker-alt"
+                        top_text = "Other"
+                    }
+                    output += `
+                    <div class="address-card">
+                        <i class="${icon}"></i>
+                        <div class="address-text">
+                            <p class="home">${top_text}</p>
+                            <p class="address-location">${address.location}</p>
+                            <button class="delete-address">Delete</button>
+                        </div>
+                    </div>
+                    `
+                })
+
+                $('.address-container').empty();
+                $('.address-container').html(output);
+            }
+        })
+    }
+
+    //------------------DELETE ADDRESS----------------------
+    $("body").on("click", '.delete-address', function(e) {
+        e.preventDefault();
+        let address = $(this).parent().children(".address-location").text();
+
+        $(".overlay").show();
+        $("body").addClass("overlay-open");
+        $(".confirm-delete-address").removeClass("hidden");
+
+        $(".confirm").on("click", function(e) {
+            showLoader($(".overlay"));
+    
+            const del_address_api = `https://yourstore-swe.herokuapp.com/user/address`;
+    
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'application/json');
+            myHeaders.append("Authorization", `${localStorage.getItem('authToken')}`);
+    
+    
+            let body = {
+                location: address,
+            }
+    
+            let json = JSON.stringify(body);
+    
+            let requestOptions = {
+                method: 'PATCH',
+                headers: myHeaders,
+                body: json,
+            }
+    
+            fetch(del_address_api, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                $(".confirm-delete-address").addClass("hidden");
+                swal("Address deleted!", "You're all set!", "success");
+                getAddress();
+                hideLoader($(".overlay"));
+            })
+            .catch((e) => {
+                console.log(e);
+                swal("Oops something went wrong!", "" + e, "error");
+            })
+        });
+
+        $(".decline").on("click", function(e) {
+            $(".overlay").hide();
+            $("body").removeClass("overlay-open");
+            $(".confirm-delete-address").addClass("hidden");
+        })
+
+    })
 });
