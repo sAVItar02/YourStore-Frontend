@@ -793,18 +793,21 @@ $(document).ready(function() {
                 const phone = result.data[i].user.phone;
                 const name = result.data[i].user.name;
                 const orderID = result.data[i]._id;
+                const userID = result.data[i].user.userID;
 
                 output += `
                     <div class="order-card">
                         <div class="user-info">
                             <div class="regular-info">
                                 <div class="user-name">${name}</div>
-                                <div class="order-id"><strong>Order ID:</strong> ${orderID}</div>
+                                <div class="order-id"><strong>Order ID:</strong> <p class="orderID">${orderID}</p></div>
                                 <div class="user-phone"><strong>Phone:</strong> ${phone}</div>
                             </div>
                             <div class="user-address hide ">${address}</div>
                             <div class="address-btn-container">
+                                <div class="userID">${userID}</div>
                                 <div class="view-address-btn">View Address</div>
+                                <div class="deliver-btn">Deliver</div>
                             </div>
                         </div>
                         <div class="order-items">
@@ -897,6 +900,68 @@ $(document).ready(function() {
             }
         }
     }
+
+    //-------------------DELIVER ITEM-------------------
+
+    $("body").on("click", ".deliver-btn", function(e) {
+        e.preventDefault();
+
+        const userID = $(this).parent().children(".userID").text();
+        const orderID = $(this).parents(".user-info").children(".regular-info").children(".order-id").children(".orderID").text();
+        const userName = $(this).parents(".user-info").children(".regular-info").children(".user-name").text();
+
+        
+        $(".delivery-confirmation").removeClass("hidden");
+        $(".confirm-head").text(`Deliver to: ${userName}`);
+        $("body").addClass("overlay-open");
+        $(".overlay").show();
+
+        $(".confirm-delivery").on("click", function(e) {
+            e.preventDefault();
+
+            $(".delivery-confirmation").addClass("hidden");
+            showLoader($(".overlay"));
+
+            let delivery_api = `https://yourstore-swe.herokuapp.com/store/delivered/${userID}/${orderID}`;
+
+            let myHeaders = new Headers();
+            myHeaders.append("Authorization", `${localStorage.getItem('shopAuth')}`);
+
+        
+            let requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+            }
+
+            fetch(delivery_api, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                console.log(result)
+                if(result.status == 'fail') {
+                    swal("Oops something went wrong", "", "error");
+                    hideLoader($(".overlay"))
+                } else {
+                    swal("Item delivered!", "You're all set!", "success");
+                    getOrders().then((result) => {
+                        createOrdersCard(result);
+                    })
+                    hideLoader($(".overlay"));
+                }
+            })
+            .catch((e) => {
+                console.log(e)
+                swal("Oops something went wrong", "" + e, "error");
+            })
+        })
+
+        $(".decline-delivery").on("click", function(e) {
+            e.preventDefault();
+
+            $(".delivery-confirmation").addClass("hidden");
+            $("body").removeClass("overlay-open");
+            $(".overlay").hide();
+        })
+    })
 
 
     //-------------------DELETE ITEM--------------------

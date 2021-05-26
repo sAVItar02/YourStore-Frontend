@@ -832,6 +832,102 @@ body::-webkit-scrollbar-thumb {
     padding: 2rem;
 }
 
+/* ------------ORDER-CONFIRMATION--------------- */
+
+.delivery-confirmation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 22;
+    transform: translate(-50%, -50%);
+
+    width: 20rem;
+    height: fit-content;
+    background-color: var(--blue-primary);
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.45rem;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.delivery-confirmation.hidden {
+    display: none;
+}
+
+.confirm-img-container {
+    height: fit-content;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.confirm-img-container img {
+    height: 10rem;
+    width: 10rem;
+}
+
+.confirm-head {
+    color: #FFF;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.confirm-text {
+    padding: 1rem;
+    color: #FFF;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+.confirm-btn-container {
+    padding: 0.4rem;
+    background-color: #FFF;
+    width: 100%;
+    border-radius: 0.45rem;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-btn, .decline-btn {
+    width: 49%;
+}
+
+.confirm-btn {
+    border-right: 1px solid #a5a5a5;
+}
+
+.confirm-delivery, .decline-delivery {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #FFF;
+    border: none;
+    border-radius: 0.45rem;
+    cursor: pointer;
+    background-color: #FFF;
+    width: 100%;
+}
+
+.confirm-delivery {
+    color: var(--green-primary);
+}
+
+.decline-delivery {
+    color: #E74C3C;
+}
+
+.confirm-delivery:hover, .decline-delivery:hover {
+    font-weight: 600;
+}
+
+/* --------------------------------------------- */
 .orders .head {
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #a5a5a5;
@@ -884,7 +980,11 @@ body::-webkit-scrollbar-thumb {
     padding: 0rem 1rem;
 }
 
-.view-address-btn, #view-order-btn {
+.userID {
+    display: none;
+}
+
+.view-address-btn, .deliver-btn {
     background-color: #32be8f;
     color: #FFF;
     border: none;
@@ -899,10 +999,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 .view-address-btn {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-.view-address-btn:hover, #view-order-btn:hover {
+.view-address-btn:hover, .deliver-btn:hover {
     background-color: #58D68D;
 }
 
@@ -917,6 +1017,10 @@ body::-webkit-scrollbar-thumb {
     font-size: 1.1rem;
     font-weight: 300;
     color: var(--name-color);
+}
+
+.orderID {
+    display: inline-block;
 }
 
 .order-items {
