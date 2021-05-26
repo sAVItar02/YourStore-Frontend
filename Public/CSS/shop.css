@@ -169,6 +169,151 @@ body::-webkit-scrollbar-thumb {
     padding: 2rem;
 }
 
+/* ----------DELETE POPUP----------- */
+.confirm-delete-product {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 22;
+    transform: translate(-50%, -50%);
+    background-color: var(--blue-primary);
+    padding-top: 1.5rem;
+    border: none;
+    border-radius: 0.45rem;
+    text-align: center;
+}
+
+.confirm-delete-product.hidden {
+    display: none;
+}
+
+.delete-product-head {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #FFF;
+    padding: 0 2rem;
+}
+
+.delete-product-text {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #FFF;
+    padding-bottom: 2rem;
+}
+
+.delete-product-btn-container {
+    width: 100%;
+    background-color: #FFF;
+    border-radius: 0.45rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-container, .decline-container {
+    width: 49%;
+}
+
+.confirm-container {
+    border-right: 1px solid #a5a5a5;
+}
+
+.confirm-product-delete, .decline-product-delete {
+    font-size: 1.2rem;
+    background-color: #FFF;
+    border: none;
+    padding: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+}
+
+.confirm-product-delete {
+    color: var(--green-primary);
+}
+
+.decline-product-delete {
+    color: #EC7063;
+}
+
+.confirm-product-delete:hover , .decline-product-delete:hover {
+    font-weight: 600;
+}
+
+/*-----------------REQUEST_DELETE----------------- */
+
+.confirm-delete-request {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 22;
+    transform: translate(-50%, -50%);
+    background-color: var(--blue-primary);
+    padding-top: 1.5rem;
+    border: none;
+    border-radius: 0.45rem;
+    text-align: center;
+}
+
+.confirm-delete-request.hidden {
+    display: none;
+}
+
+.delete-request-head {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #FFF;
+    padding: 0 2rem;
+}
+
+.delete-request-text {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #FFF;
+    padding-bottom: 2rem;
+}
+
+.delete-request-btn-container {
+    width: 100%;
+    background-color: #FFF;
+    border-radius: 0.45rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-container, .decline-container {
+    width: 49%;
+}
+
+.confirm-container {
+    border-right: 1px solid #a5a5a5;
+}
+
+.confirm-request-delete, .decline-request-delete {
+    font-size: 1.2rem;
+    background-color: #FFF;
+    border: none;
+    padding: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+}
+
+.confirm-request-delete {
+    color: var(--green-primary);
+}
+
+.decline-request-delete {
+    color: #EC7063;
+}
+
+.confirm-request-delete:hover , .decline-request-delete:hover {
+    font-weight: 600;
+}
+
+/*-----------------PRODUCTS----------------------- */
+
 .head {
     font-size: 2rem;
     font-weight: 500;
@@ -608,6 +753,25 @@ body::-webkit-scrollbar-thumb {
     border: none;
     border-radius: 0.45rem;
     width: 100%;
+}
+
+.requested-by {
+    background-color: var(--bg-primary-translucent);
+    padding: 1rem;
+    border-top-left-radius: 0.45rem;
+    border-top-right-radius: 0.45rem;
+}
+
+.requested-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.requested-phone i {
+    margin-right: 0.5rem;
+}
+
+.requested-details {
     padding: 1rem;
 }
 
@@ -633,6 +797,31 @@ body::-webkit-scrollbar-thumb {
     border: none; 
     border-radius: 2rem;
     width: fit-content;
+    display: inline-block;
+}
+
+.delete-request-container {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.delete-request {
+    padding: 0.5rem 1rem;
+    background-color: #e48378;
+    border: none;
+    border-radius: 0.45rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.delete-request:hover {
+    background-color: #E74C3C;
+}
+
+.requestID {
+    display: none;
 }
 
 /* --------------------------PENDING ORDERS--------------------- */

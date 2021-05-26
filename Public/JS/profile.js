@@ -48,6 +48,7 @@ $(document).ready(function() {
     $('.payment-history').hide();
     $('.favorites').hide();
     $('.addresses').hide();
+    $('.order-history').hide();
 
     $('.payments-btn').on('click', function(e) {
         e.preventDefault();
@@ -344,4 +345,32 @@ $(document).ready(function() {
         })
 
     })
+
+    //------------------LOGOUT------------------------------
+    $(".logout").on("click", function(e) {
+        e.preventDefault();
+
+        showLoader($(".overlay"));
+
+        const logout_api = `https://yourstore-swe.herokuapp.com/user/logout`;
+
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `${localStorage.getItem("authToken")}`);
+
+        let requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        redirect: 'follow'
+        };
+
+        fetch(logout_api, requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            console.log(result);
+            swal("Logged out successfuly!", "You're all set", "success");
+            localStorage.removeItem("authToken");
+            window.location.reload();
+        })
+        .catch(error => console.log('error', error));
+        })
 });

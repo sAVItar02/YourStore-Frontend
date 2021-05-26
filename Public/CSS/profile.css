@@ -100,6 +100,25 @@ body {
     object-fit: cover;
 }
 
+.logout-btn {
+    text-align: center;
+}
+
+.logout {
+    background-color: #EC7063;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FFF;
+    border: none;
+    border-radius: 0.45rem;
+    cursor: pointer;
+}
+
+.logout:hover {
+    background-color: #ee412d;
+}
+
 /* ------------------IMPUTS--------------------- */
 
 .input-field {
@@ -304,7 +323,7 @@ body {
 }
 
 .payments-shopID {
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 300;
 }
 

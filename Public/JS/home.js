@@ -127,9 +127,14 @@ $(document).ready( function() {
     $(".post-request-btn").on("click", function(e) {
         e.preventDefault();
 
-        $(".overlay").show();
-        $("body").addClass("overlay-open");
-        $(".request-popup").removeClass("hidden");
+        if(!localStorage.getItem("authToken")) {
+            swal("You're not logged in", "login to send a request", "error");
+        } else {
+            $(".overlay").show();
+            $("body").addClass("overlay-open");
+            $(".request-popup").removeClass("hidden");
+        }
+
     })
     
     $(".cross-req").on("click", function(e) {
@@ -150,9 +155,9 @@ $(document).ready( function() {
         myHeaders.append("Authorization", `Bearer ${localStorage.getItem('authToken')}`);
 
         let data = {
-            name: $('#item-name').val(),
+            prodName: $('#item-name').val(),
             desc: $('#item-desc').val(),
-            quantity: $('#item-quantity').val(),
+            qty: $('#item-quantity').val(),
         }
 
         let json = JSON.stringify(data);
@@ -173,6 +178,7 @@ $(document).ready( function() {
                 .then((response) => response.json())
                 .then((result) => {
                     if(result.error || result.status == "failure") {
+                        console.log(result);
                         swal("Check again!", "" ,"error");
                     } else {
                         $(".overlay").hide();

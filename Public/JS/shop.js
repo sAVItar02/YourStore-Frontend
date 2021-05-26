@@ -748,6 +748,7 @@ $(document).ready(function() {
     }
 
     function createRequestCard(result) {
+        console.log(result)
         if(result.data.length == 0) {
             $(".requests-container").empty();
             $(".requests-container").html("<div class='no-products-text'>No Requests </div>")
@@ -757,9 +758,19 @@ $(document).ready(function() {
             for(i=0; i<result.data.length; i++) {
                 output += `
                 <div class="requests-card">
-                    <div class="req-name">${result.data[i].name}</div>
-                    <div class="req-desc">${result.data[i].desc}</div>
-                    <div class="req-quantity">Quantity: ${result.data[i].qty}</div>
+                    <div class="requested-by">
+                        <div class="requested-name">${result.data[i].userName}</div>
+                        <div class="requested-phone"> <i class="fas fa-phone"></i> ${result.data[i].phoneNumber}</div>
+                    </div>
+                    <div class="requested-details">
+                        <div class="req-name">${result.data[i].prodName}</div>
+                        <div class="req-desc">${result.data[i].desc}</div>
+                        <div class="req-quantity">Quantity: ${result.data[i].qty}</div>
+                        <div class="delete-request-container">
+                            <div class="requestID">${result.data[i]._id}</div>
+                            <button class="delete-request">Delete</button>
+                        </div>
+                    </div>
                 </div>
                 `
             }
@@ -892,62 +903,134 @@ $(document).ready(function() {
 
     $(".products").on('click', '.delete-item-btn' ,function(e) {
         e.preventDefault();
-        showLoader($(".overlay"));
+
         const id = $(this).parent('.delete-item').parent('.details').children('#item-id').text();
         const delete_item_url = `https://yourstore-swe.herokuapp.com/myProducts/delete/${id}`;
         
+        $(".overlay").show();
+        $("body").addClass("overlay-open");
+        $(".confirm-delete-product").removeClass("hidden");
 
-        let myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${localStorage.getItem('shopAuth')}`);
+        $(".confirm-product-delete").on("click", function(e) {
+            e.preventDefault();
+
+            $(".confirm-delete-product").addClass("hidden");
+
+            showLoader($(".overlay"));
+
+            let myHeaders = new Headers();
+            myHeaders.append("Authorization", `Bearer ${localStorage.getItem('shopAuth')}`);
+        
+            let requestOptions = {
+                method: 'PATCH',
+                headers: myHeaders,
+            }
     
-        let requestOptions = {
-            method: 'PATCH',
-            headers: myHeaders,
-        }
-
-        try {
-            fetch(delete_item_url, requestOptions)
-            .then((response) => response.json())
-            .then((result) => {
-                hideLoader($(".overlay"));
-                swal("Item deleted!", "" ,"success");
-
-                if($(this).parents(".all-container").length > 0) {
-                    getProducts().then((result) => {
-                        createAllCard(result);
-                    })
-                } else if ($(this).parents(".fruits-veggies-container").length > 0) {
-                    getProducts().then((result) => {
-                        createFruitsAndVegCard(result);
-                    })
-                } else if ($(this).parents(".meat-container").length > 0) {
-                    getProducts().then((result) => {
-                        createTaggedCard(result, "meat", $('.meat-container'));
-                    });
-                } else if ($(this).parents(".dairy-container").length > 0) {
-                    getProducts().then((result) => {
-                        createTaggedCard(result, "dairy", $('.dairy-container'));
-                    });
-                } else if ($(this).parents(".snacks-container").length > 0) {
-                    getProducts().then((result) => {
-                        createTaggedCard(result, "snacks", $('.snacks-container'));
-                    });
-                } else if ($(this).parents(".drinks-container").length > 0) {
-                    getProducts().then((result) => {
-                        createTaggedCard(result, "drinks", $('.drinks-container'));
-                    });
-                }
-            })
-            .catch((e) => {
+            try {
+                fetch(delete_item_url, requestOptions)
+                .then((response) => response.json())
+                .then((result) => {
+                    hideLoader($(".overlay"));
+                    swal("Item deleted!", "" ,"success");
+    
+                    if($(this).parents(".products").children(".all-container").length > 0) {
+                        getProducts().then((result) => {
+                            createAllCard(result);
+                        })
+                    } else if ($(this).parents(".products").children(".fruits-veggies-container").length > 0) {
+                        getProducts().then((result) => {
+                            createFruitsAndVegCard(result);
+                        })
+                    } else if ($(this).parents(".products").children(".meat-container").length > 0) {
+                        getProducts().then((result) => {
+                            createTaggedCard(result, "meat", $('.meat-container'));
+                        });
+                    } else if ($(this).parents(".products").children(".dairy-container").length > 0) {
+                        getProducts().then((result) => {
+                            createTaggedCard(result, "dairy", $('.dairy-container'));
+                        });
+                    } else if ($(this).parents(".products").children(".snacks-container").length > 0) {
+                        getProducts().then((result) => {
+                            createTaggedCard(result, "snacks", $('.snacks-container'));
+                        });
+                    } else if ($(this).parents(".products").children(".drinks-container").length > 0) {
+                        getProducts().then((result) => {
+                            createTaggedCard(result, "drinks", $('.drinks-container'));
+                        });
+                    }
+                })
+                .catch((e) => {
+                    console.log(e);
+                    hideLoader($(".overlay"));
+                    swal("Aww snap!", "Some error occurred" ,"success");
+                })
+            } catch (e) {
                 console.log(e);
                 hideLoader($(".overlay"));
                 swal("Aww snap!", "Some error occurred" ,"success");
+            }
+        })
+
+        $(".decline-product-delete").on("click", function(e) {
+            e.preventDefault();
+
+            $(".overlay").hide();
+            $("body").removeClass("overlay-open");
+            $(".confirm-delete-product").addClass("hidden");
+        })
+
+    })
+
+    //-------------------DELETE REQUEST-----------------
+
+    $("body").on("click", ".delete-request", function(e) {
+        e.preventDefault();
+
+        let requestID = $(this).parent().children(".requestID").text();
+
+        $(".overlay").show();
+        $("body").addClass("overlay-open");
+        $(".confirm-delete-request").removeClass("hidden");
+
+        $(".confirm-request-delete").on("click", function(e) {
+            e.preventDefault();
+
+            $(".confirm-delete-request").addClass("hidden");
+            showLoader($(".overlay"));
+
+            const delete_request_api = `https://yourstore-swe.herokuapp.com/requests/remove/${requestID}`;
+            let myHeaders = new Headers();
+            myHeaders.append("Authorization", `Bearer ${localStorage.getItem('shopAuth')}`);
+        
+            let requestOptions = {
+                method: 'PATCH',
+                headers: myHeaders,
+            }
+
+            fetch(delete_request_api, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                swal("Request deletd successfully!", "You're all set", "success");
+                hideLoader($(".overlay"));
+                getRequests().then((result) => {
+                    createRequestCard(result);
+                })
             })
-        } catch (e) {
-            console.log(e);
-            hideLoader($(".overlay"));
-            swal("Aww snap!", "Some error occurred" ,"success");
-        }
+            .catch((e) => {
+                swal("Oops something went wrong", "" + e, "error");
+                hideLoader($(".overlay"));
+                console.log(e);
+            })
+        })
+
+    })
+
+    $(".decline-request-delete").on("click", function(e) {
+        e.preventDefault();
+        
+        $(".overlay").hide();
+        $("body").removeClass("overlay-open");
+        $(".confirm-delete-request").addClass("hidden");
     })
 
     //-------------------LOGOUT-------------------------
