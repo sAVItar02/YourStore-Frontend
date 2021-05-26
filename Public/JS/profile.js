@@ -81,7 +81,7 @@ $(document).ready(function() {
                         output += `
                         <div class="payment-card">
                             <div class="payments-shopID">
-                            <strong class="shopID-text">Shop Name: </strong>${item.shopName}
+                            <strong class="shopID-text">Shop Name:</strong>${item.shopName}
                             </div>
                             <div class="payments-date">
                                 <strong>Date: </strong> ${date[0]}
@@ -117,6 +117,12 @@ $(document).ready(function() {
         $('.favorites-btn').removeClass('active');
 
         $('.order-history-btn').addClass('active');
+
+        try {
+            getOrderHistory();
+        } catch(e) {
+            console.log(e)
+        }
     })
 
     $('.favorites-btn').on('click', function(e) {
@@ -192,9 +198,15 @@ $(document).ready(function() {
                 $('.orders-container').empty();
                 $('.orders-container').html("<div class='no-products-text'>No orders yet!</div>");
             } else {
-
+                console.log(result);
                 result.PendingOrders.forEach(order => {
                     let output = ``;
+                    output += `
+                        <div class="order-card">
+                        <div class="order-shop-details">
+                            <div class="order-shop-name">${order.order.shopName}</div>
+                        </div>
+                    `
                     order.order.items.forEach(item => {
                         let img;
                         if(item.picture) {
@@ -206,7 +218,7 @@ $(document).ready(function() {
                         let cost  = item.quantity * item.cost;
 
                         output += `
-                        <div class="order-card">
+                        <div class="order-item-details">
                             <div class="order-name-container">
                                 <img src="${img}" alt="No image found">
                                 ${item.itemName}
@@ -221,7 +233,65 @@ $(document).ready(function() {
                         `
                     });
 
+                    output += `
+                        </div>
+                    `
+
                     $('.orders-container').append(output);
+                });
+                
+            }
+            hideLoader($(".overlay-white"));
+        })
+    }
+
+    function getOrderHistory() {
+        getProfile().then((result) => {
+            $(".order-history-container").empty();
+            if(result.PendingOrders.length == 0) {
+                $('.order-history-container').empty();
+                $('.order-history-container').html("<div class='no-products-text'>No orders yet!</div>");
+            } else {
+                console.log(result);
+                result.OrderHistory.forEach(order => {
+                    let output = ``;
+                    output += `
+                        <div class="order-card">
+                        <div class="order-shop-details">
+                            <div class="order-shop-name">${order.order.shopName}</div>
+                        </div>
+                    `
+                    order.order.items.forEach(item => {
+                        let img;
+                        if(item.picture) {
+                            img = item.picture;
+                        } else {
+                            img = './Public/assets/default.jpg';
+                        }
+
+                        let cost  = item.quantity * item.cost;
+
+                        output += `
+                        <div class="order-item-details">
+                            <div class="order-name-container">
+                                <img src="${img}" alt="No image found">
+                                ${item.itemName}
+                            </div>
+                            <div class="order-quantity">
+                                <strong>Quantity: </strong> ${item.quantity}
+                            </div>
+                            <div class="order-cost">
+                                <strong>Cost: </strong> ${"&#8377;" +cost}
+                            </div>
+                        </div>
+                        `
+                    });
+
+                    output += `
+                        </div>
+                    `
+
+                    $('.order-history-container').append(output);
                 });
                 
             }

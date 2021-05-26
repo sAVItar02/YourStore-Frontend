@@ -290,14 +290,53 @@ body {
     justify-content: space-between;
 }
 
+.order-card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: none;
+    padding: 0;
+    border: 1px solid #ACACAC;
+    border-radius: 0.45rem;
+}
+
+.order-shop-details {
+    background-color: var(--bg-primary-translucent);
+    padding: 1rem;
+    width: 100%;
+    border: none;
+    border-top-left-radius: 0.45rem;
+    border-top-right-radius: 0.45rem;
+}
+
+.order-shop-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.order-item-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid var(--bg-primary-translucent);
+}
+
+.order-item-details:last-child {
+    border-bottom:  none;
+}
+
 .order-name-container {
     width: 30%;
     height: fit-content;
     display: flex;
     align-items: center;
+    padding: 0.5rem;
 
     font-size: 1.25rem;
-    font-weight: 600;margin-right: 1rem;
+    font-weight: 600;
+    margin-right: 1rem;
     color: var(--name-color-dark);
 }
 
@@ -318,7 +357,8 @@ body {
 
 .shopID-text {
     font-size: 1.25rem;
-    font-weight: 600;margin-right: 1rem;
+    font-weight: 600;
+    margin-right: 1rem;
     color: var(--name-color-dark);
 }
 
