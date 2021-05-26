@@ -33,23 +33,28 @@ $(document).ready(function() {
     $('body').on('click', ".choose-address",function(e) {
         e.preventDefault();
 
-        // SAVE ADDRESS IN VARIABLE
-        let address = $(this).parent().children('.address-main').text();
-        let address_tag = $(this).parent().children('.address-tag').text();
+        if(sessionStorage.getItem("shopInCart") == "undefined" || !sessionStorage.getItem("shopInCart"))
+        {
+            swal("Your cart is empty!", "Try adding some items first", "error");
+        } else {
+            // SAVE ADDRESS IN VARIABLE
+            let address = $(this).parent().children('.address-main').text();
+            let address_tag = $(this).parent().children('.address-tag').text();
 
-        // HIDE CHOOSE ADDRESS DIV
-        $('.address').hide();
-        
-        // SET DELIVERY ADDRESS VALUE
-        $('.type').text(address_tag);
-        $('.type-address').text(address);
+            // HIDE CHOOSE ADDRESS DIV
+            $('.address').hide();
+            
+            // SET DELIVERY ADDRESS VALUE
+            $('.type').text(address_tag);
+            $('.type-address').text(address);
 
-        //SHOW DELIVERY ADDRESS DIV
-        $('.delivery-address').show();
+            //SHOW DELIVERY ADDRESS DIV
+            $('.delivery-address').show();
 
-        // SHOW PAYMENT OPTIONS
-        $('.payment-initial').hide();
-        $('.payment-methods').show();
+            // SHOW PAYMENT OPTIONS
+            $('.payment-initial').hide();
+            $('.payment-methods').show();
+        }
     })
 
     $('.change').on('click', function(e) {
