@@ -40,6 +40,18 @@ $(document).ready( function() {
         getShopsAround(sessionStorage.getItem("latitude"), sessionStorage.getItem("longitude"));
         $("#location-text").text(sessionStorage.getItem("recentLocation"));
     }
+    getTrendingItems();
+
+    //-----------------------CARD INFO DISPLAY---------------------
+    $("body").on('click', '.info', function(e) {
+        e.preventDefault();
+        $(this).parent().parent().parent().children('.description').removeClass('description-hidden');
+            
+        $('.cross').on('click', function(e) {
+            e.preventDefault();
+            $(this).parent().addClass('description-hidden');
+        })
+    })
 
     //-----------------------OVERLAY FUNCTIONS---------------------
 
@@ -302,41 +314,43 @@ $(document).ready( function() {
         arrows: false,
     });
 
-    $('.trending-carousel').slick({
-        dots: false,
-        infinite: false,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 2,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-          // You can unslick at a given breakpoint now by adding:
-          // settings: "unslick"
-          // instead of a settings object
-        ]
-      });
+    function slickInit() {
+        $('.trending-carousel').slick({
+            dots: false,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 2,
+            responsive: [
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 3,
+                  infinite: true,
+                  dots: true
+                }
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+              // You can unslick at a given breakpoint now by adding:
+              // settings: "unslick"
+              // instead of a settings object
+            ]
+        });
+    }
 
     
     //----------------PROFILE---------------------------
@@ -623,4 +637,55 @@ $(document).ready( function() {
         sessionStorage.setItem("shopID", shopID);
         window.location.replace("./products.html");
     })
+
+    //------------------------TRENDING SHOPS-----------------------
+    function getTrendingItems() {
+        const trending_api = `https://yourstore-swe.herokuapp.com/trending`;
+
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+        }
+
+        fetch(trending_api, requestOptions) 
+        .then((response) => response.json())
+        .then((result) => {
+            console.log(result);
+            let output = ``;
+            result.trending.forEach(item => {
+                let img = "./Public/assets/default.jpg"
+                if(item.picture) {
+                    img = item.picture;
+                }
+                output += `
+                <div class="trending-card">
+                    <img src="${img}" alt="" class="product-img">
+                    <div class="product-details">
+                        <div class="product-name">${item.itemName}</div>
+                        <div class="product-cost">&#8377; ${item.cost}</div>
+                        <div class="product-amount">1 kg <span class="info"><img src="https://img.icons8.com/cotton/64/000000/info--v5.png"/></span></div>
+                        <div class="btn-container">
+                            <div class="shopID">${item.shopID}</div>
+                            <button class="visit-shop">Visit Shop <i class="fas fa-shopping-cart"></i></button>
+                        </div>  
+                    </div>
+
+                    <div class="description description-hidden">
+                        <span class="cross">
+                            <img src="https://img.icons8.com/ios/50/000000/circled-x.png"/>
+                        </span>
+                        <p class="description-text">${item.itemDesc}</p>
+                    </div>  
+                </div>
+                `
+            })
+            
+            $(".trending-carousel").html(output);
+
+            slickInit();
+        })
+    }
 }); 
