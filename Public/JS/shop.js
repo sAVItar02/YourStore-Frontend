@@ -862,7 +862,7 @@ $(document).ready(function() {
                             <div class="regular-info">
                                 <div class="user-name">${name}</div>
                                 <div class="order-id"><strong>Order ID:</strong> ${orderID}</div>
-                                <div class="user-phone"><strong>Phone:</strong> ${phone}</div>
+                                <div class="user-phone"><i class="fas fa-phone"></i> ${phone}</div>
                             </div>
                             <div class="user-address hide ">${address}</div>
                             <div class="address-btn-container">
@@ -1119,7 +1119,6 @@ $(document).ready(function() {
             fetch(logout_api, requestOptions)
             .then((response) => response.json())
             .then((result) => {
-                alert("yo");
                 console.log(result);
                 swal("Logged Out", "", "seccess");
                 localStorage.removeItem('shopAuth');

@@ -945,7 +945,7 @@ body::-webkit-scrollbar-thumb {
 
 .user-info {
     background-color: #fff;
-    padding: 1.5rem;
+    padding: 1rem;
     border: none;
     border-radius: 0.45rem;
 
@@ -990,8 +990,8 @@ body::-webkit-scrollbar-thumb {
     border: none;
     width: 100%;
     border-radius: 0.45rem;
-    padding: 0.5rem 1rem;
-    font-size: 1.1rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: 100ms linear;
@@ -1007,16 +1007,20 @@ body::-webkit-scrollbar-thumb {
 }
 
 .user-name {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
     color: var(--blue-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
 .order-id, .user-phone {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 300;
     color: var(--name-color);
+}
+
+.order-id {
+    font-size: 0.8rem;
 }
 
 .orderID {
@@ -1032,7 +1036,6 @@ body::-webkit-scrollbar-thumb {
 
 .items-card {
     margin-bottom: 1rem;
-    padding: 1rem;
     border-bottom: 1px solid #a5a5a5;
     display: flex;
     align-items: flex-start;
@@ -1050,8 +1053,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .item-image img {
-    height: 5rem;
-    width: 5rem;
+    height: 3.125rem;
+    width: 3.125rem;
     object-fit: contain;
 }
 
@@ -1065,13 +1068,13 @@ body::-webkit-scrollbar-thumb {
 
 .item-name {
     display: block;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--name-color);
 }
 
 .item-quantity {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 300;
     color: var(--name-color);
 }
@@ -1086,20 +1089,24 @@ body::-webkit-scrollbar-thumb {
 }
 
 .history-head {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--name-color);
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
+    justify-content: flex-start;
+    border-bottom: 1px solid #a5a5a5;
 }
 
-.order-history img, .payment-history img {
-    height: 2rem;
-    width: 2rem;
-    margin-right: 0.5rem;
+.order-history img {
+    height: 3rem;
+    width: 3rem;
+    margin-right: 1rem;
 }
 
-.order-history, .payment-history {
-    font-size: 1.2rem;
+.order-history {
+    font-size: 2rem;
     font-weight: 500;
     color: var(--name-color);
     display: flex;
@@ -1108,14 +1115,6 @@ body::-webkit-scrollbar-thumb {
     padding: 1rem;
     cursor: pointer;
     transition: 100ms ease;
-}
-
-.order-history:hover, .payment-history:hover {
-    color: var(--blue-primary);
-}
-
-.order-history.history-active {
-    border-bottom: 0.4rem solid var(--blue-primary);
 }
 
 /* --------------------------PROFILE---------------------------- */
