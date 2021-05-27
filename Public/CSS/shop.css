@@ -3,8 +3,8 @@
     font-family: 'Poppins', sans-serif;
     --bg-primary: #E8EBF3;
     --bg-primary-translucent: #ced6ee;
-    --green-primary: #32be8f;
-    --blue-primary: #5C8AFF;
+    --green-primary: rgb(50, 190, 143);
+    --blue-primary: #5c8aff;
     --blue-primary-translucent: #5c8affb0;
     --gray-primary: #a5a5a5;
     --name-color: #515D76;
@@ -1235,6 +1235,64 @@ body::-webkit-scrollbar-thumb {
 
 .logout:hover {
     background-color: #E74C3C;
+}
+
+/* ----------------------STATISTICS----------------- */
+.statistics {
+    padding: 1rem;
+}
+
+.profits-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.profits-daily, .profits-monthly, .profits-yearly {
+    background-color: #FFF;
+    border: none;
+    border-radius: 0.45rem;
+    padding: 1rem;
+    width: fit-content;
+    margin-right: 1rem;
+}
+
+.profits-head {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--blue-primary);
+    text-align: center;
+}
+
+.daily-profit, .monthly-profit, .yearly-profit {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #000;
+    margin-top: 0.2rem;
+    text-align: center;
+}
+
+.daily-container, .monthly-container, .yearly-container {
+    height: 30rem;
+    width: 100%;
+    background-color: #FFF;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.45rem;
+    display: inline-block;
+    position: relative;
+}
+
+.yearly-monthly-container {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.monthly-container, .yearly-container {
+    width: 49%;
 }
 
 

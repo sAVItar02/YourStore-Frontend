@@ -162,6 +162,28 @@
 
     <section class="main">
         
+        <section class="statistics">
+            <div class="profits-container">
+                <div class="profits-daily">
+                    <p class="profits-head">Daily Profits</p>
+                    <p class="daily-profit">12345</p>
+                </div>
+                <div class="profits-monthly">
+                    <p class="profits-head">Monthly Profits</p>
+                    <p class="monthly-profit">12345</p>
+                </div>
+                <div class="profits-yearly">
+                    <p class="profits-head">Yearly Profits</p>
+                    <p class="yearly-profit">12345</p>
+                </div>
+            </div>
+            <div class="daily-container"><canvas id="daily" height="10" width="10"></canvas></div>
+            <div class="yearly-monthly-container">
+                <div class="monthly-container"><canvas id="monthly" height="400" width="400"></canvas></div>
+                <div class="yearly-container"><canvas id="yearly" height="400" width="400"></canvas></div>
+            </div>
+        </section>
+
         <section class="products">
             <div class="confirm-delete-product hidden">
                 <p class="delete-product-head">Are you sure?</p>
@@ -301,26 +323,9 @@
 
     <script src="./Public/JS/shop.js"></script>
 
-    <!-- <script src="./Public/JS/csv.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.0/dist/chart.min.js"></script>
 
-    <script>
-        async function getCSV() {
-            const response = await fetch('Monthly.csv', {mode: 'no-cors'});
-            const data = await response.text();
-
-            const table = data.split('\n');
-            table.forEach(row => {
-                const columns = row.split(",");
-                const day = columns[0];
-                const earning = columns[1];
-                console.log(day, earning);
-            })
-
-        }
-
-        getCSV();
-    </script>
-
+    <script src="./Public/JS/csv.js"></script>
     
 </body>
 </html>

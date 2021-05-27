@@ -54,6 +54,9 @@ $(document).ready(function() {
             .then((response) => response.json())
             .then((result) => {
                 $("#shop-id").text(result._id);
+                $(".daily-profit").text(result.profitsDaily);
+                $(".monthly-profit").text(result.profitsMonthly);
+                $(".yearly-profit").text(result.profitsYearly);
                 hideLoader($('.overlay-white'));
             })
             .catch((e) => {
@@ -79,6 +82,7 @@ $(document).ready(function() {
     $('.products').hide();
     $('.requests').hide();
     $('.orders').hide();
+    $(".history").hide();
 
     function showLoader(overlay) {
         overlay.show();
@@ -352,6 +356,19 @@ $(document).ready(function() {
         }
     }
 
+    $("#statistics-btn").on("click", function(e) {
+        e.preventDefault();
+
+        $('.products').hide();
+        $('.profile').hide();
+        $('.requests').hide();
+        $('.history').hide();
+        $('.orders').hide();
+
+        $(".statistics").show();
+
+    })
+
     $("#orders-btn").on('click', function(e) {
         e.preventDefault();
 
@@ -361,6 +378,7 @@ $(document).ready(function() {
         $('.profile').hide();
         $('.requests').hide();
         $('.history').hide();
+        $(".statistics").hide();
 
         $('.orders').show();
 
@@ -378,6 +396,7 @@ $(document).ready(function() {
         $('.profile').hide();
         $('.requests').hide();
         $('.orders').hide();
+        $(".statistics").hide();
 
         $('.history').show();
         $('.order-history-container').show();
@@ -418,6 +437,7 @@ $(document).ready(function() {
         $('.profile').hide();
         $('.orders').hide();
         $('.history').hide();
+        $(".statistics").hide();
 
         $('.requests').show();
 
@@ -435,6 +455,7 @@ $(document).ready(function() {
         $('.requests').hide();
         $('.orders').hide();
         $('.history').hide();
+        $(".statistics").hide();
 
         $('.profile').show();
 
