@@ -60,7 +60,7 @@
             </a>
         </div>
         <div class="nav-group">
-            <div class="nav-item">
+            <div class="nav-item" id="search-btn">
                 <a href="#" class="nav-link">
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/search--v1.png"/>
                 </a>
@@ -105,6 +105,22 @@
     
 
     <section class="main">
+        <!-- SEARCH -->
+        <section class="search-section hidden">
+            <div id="esc-btn">
+                <img src="https://img.icons8.com/office/80/000000/delete-sign.png"/>
+                <p>ESC</p>
+            </div>
+            <div class="search-input-container">
+                <input type="text" name="search" id="search-input" autocomplete="off" placeholder="Search for items">
+                <div class="clear-btn">CLEAR</div>
+                <img id="search-input-btn" src="https://img.icons8.com/fluent-systems-regular/48/000000/search--v1.png"/>
+            </div>
+            <div class="search-results">
+
+            </div>
+        </section>
+        
         <!-- FRUITS -->
         <section class="fruits">
             <div class="heading">

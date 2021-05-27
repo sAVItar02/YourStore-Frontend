@@ -47,6 +47,96 @@ body::-webkit-scrollbar-thumb {
     background: var(--blue-primary);
 }
 
+/* --------------------SEARCH STUFF-------------------------- */
+
+.search-section {
+    min-height: 100vh;
+    position: relative;
+}
+
+#esc-btn {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    cursor: pointer;
+}
+
+#esc-btn img {
+    height: 2rem;
+    width: 2rem;
+}
+
+#esc-btn p {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.search-input-container {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+.search-input-container input {
+    border: 1px solid #aaa;
+    border-radius: 0.45rem;
+    outline: none;
+    background-color: #FFF;
+    color: var(--name-color);
+    font-size: 1.5rem;
+    padding: 1rem;
+    width: 50rem;
+    transition: 100ms linear;
+}
+
+.search-input-container input:hover, .search-input-container input:focus {
+    border: 1px solid var(--blue-primary);
+    box-shadow: 0 0 0.3rem var(--blue-primary);
+}
+
+.search-input-container img {
+    position: absolute;
+    right: 0%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--bg-primary-translucent);
+    padding: 0.45rem;
+    border: none;
+    border-radius: 0.45rem;
+    cursor: pointer;
+    transition: 50ms linear;
+}
+
+.search-input-container img:hover {
+    background-color: var(--blue-primary-translucent);
+}
+
+.search-input-container .clear-btn {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.search-input-container .clear-btn:hover {
+    color: #E74C3C;
+}
+
+.search-results {
+    width: 50rem;
+    margin: 0 auto;
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    min-height: 15rem;
+}
+
 /* --------------------SELECT A SHOP------------------------- */
 
 .select-a-shop {

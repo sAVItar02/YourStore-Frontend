@@ -482,4 +482,127 @@ $(document).ready(function() {
         })
     }
 
+    //---------------------SEARCH--------------------------------
+
+    $("#search-btn").on("click", function(e) {
+        e.preventDefault();
+
+        fruits.hide();
+        meat.hide();
+        dairy.hide();
+        snacks.hide();
+        drinks.hide();
+
+        $(".search-section").removeClass("hidden")
+        $(".clear-btn").click();
+
+    })
+
+    $("#esc-btn").on('click', function(e) {
+        fruits.show();
+        meat.hide();
+        dairy.hide();
+        snacks.hide();
+        drinks.hide();
+        $(".search-section").addClass("hidden");
+    })
+
+    $(document).on("keyup", function(e) {
+        if(e.key == "Escape") $("#esc-btn").click();
+    })
+
+    $(document).keyup(function (e) {
+        if ($("#search-input").is(":focus") && (e.keyCode == 13)) {
+            $("#search-input-btn").click();
+        }
+    })
+
+    $(".clear-btn").on('click', function(e) {
+        e.preventDefault();
+
+        $("#search-input").val("");
+        $(".search-results").empty();
+    })
+
+    $("#search-input-btn").on("click", function(e) {
+        e.preventDefault();
+
+        showLoader($(".overlay"));
+
+        let searchQuery = $("#search-input").val();
+        const search_api = `https://yourstore-swe.herokuapp.com/searchItem/${sessionStorage.getItem("shopID")}?search=${searchQuery}`;
+
+        if(searchQuery == " " || searchQuery.length == 0) {
+            $("#search-input").val("");
+            $(".search-results").empty();
+            hideLoader($(".overlay"));
+        } else {
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'application/json');
+
+            let requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+            }
+
+            fetch(search_api, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                console.log(result);
+                let img = './Public/assets/default.jpg';
+                let output = ``;
+
+                result.items.forEach(item => {
+                    if(item.picture) {
+                        img = item.picture;
+                    }
+    
+                    let max_quatity = 10
+                    if(item.quantity < 10) {
+                        max_quatity = item.quantity;
+                    }
+
+                    output += `
+                    <div class="card">
+                        <div class="card-overlay hidden"></div>
+                        <div class="card-spinner hidden"><img src="./Public/assets/loader.gif" alt=""></div>
+                        <img src="${img}" alt="" class="product-img">
+                        <div class="product-details">
+                            <div class="product-name">${item.itemName}</div>
+                            <div class="product-cost">&#8377; ${item.cost}</div>
+                            <div class="product-amount">1 kg</div>
+                            <div class="quantity-input-container">
+                                <input type="number" name="quantity" min="0" max="${max_quatity}" value="0" class="product-quantity" id="quantity-to-add">
+                                <div class="increase-container hidden">
+                                    <div class="decrease-quantity">-</div>
+                                    <div class="current-quantity">x in cart</div>
+                                    <div class="increase-quantity">+</div>
+                                </div>
+                                <span class="info"><img src="https://img.icons8.com/cotton/64/000000/info--v5.png"/></span>
+                            </div>
+                            <div class="btn-container">
+                                <div class="itemID">${item._id}</div>
+                                <button class="add-to-cart">Add to cart <i class="fas fa-shopping-cart"></i></button>
+                            </div>  
+                        </div>
+
+                        <div class="description description-hidden">
+                            <span class="cross">
+                                <img src="https://img.icons8.com/ios/50/000000/circled-x.png"/>
+                            </span>
+                            <p class="description-text">${item.itemDesc}</p>
+                        </div>  
+                    </div>
+                    `
+                })
+
+                $(".search-results").empty();
+                $(".search-results").html(output);
+
+                $('input[type="number"]').niceNumber();
+                hideLoader($(".overlay"));
+            })
+        }
+    })
+
 });
