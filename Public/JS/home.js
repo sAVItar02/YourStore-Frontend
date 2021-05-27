@@ -325,7 +325,7 @@ $(document).ready( function() {
             dots: false,
             infinite: false,
             speed: 300,
-            slidesToShow: 5,
+            slidesToShow: 4,
             slidesToScroll: 2,
             responsive: [
               {
@@ -417,13 +417,21 @@ $(document).ready( function() {
                     } else {
                         img = shop.picture;
                     }
-    
+                    
+                    let classToAdd = "";
+
+                    if(shop.shopRating <= 3.5 && shop.shopRating > 2) {
+                        classToAdd = "moderate";
+                    } else if (shop.shopRating <= 2 ) {
+                        classToAdd = "low";
+                    }
+
                     output += `
                     <div class="shop-card">
                         <img src="${img}" alt="Image not found">
                         <div class="name-rating">
                             <div class="shop-name">${shop.shopName}</div>
-                            <div class="shop-rating"><i class="fas fa-star"></i> ${shop.shopRating}</div>
+                            <div class="shop-rating ${classToAdd}"><i class="fas fa-star"></i> ${shop.shopRating}</div>
                         </div>
                         <div class="shopID">${shop._id}</div>
                         <div class="shop-distance"><span class="distance">10</span> km</div>
@@ -436,6 +444,8 @@ $(document).ready( function() {
 
             $(".shops-container").empty();
             $(".shops-container").html(output);
+
+
 
             hideLoader($(".overlay"));
         })
@@ -536,13 +546,21 @@ $(document).ready( function() {
                         } else {
                             img = shop.picture;
                         }
+
+                        let classToAdd = "";
+
+                        if(shop.shopRating <= 3.5 && shop.shopRating > 2) {
+                            classToAdd = "moderate";
+                        } else if (shop.shopRating <= 2 ) {
+                            classToAdd = "low";
+                        }
     
                         output += `
                         <div class="shop-card">
                             <img src="${img}" alt="Image not found">
                             <div class="name-rating">
                                 <div class="shop-name">${shop.shopName}</div>
-                                <div class="shop-rating"><i class="fas fa-star"></i> ${shop.shopRating}</div>
+                                <div class="shop-rating ${classToAdd}"><i class="fas fa-star"></i> ${shop.shopRating}</div>
                             </div>
                             <div class="shopID">${shop._id}</div>
                             <div class="shop-distance"><span class="distance"><10</span> km</div>
@@ -552,7 +570,7 @@ $(document).ready( function() {
                     });
     
                     $(".search-shop-results").empty();
-                    $(".search-shop-results").html(output);
+                    $(".search-shop-results").append(output);
                     hideLoader($('.overlay'));
                 }
     
@@ -561,6 +579,7 @@ $(document).ready( function() {
                     $(".search-product-results").html(`<div class="no-results-found">No products found, try a different search!</div>`);
                     hideLoader($('.overlay'));
                 } else {
+                    $(".search-product-results").empty();
                     result.data.itemsData.items.forEach(item => {
                         let output = ``;
                         output += `
@@ -603,7 +622,6 @@ $(document).ready( function() {
                             `
                         console.log(matched)
                             
-                        $(".search-product-results").empty();
                         $(".search-product-results").append(output);
 
                     })

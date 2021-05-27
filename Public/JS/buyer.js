@@ -8,6 +8,7 @@ $(document).ready(function() {
     } else {
         getShop().then((result) => {
             createFruitsAndVegCard(result);
+            $("#shop-name").text(result.data.shopName);
             hideLoader($(".overlay-white"));
         })
     }
@@ -284,6 +285,10 @@ $(document).ready(function() {
                 }
 
                 if(item.tags == tag) {
+                    let unit = "unit";
+                    if(tag == "meat") {
+                        unit = "Kg"
+                    }
                     output += `
                     <div class="card">
                         <div class="card-overlay hidden"></div>
@@ -292,7 +297,7 @@ $(document).ready(function() {
                         <div class="product-details">
                             <div class="product-name">${item.itemName}</div>
                             <div class="product-cost">&#8377; ${item.cost}</div>
-                            <div class="product-amount">1 kg</div>
+                            <div class="product-amount">1 ${unit}</div>
                             <div class="quantity-input-container">
                                 <input type="number" name="quantity" min="0" max="${max_quatity}" value="0" class="product-quantity" id="quantity-to-add">
                                 <div class="increase-container hidden">
