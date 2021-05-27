@@ -86,6 +86,7 @@ $(document).ready(function() {
         snacks.hide();
         drinks.hide();
         fruits.show();
+        $(".search-section").addClass("hidden");
         getShop().then((result) => {
             createFruitsAndVegCard(result);
         })
@@ -99,6 +100,7 @@ $(document).ready(function() {
         snacks.hide();
         drinks.hide();
         meat.show();
+        $(".search-section").addClass("hidden");
 
         getShop().then((result) => {
             createTaggedCard(result, 'meat', $("#meat-shop"));
@@ -113,6 +115,7 @@ $(document).ready(function() {
         snacks.hide();
         drinks.hide();
         dairy.show();
+        $(".search-section").addClass("hidden");
 
         getShop().then((result) => {
             createTaggedCard(result, 'dairy', $("#dairy-shop"));
@@ -127,6 +130,7 @@ $(document).ready(function() {
         fruits.hide();
         drinks.hide();
         snacks.show();
+        $(".search-section").addClass("hidden");
 
         getShop().then((result) => {
             createTaggedCard(result, 'snacks', $("#snacks-shop"));
@@ -141,6 +145,7 @@ $(document).ready(function() {
         snacks.hide();
         fruits.hide();
         drinks.show();
+        $(".search-section").addClass("hidden");
 
         getShop().then((result) => {
             createTaggedCard(result, 'drinks', $("#drinks-shop"));
