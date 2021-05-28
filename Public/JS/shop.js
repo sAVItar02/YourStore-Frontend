@@ -503,6 +503,7 @@ $(document).ready(function() {
         $('.requests').hide();
         $('.orders').hide();
         $('.history').hide();
+        $(".statistics").hide();
 
         $('.fruits-veggies-container').hide();
         $('.meat-container').hide();
@@ -659,13 +660,18 @@ $(document).ready(function() {
                 } else {
                     img = result[i].picture;
                 }
+
+                let unit = "unit/s"
+                if(result[i].tags == "fruits" || result[i].tags == "vegetables") {
+                    unit = "Kg"
+                }
                 output += `
                 <div class="card">
                     <img src="${img}">
                     <div class="details">
                         <div class="product-name">${result[i].itemName}</div>
                         <div class="product-cost">Cost: <span class="cost">&#8377;${result[i].cost}</span></div>
-                        <div class="product-quantity">Quantity: <span class="quantity">${result[i].quantity} Kg</span></div>
+                        <div class="product-quantity">Quantity: <span class="quantity">${result[i].quantity} ${unit}</span></div>
                         <div class="product-tag">${result[i].tags}</div>
                         <div id="item-id">${result[i]._id}</div>
                         <div class="delete-item"><button class="delete-item-btn">Delete</button></div>
@@ -753,7 +759,7 @@ $(document).ready(function() {
                         <div class="details">
                             <div class="product-name">${result[i].itemName}</div>
                             <div class="product-cost">Cost: <span class="cost">&#8377;${result[i].cost}</span></div>
-                            <div class="product-quantity">Quantity: <span class="quantity">${result[i].quantity} Kg</span></div>
+                            <div class="product-quantity">Quantity: <span class="quantity">${result[i].quantity} unit/s</span></div>
                             <div id="item-id">${result[i]._id}</div>
                             <div class="delete-item"><button class="delete-item-btn">Delete</button></div>
                         </div>
@@ -769,7 +775,6 @@ $(document).ready(function() {
     }
 
     function createRequestCard(result) {
-        console.log(result)
         if(result.data.length == 0) {
             $(".requests-container").empty();
             $(".requests-container").html("<div class='no-products-text'>No Requests </div>")
@@ -957,7 +962,7 @@ $(document).ready(function() {
             fetch(delivery_api, requestOptions)
             .then((response) => response.json())
             .then((result) => {
-                console.log(result)
+               
                 if(result.status == 'fail') {
                     swal("Oops something went wrong", "", "error");
                     hideLoader($(".overlay"))
@@ -1140,7 +1145,7 @@ $(document).ready(function() {
             fetch(logout_api, requestOptions)
             .then((response) => response.json())
             .then((result) => {
-                console.log(result);
+              
                 swal("Logged Out", "", "seccess");
                 localStorage.removeItem('shopAuth');
                 window.location.reload();
