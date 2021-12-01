@@ -248,7 +248,7 @@ $(document).ready(function() {
     function getOrderHistory() {
         getProfile().then((result) => {
             $(".order-history-container").empty();
-            if(result.PendingOrders.length == 0) {
+            if(result.OrderHistory.length == 0) {
                 $('.order-history-container').empty();
                 $('.order-history-container').html("<div class='no-products-text'>No orders yet!</div>");
             } else {

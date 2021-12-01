@@ -289,7 +289,7 @@ $(document).ready(function() {
                     swal("Check again!", "" ,"error");
                 } else {
                     localStorage.setItem('authToken', result.data.token);
-                    window.location.replace('./home.html');
+                    window.location.replace('./login.html');
                     $('#user-signup-form')[0].reset();
                     swal("Success", "You're all set!", "success");
                     clearClass();

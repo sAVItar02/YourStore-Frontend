@@ -267,9 +267,9 @@ body {
 .orders, .favorites, .payments, .addresses, .profile, .order-history {
     background-color: #FFF;
     /* height: 97%; */
-    min-height: 97%;
+    min-height: 92%;
     width: 75%;
-    margin-left: 20rem;
+    margin-left: 24rem;
     overflow-y: scroll;
     box-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.2);
     border: none;
