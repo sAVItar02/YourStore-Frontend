@@ -170,6 +170,10 @@ body::-webkit-scrollbar-thumb {
     display: none;
 }
 
+#audio {
+    display: none;
+}
+
 footer { 
     /* position: absolute;
     bottom: 0; */

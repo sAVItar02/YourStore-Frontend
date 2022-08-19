@@ -4,11 +4,40 @@ $(document).ready(function () {
   $(".netbanking").hide();
   $(".overlay").hide();
 
+  let audioMode = "disabled";
+
+  function playAudio(audioSrc) {
+    if (audioMode == "enabled") {
+      var sound = new Howl({
+        src: [`${audioSrc}`],
+      });
+      sound.play();
+    }
+  }
+
+  // ------------------- HANDLE AUDIO/THEME SESSION STORAGE ---------------------------
+
   if (sessionStorage.getItem("darkMode") == "true") {
     document.querySelector("body").classList.add("dark-mode");
+    document.querySelector("#sun").style.display = "flex";
+    document.querySelector("#moon").style.display = "none";
   } else {
     document.querySelector("body").classList.remove("dark-mode");
+    document.querySelector("#sun").style.display = "none";
+    document.querySelector("#moon").style.display = "flex";
   }
+
+  if (sessionStorage.getItem("audioMode") == "enabled") {
+    audioMode = "enabled";
+    document.querySelector("#audio").style.display = "flex";
+    document.querySelector("#no-audio").style.display = "none";
+  } else {
+    audioMode = "disabled";
+    document.querySelector("#audio").style.display = "none";
+    document.querySelector("#no-audio").style.display = "flex";
+  }
+
+  // --------------------------- HANDLE AUTH ------------------------------------------
 
   if (!localStorage.getItem("authToken")) {
     $(".not-logged-in").removeClass("hidden");
@@ -33,6 +62,71 @@ $(document).ready(function () {
     sessionStorage.setItem("darkMode", true);
   });
 
+  // ----------------------------- DARK/LIGHT TOGGLE -------------------------------
+
+  document.querySelector("#sun").addEventListener("click", function (e) {
+    e.preventDefault();
+    playAudio("./../../Public/assets/Sounds/Light Mode.mp3");
+    document.querySelector("body").classList.remove("dark-mode");
+    document.querySelector("#sun").style.display = "none";
+    document.querySelector("#moon").style.display = "flex";
+    sessionStorage.setItem("darkMode", "false");
+  });
+
+  document.querySelector("#moon").addEventListener("click", function (e) {
+    e.preventDefault();
+    playAudio("./../../Public/assets/Sounds/Dark Mode.mp3");
+    document.querySelector("body").classList.add("dark-mode");
+    document.querySelector("#moon").style.display = "none";
+    document.querySelector("#sun").style.display = "flex";
+    sessionStorage.setItem("darkMode", "true");
+  });
+
+  // -------------------------------- AUDIO TOGGLE -----------------------------------
+
+  document.querySelector("#audio").addEventListener("click", function (e) {
+    e.preventDefault();
+    sessionStorage.setItem("audioMode", "disabled");
+    audioMode = "disabled";
+    var sound = new Howl({
+      src: ["./../../Public/assets/Sounds/Audio Mode Disabled.mp3"],
+    });
+    sound.play();
+    document.querySelector("#audio").style.display = "none";
+    document.querySelector("#no-audio").style.display = "flex";
+  });
+
+  document.querySelector("#no-audio").addEventListener("click", function (e) {
+    e.preventDefault();
+    sessionStorage.setItem("audioMode", "enabled");
+    audioMode = "enabled";
+    var sound = new Howl({
+      src: ["./../../Public/assets/Sounds/Audio Mode Enabled.mp3"],
+    });
+    sound.play();
+    document.querySelector("#audio").style.display = "flex";
+    document.querySelector("#no-audio").style.display = "none";
+  });
+
+  // ----------------------------- HANDLE HOVER SOUNDS -------------------------------
+
+  document
+    .querySelector("#profile")
+    .addEventListener("mouseenter", function (e) {
+      e.preventDefault();
+      playAudio("./../../Public/assets/Sounds/Profile.mp3");
+    });
+
+  document.querySelector("#cart").addEventListener("mouseenter", function (e) {
+    e.preventDefault();
+    playAudio("./../../Public/assets/Sounds/Cart.mp3");
+  });
+
+  document.querySelector(".logo").addEventListener("mouseenter", function (e) {
+    e.preventDefault();
+    playAudio("./../../Public/assets/Sounds/Home.mp3");
+  });
+
   //-------------OVERLAY/SPINNER----------------------
   function showLoader(overlay) {
     overlay.show();
@@ -54,6 +148,8 @@ $(document).ready(function () {
 
   $("body").on("click", ".choose-address", function (e) {
     e.preventDefault();
+
+    playAudio("./../../Public/assets/Sounds/Deliver Here.mp3");
 
     if (
       sessionStorage.getItem("shopInCart") == "undefined" ||
@@ -84,6 +180,8 @@ $(document).ready(function () {
   $(".change").on("click", function (e) {
     e.preventDefault();
 
+    playAudio("./../../Public/assets/Sounds/Change Address.mp3");
+
     $(".delivery-address").hide();
 
     $(".address").show();
@@ -98,6 +196,8 @@ $(document).ready(function () {
 
     $(".netbanking").show();
 
+    playAudio("./../../Public/assets/Sounds/Net Banking.mp3");
+
     $(".cod-btn").removeClass("chosen");
 
     $(".netbanking-btn").addClass("chosen");
@@ -107,6 +207,8 @@ $(document).ready(function () {
     $(".netbanking").hide();
 
     $(".cod").show();
+
+    playAudio("./../../Public/assets/Sounds/Cash On Delivery.mp3");
 
     $(".netbanking-btn").removeClass("chosen");
 
@@ -139,6 +241,8 @@ $(document).ready(function () {
 
   $("body").on("click", ".add-address", function (e) {
     e.preventDefault();
+
+    playAudio("./../../Public/assets/Sounds/Add Address.mp3");
 
     $(".overlay").show();
     $(".add-new-address-container").removeClass("hidden");
@@ -493,6 +597,7 @@ $(document).ready(function () {
 
   $(".pay-btn").on("click", function (e) {
     e.preventDefault();
+    playAudio("./../../Public/assets/Sounds/Pay Now.mp3");
     $(".payment-confirmation").removeClass("hidden");
     $(".overlay").show();
     $("body").addClass("overlay-open");
@@ -500,6 +605,7 @@ $(document).ready(function () {
 
   $(".decline").on("click", function (e) {
     e.preventDefault();
+    playAudio("./../../Public/assets/Sounds/Decline.mp3");
     $(".payment-confirmation").addClass("hidden");
     $(".overlay").hide();
     $("body").removeClass("overlay-open");
@@ -508,6 +614,8 @@ $(document).ready(function () {
   //------------------------CHECKOUT------------------------------------------
   $(".confirm").on("click", function (e) {
     e.preventDefault();
+
+    playAudio("Confirm");
 
     showLoader($(".overlay"));
 

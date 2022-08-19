@@ -2,10 +2,35 @@ $(document).ready(function () {
   $('input[type="number"]').niceNumber();
   $(".overlay").hide();
 
+  let audioMode = "disabled";
+
+  function playAudio(audioSrc) {
+    if (audioMode == "enabled") {
+      var sound = new Howl({
+        src: [`${audioSrc}`],
+      });
+      sound.play();
+    }
+  }
+
   if (sessionStorage.getItem("darkMode") == "true") {
     document.querySelector("body").classList.add("dark-mode");
+    document.querySelector("#sun").style.display = "flex";
+    document.querySelector("#moon").style.display = "none";
   } else {
     document.querySelector("body").classList.remove("dark-mode");
+    document.querySelector("#sun").style.display = "none";
+    document.querySelector("#moon").style.display = "flex";
+  }
+
+  if (sessionStorage.getItem("audioMode") == "enabled") {
+    audioMode = "enabled";
+    document.querySelector("#audio").style.display = "flex";
+    document.querySelector("#no-audio").style.display = "none";
+  } else {
+    audioMode = "disabled";
+    document.querySelector("#audio").style.display = "none";
+    document.querySelector("#no-audio").style.display = "flex";
   }
 
   if (!sessionStorage.getItem("shopID")) {
@@ -33,20 +58,69 @@ $(document).ready(function () {
   const card = $(".card");
   const info_btn = $(".info");
 
+  // ----------------------------- DARK/LIGHT TOGGLE -------------------------------
+
   document.querySelector("#sun").addEventListener("click", function (e) {
     e.preventDefault();
+    playAudio("./../../Public/assets/Sounds/Light Mode.mp3");
     document.querySelector("body").classList.remove("dark-mode");
     document.querySelector("#sun").style.display = "none";
     document.querySelector("#moon").style.display = "flex";
-    sessionStorage.setItem("darkMode", false);
+    sessionStorage.setItem("darkMode", "false");
   });
 
   document.querySelector("#moon").addEventListener("click", function (e) {
     e.preventDefault();
+    playAudio("./../../Public/assets/Sounds/Dark Mode.mp3");
     document.querySelector("body").classList.add("dark-mode");
     document.querySelector("#moon").style.display = "none";
     document.querySelector("#sun").style.display = "flex";
-    sessionStorage.setItem("darkMode", true);
+    sessionStorage.setItem("darkMode", "true");
+  });
+
+  // -------------------------------- AUDIO TOGGLE -----------------------------------
+
+  document.querySelector("#audio").addEventListener("click", function (e) {
+    e.preventDefault();
+    sessionStorage.setItem("audioMode", "disabled");
+    audioMode = "disabled";
+    var sound = new Howl({
+      src: ["./../../Public/assets/Sounds/Audio Mode Disabled.mp3"],
+    });
+    sound.play();
+    document.querySelector("#audio").style.display = "none";
+    document.querySelector("#no-audio").style.display = "flex";
+  });
+
+  document.querySelector("#no-audio").addEventListener("click", function (e) {
+    e.preventDefault();
+    sessionStorage.setItem("audioMode", "enabled");
+    audioMode = "enabled";
+    var sound = new Howl({
+      src: ["./../../Public/assets/Sounds/Audio Mode Enabled.mp3"],
+    });
+    sound.play();
+    document.querySelector("#audio").style.display = "flex";
+    document.querySelector("#no-audio").style.display = "none";
+  });
+
+  // ----------------------------- HANDLE HOVER SOUNDS -------------------------------
+
+  document
+    .querySelector("#profile")
+    .addEventListener("mouseenter", function (e) {
+      e.preventDefault();
+      playAudio("./../../Public/assets/Sounds/Profile.mp3");
+    });
+
+  document.querySelector("#cart").addEventListener("mouseenter", function (e) {
+    e.preventDefault();
+    playAudio("./../../Public/assets/Sounds/Cart.mp3");
+  });
+
+  document.querySelector(".logo").addEventListener("mouseenter", function (e) {
+    e.preventDefault();
+    playAudio("./../../Public/assets/Sounds/Home.mp3");
   });
 
   //--------------------INFO DISPLAY-----------------------------
@@ -574,6 +648,8 @@ $(document).ready(function () {
 
   $("#search-btn").on("click", function (e) {
     e.preventDefault();
+
+    playAudio("./../../Public/assets/Sounds/Search.mp3");
 
     fruits.hide();
     meat.hide();
