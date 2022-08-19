@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- LINKS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/7671d15937.js" crossorigin="anonymous"></script>
 
     <!-- CSS -->
@@ -19,6 +21,7 @@
 
     <title>YourStore | Profile</title>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo">
@@ -26,17 +29,28 @@
                 <img src="./Public/assets/logo.png" alt="#">
                 <p class="link-text">YourStore</p>
             </a>
-        </div>    
+        </div>
         <div class="nav-group">
             <div class="nav-item" id="profile">
                 <a href="#" class="nav-link">
-                    <img src="https://img.icons8.com/office/80/000000/user-male-circle.png"/>
-                    <p class="link-text" id = "profile-text">Profile</p>
+                    <img src="https://img.icons8.com/office/80/000000/user-male-circle.png" />
+                    <p class="link-text" id="profile-text">Profile</p>
                 </a>
             </div>
             <div class="nav-item" id="cart">
                 <a href="./cart.html" class="nav-link">
-                    <img src="https://img.icons8.com/cotton/64/000000/shopping-cart--v1.png"/>
+                    <img src="https://img.icons8.com/cotton/64/000000/shopping-cart--v1.png" />
+                </a>
+            </div>
+            <div class="nav-item" id="sun">
+                <a href="#" class="nav-link">
+                    <img src="https://img.icons8.com/color/344/sun--v1.png" />
+                </a>
+            </div>
+            <div class="nav-item hidden" id="moon">
+                <a href="#" class="nav-link">
+                    <img
+                        src="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/344/external-moon-gym-flatart-icons-lineal-color-flatarticons.png" />
                 </a>
             </div>
         </div>
@@ -51,11 +65,11 @@
     <div class="spinner"><img src="./Public/assets/loader.gif" alt=""></div>
 
     <div class="profile-sidebar closed">
-        
-        <img class="cross-profile" src="https://img.icons8.com/office/80/000000/delete-sign.png"/>
-       
+
+        <img class="cross-profile" src="https://img.icons8.com/office/80/000000/delete-sign.png" />
+
         <div class="profile-img"><img src="./Public/assets/male_avatar.svg" alt="Image not found"></div>
-        <form class="profile-form" >
+        <form class="profile-form">
             <div class="input-field">
                 <i class="fas fa-user"></i>
                 <input type="text" name="username" id="user-name" autocomplete="off" placeholder="Username" disabled>
@@ -74,17 +88,27 @@
 
     <section class="main">
         <div class="sidebar">
-            <div class="side-item orders-btn active"> <img src="https://img.icons8.com/cotton/64/000000/shopping-bag--v6.png"/> <p>Orders</p></div>
-            <div class="side-item order-history-btn"> <img src="https://img.icons8.com/dusk/64/000000/order-history.png"/> <p>Order history</p></div>
-            <div class="side-item payments-btn"> <img src="https://img.icons8.com/cotton/64/000000/cash-register.png"/> <p>Payments</p></div>
+            <div class="side-item orders-btn active"> <img
+                    src="https://img.icons8.com/cotton/64/000000/shopping-bag--v6.png" />
+                <p>Orders</p>
+            </div>
+            <div class="side-item order-history-btn"> <img
+                    src="https://img.icons8.com/dusk/64/000000/order-history.png" />
+                <p>Order history</p>
+            </div>
+            <div class="side-item payments-btn"> <img src="https://img.icons8.com/cotton/64/000000/cash-register.png" />
+                <p>Payments</p>
+            </div>
             <!-- <div class="side-item favorites-btn"> <img src="https://img.icons8.com/flat-round/64/000000/hearts.png"/> <p>Favorites</p></div> -->
-            <div class="side-item addresses-btn"> <img src="https://img.icons8.com/plasticine/100/000000/address.png"/> <p>Addresses</p></div>
+            <div class="side-item addresses-btn"> <img src="https://img.icons8.com/plasticine/100/000000/address.png" />
+                <p>Addresses</p>
+            </div>
         </div>
 
         <section class="orders">
             <div class="orders-container"></div>
         </section>
-        
+
         <div class="order-history">
             <div class="order-history-container"></div>
         </div>
@@ -165,9 +189,13 @@
 
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+        crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./Public/JS/profile.js"></script>
 </body>
+
 </html>

@@ -1,8 +1,10 @@
 :root {
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
+    height: 100%;
+    width: 100%;
     --bg-primary: #E8EBF3;
-    --bg-primary-translucent: #ced6ee;
+    --bg-primary-translucent: #fff;
     --green-primary: #32be8f;
     --blue-primary: #5C8AFF;
     --blue-primary-translucent: #5c8affb0;
@@ -12,8 +14,22 @@
     --yellow-primary: #F4D03F;
     --yellow-hover: #F5B041;
     --green-primary: #58D68D;
-    height: 100%;
-    width: 100%;
+    --font-color-primary: #000;
+}
+
+.dark-mode {
+    --bg-primary: #383736;
+    --bg-primary-translucent: #292727;
+    --green-primary: #32be8f;
+    --blue-primary: #5C8AFF;
+    --blue-primary-translucent: #5c8affb0;
+    --gray-primary: #a5a5a5;
+    --name-color: #FFF;
+    --name-color-dark: #a5a5a5;
+    --yellow-primary: #F4D03F;
+    --yellow-hover: #F5B041;
+    --green-primary: #58D68D;
+    --font-color-primary: #FFF;
 }
 
 * {
@@ -46,7 +62,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #FFF;
+    background-color: var(--bg-primary);
     z-index: 100;
     font-size: 2rem;
     font-weight: 300;
@@ -71,7 +87,7 @@ body {
     top: 0;
     z-index: 25;
     right: 0;
-    background-color: #fff;
+    background-color: var(--bg-primary-translucent);
     width: 35%;
     height: 100vh;
     padding: 2rem;
@@ -126,7 +142,7 @@ body {
     width: 100%;
     height: 55px;
     margin: 10px 0;
-    background-color: #F0F0F0;
+    background-color: var(--bg-primary);
     border-radius: 55px;
     display: grid;
     grid-template-columns: 15% 85%;
@@ -190,7 +206,7 @@ body {
 
 .sidebar {
     position: fixed;
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     border-radius: 0.45rem;
     border: none;
     width: 20%;
@@ -205,6 +221,7 @@ body {
     align-items: center;
     cursor: pointer;
     border: none;
+    color: var(--font-color-primary);
     border-radius: 0.45em;
     transition: 150ms linear;
     margin-top: 0.2rem;
@@ -242,7 +259,7 @@ body {
 }
 
 .overlay-white {
-    background-color: #FFF;
+    background-color: var(--bg-primary);
 }
 
 .overlay-open {
@@ -265,7 +282,7 @@ body {
 /* ---------------ORDERS AND OTHER SECTIONS----------------- */
 
 .orders, .favorites, .payments, .addresses, .profile, .order-history {
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     /* height: 97%; */
     min-height: 92%;
     width: 75%;
@@ -278,13 +295,13 @@ body {
 }
 
 .order-card, .payment-card {
-    background-color: #FFF;
+    background-color: var(--bg-primary);
     width: 100%;
     height: fit-content;
     border-bottom: 0.1rem solid var(--bg-primary-translucent);
     margin-bottom: 1rem;
     padding: 1rem;
-
+    color: var(--font-color-primary);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -302,7 +319,7 @@ body {
 }
 
 .order-shop-details {
-    background-color: var(--bg-primary-translucent);
+    background-color: var(--blue-primary);
     padding: 1rem;
     width: 100%;
     border: none;
@@ -519,7 +536,7 @@ body {
 }
 
 .address-card {
-    background-color: var(--bg-primary-translucent);
+    background-color: var(--bg-primary);
     height: 100%;
     width: 100%;
     border: none;
@@ -541,6 +558,7 @@ body {
 
 .address-card .address-text {
     width: 100%;
+    color: var(--font-color-primary);
 }
 
 .address-card p {

@@ -2,7 +2,7 @@
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     --bg-primary: #E8EBF3;
-    --bg-primary-translucent: #ced6ee;
+    --bg-primary-translucent: #fff;
     --green-primary: #32be8f;
     --blue-primary: #5C8AFF;
     --blue-primary-translucent: #5c8affb0;
@@ -12,6 +12,22 @@
     --yellow-primary: #F4D03F;
     --yellow-hover: #F5B041;
     --green-primary: #58D68D;
+    --font-color-primary: #000;
+}
+
+.dark-mode {
+    --bg-primary: #383736;
+    --bg-primary-translucent: #292727;
+    --green-primary: #32be8f;
+    --blue-primary: #5C8AFF;
+    --blue-primary-translucent: #5c8affb0;
+    --gray-primary: #a5a5a5;
+    --name-color: #FFF;
+    --name-color-dark: #a5a5a5;
+    --yellow-primary: #F4D03F;
+    --yellow-hover: #F5B041;
+    --green-primary: #58D68D;
+    --font-color-primary: #FFF;
 }
 
 * {
@@ -25,7 +41,7 @@ body {
     width: 100%;
     height: 100%;
     min-height: 100vh !important;
-    color: #000;
+    color: var(--font-color-primary);
     position: relative;
 }
 
@@ -53,7 +69,7 @@ input[type=number] {
     top: 0;
     z-index: 25;
     left: 0;
-    background-color: #fff;
+    background-color: var(--bg-primary);
     width: 35%;
     height: 100vh;
     padding: 2rem;
@@ -104,8 +120,8 @@ input[type=number] {
     border: none; 
     outline: none;
     border-radius: 0.625em;
-    background-color: var(--bg-primary);
-    color: #252525;
+    background-color: var(--bg-primary-translucent);
+    color: var(--name-color-dark);
     font-size: 1.2rem;
     font-weight: 500;
     padding: 0.625rem;
@@ -134,13 +150,13 @@ input[type=number] {
     transform: translateY(-21%);
     border: none;
     border-radius: 0.625rem;
-    background-color: var(--bg-primary);
+    background-color: var(--bg-primary-translucent);
     cursor: pointer;
 }
 
 .search-location:hover {
     transition: 150ms linear;
-    background-color: var(--bg-primary-translucent);
+    background-color: var(--blue-primary);
 }
 
 .search-location img {
@@ -156,7 +172,7 @@ input[type=number] {
     padding: 1.5rem;
     font-weight: normal;
     font-size: 0.9rem;
-    background-color: var(--bg-primary);
+    background-color: var(--bg-primary-translucent);
     transition: 150ms linear;
     margin-top: 1rem;
     cursor: pointer;
@@ -175,7 +191,7 @@ input[type=number] {
     padding: 1.5rem;
     border: none;
     border-radius: 0.625rem;
-    background-color: var(--bg-primary);
+    background-color: var(--bg-primary-translucent);
     margin-top: 4rem;
     display: flex;
     align-items: center;
@@ -220,7 +236,7 @@ input[type=number] {
 }
 
 .overlay-white {
-    background-color: #FFF;
+    background-color: var(--bg-primary);
     z-index: 30;
 }
 
@@ -282,10 +298,10 @@ input[type=number] {
 }
 
 .search-input-container input {
-    border: 1px solid #aaa;
+    border: 1px solid var(--gray-primary);
     border-radius: 0.45rem;
     outline: none;
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     color: var(--name-color);
     font-size: 1.5rem;
     padding: 1rem;
@@ -433,7 +449,7 @@ input[type=number] {
 }
 
 .product-results-shop {
-    background-color: #FFF;
+    background-color: var(--bg-primary);
     padding: 1rem 2rem;
     position: relative;
     border-top-left-radius: 0.45rem;
@@ -482,7 +498,7 @@ input[type=number] {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid var(--gray-primary);
 }
 
 .product-results-card:last-of-type {
@@ -540,7 +556,7 @@ input[type=number] {
     padding: 1.5rem;
     border: none;
     border-radius: 0.45rem;
-    background-color: #fff;
+    background-color: var(--bg-primary-translucent);
     width: 20rem;
     text-align: center;
     height: 100%;
@@ -565,7 +581,7 @@ input[type=number] {
     width: 80%;
     padding: 0.5rem 1rem;
     margin-top: 1rem;
-    background-color: #FFF;
+    background-color: var(--bg-primary);
     color: var(--blue-primary);
     border: 2px solid var(--blue-primary);
     border-radius: 0.625rem;
@@ -576,7 +592,7 @@ input[type=number] {
 
 .post-request-btn:hover {
     background-color: var(--blue-primary);
-    color: #FFF;
+    color: var(--bg-primary);
 }
 
 /* -------------REQUEST POPUP------------------- */
@@ -585,7 +601,7 @@ input[type=number] {
     height: fit-content;
     width: fit-content;
     padding: 1rem;
-    background-color: #FFF;
+    background-color: var(--bg-primary);
     border: none;
     border-radius: 0.45rem;
 
@@ -622,7 +638,7 @@ input[type=number] {
     width: 100%;
     height: 55px;
     margin: 10px 0;
-    background-color: #F0F0F0;
+    background-color: var(--bg-primary-translucent);
     border-radius: 55px;
     display: grid;
     grid-template-columns: 15% 85%;
@@ -637,7 +653,7 @@ input[type=number] {
 .input-field i {
     text-align: center;
     line-height: 55px;
-    color: #ACACAC;
+    color: var(--gray-primary);
     font-size: 1.1rem;
 }
 
@@ -648,11 +664,11 @@ input[type=number] {
     line-height: 1;
     font-weight: 600;
     font-size: 1.1rem;
-    color: #333;
+    color: var(--name-color);
 }
 
 .input-field input::placeholder {
-    color: #aaa;
+    color: var(--gray-primary);
     font-weight: 500;
 }
 
@@ -956,7 +972,7 @@ hr {
 .shop-card {
     height: 18.5rem;
     width: 100%;
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     padding: 0.625rem;
     border: none;
     border-radius: 0.45rem;
@@ -969,7 +985,7 @@ hr {
 
 /* ---------------------TRENDING CARD--------------------- */
 .trending-card {
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     border: none;
     border-radius: 0.5rem;
     padding: 0.625rem;
@@ -992,7 +1008,7 @@ hr {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     opacity: 0.7;
     z-index: 25;
     pointer-events: all;
@@ -1072,7 +1088,7 @@ hr {
 }
 
 .trending-card .description {
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     border: none;
     border-radius: 0.5rem;
     padding: 0.625rem;

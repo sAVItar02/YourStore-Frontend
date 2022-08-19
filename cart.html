@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,8 @@
 
     <!-- LINKS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/7671d15937.js" crossorigin="anonymous"></script>
 
 
@@ -20,6 +22,7 @@
 
     <title>YourStore | Cart </title>
 </head>
+
 <body class="overlay-open">
 
     <div class="overlay"></div>
@@ -27,7 +30,7 @@
     <div class="spinner"><img src="./Public/assets/loader.gif" alt=""></div>
 
     <div class="not-logged-in hidden">
-        <img class="cross" src="https://img.icons8.com/office/80/000000/delete-sign.png"/>
+        <img class="cross" src="https://img.icons8.com/office/80/000000/delete-sign.png" />
         You're not logged in! <span class="login">Please <a href="./login.html">Login</a> to continue</span>
     </div>
 
@@ -38,17 +41,28 @@
                 <p class="link-text">YourStore</p>
             </a>
         </div>
-        
+
         <div class="nav-group">
             <div class="nav-item" id="profile">
                 <a href="./profile.html" class="nav-link">
-                    <img src="https://img.icons8.com/office/80/000000/user-male-circle.png"/>
+                    <img src="https://img.icons8.com/office/80/000000/user-male-circle.png" />
                     <p class="link-text" id="profile-text">Profile</p>
                 </a>
             </div>
             <div class="nav-item" id="cart">
                 <a href="#" class="nav-link">
-                    <img src="https://img.icons8.com/cotton/64/000000/shopping-cart--v1.png"/>
+                    <img src="https://img.icons8.com/cotton/64/000000/shopping-cart--v1.png" />
+                </a>
+            </div>
+            <div class="nav-item" id="sun">
+                <a href="#" class="nav-link">
+                    <img src="https://img.icons8.com/color/344/sun--v1.png" />
+                </a>
+            </div>
+            <div class="nav-item hidden" id="moon">
+                <a href="#" class="nav-link">
+                    <img
+                        src="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/344/external-moon-gym-flatart-icons-lineal-color-flatarticons.png" />
                 </a>
             </div>
         </div>
@@ -57,7 +71,8 @@
     <section class="main">
 
         <div class="address">
-            <div class="address-head"> <img src="https://img.icons8.com/plasticine/100/000000/address.png"/> Choose a delivery address</div>
+            <div class="address-head"> <img src="https://img.icons8.com/plasticine/100/000000/address.png" /> Choose a
+                delivery address</div>
             <div class="address-grid"></div>
         </div>
 
@@ -70,12 +85,12 @@
 
             <div class="cart-overlay hidden"></div>
             <div class="cart-spinner hidden"><img src="./Public/assets/loader.gif" alt=""></div>
-            
+
             <div class="shop-details">
                 <img class="shop-image" src="./Public/assets/fruit-shop.jpg" alt="Image not found">
-            <div class="shop-name">My shop</div>
+                <div class="shop-name">My shop</div>
             </div>
-            
+
             <div class="cart-container">
                 <div class="items-container">
                     <div class="item">
@@ -119,20 +134,22 @@
             <div class="delivery-main">
                 <p class="type">Home</p>
                 <div class="type-address">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti fugit sint nobis illo aliquid et perferendis at distinctio nemo commodi!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti fugit sint nobis illo aliquid et
+                    perferendis at distinctio nemo commodi!
                 </div>
             </div>
         </div>
 
-        <div class="down-arrow"><img src="https://img.icons8.com/dusk/64/000000/low-priority.png"/></div>
+        <div class="down-arrow"><img src="https://img.icons8.com/dusk/64/000000/low-priority.png" /></div>
 
         <div class="payment-initial">
-            <img src="https://img.icons8.com/fluent/96/000000/card-wallet.png"/>
+            <img src="https://img.icons8.com/fluent/96/000000/card-wallet.png" />
             Payment
         </div>
 
         <div class="payment-methods">
-            <div class="payment-head"><img src="https://img.icons8.com/fluent/96/000000/card-wallet.png"/> Choose payment method</div>
+            <div class="payment-head"><img src="https://img.icons8.com/fluent/96/000000/card-wallet.png" /> Choose
+                payment method</div>
             <div class="payments-main">
                 <div class="payments-sidebar">
                     <div class="payment-option cod-btn chosen">Cash on delivery</div>
@@ -195,10 +212,14 @@
         </form>
     </div>
 
-    <footer> <p>Terms and conditions apply</p> </footer>
+    <footer>
+        <p>Terms and conditions apply</p>
+    </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./Public/JS/cart.js"></script>
 </body>
+
 </html>

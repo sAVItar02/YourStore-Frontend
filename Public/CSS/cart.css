@@ -4,15 +4,32 @@
     height: 100%;
     width: 100%;
     --bg-primary: #E8EBF3;
-    --bg-primary-translucent: #ced6ee;
+    --bg-primary-translucent: #fff;
     --green-primary: #32be8f;
     --blue-primary: #5C8AFF;
     --blue-primary-translucent: #5c8affb0;
     --gray-primary: #a5a5a5;
     --name-color: #515D76;
+    --name-color-dark: #292f3b;
     --yellow-primary: #F4D03F;
     --yellow-hover: #F5B041;
     --green-primary: #58D68D;
+    --font-color-primary: #000;
+}
+
+.dark-mode {
+    --bg-primary: #383736;
+    --bg-primary-translucent: #292727;
+    --green-primary: #32be8f;
+    --blue-primary: #5C8AFF;
+    --blue-primary-translucent: #5c8affb0;
+    --gray-primary: #a5a5a5;
+    --name-color: #FFF;
+    --name-color-dark: #a5a5a5;
+    --yellow-primary: #F4D03F;
+    --yellow-hover: #F5B041;
+    --green-primary: #58D68D;
+    --font-color-primary: #FFF;
 }
 
 * {
@@ -26,7 +43,7 @@ body {
     min-height: 100vh !important;
     width: 100%;
     height: fit-content;
-    color: #000;
+    color: var(--font-color-primary);
     position: relative;
 }
 
@@ -52,7 +69,7 @@ body {
 }
 
 .overlay-white {
-    background-color: #FFF;
+    background-color: var(--bg-primary);
 }
 
 .overlay-open {
@@ -78,7 +95,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #FFF;
+    background-color: var(--bg-primary);
     z-index: 100;
     font-size: 2rem;
     font-weight: 300;
@@ -135,7 +152,7 @@ body {
 
 .address, .delivery-address {
     display: inline-block;
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     width: 65%;
     padding: 2rem;
     border: none;
@@ -208,7 +225,7 @@ body {
     outline: none;
     font-size: 0.9rem;
     font-weight: 600;
-    color: #FFF;
+    color: var(--bg-primary);
     margin-top: 1rem;
     cursor: pointer;
     transition: 150ms linear;
@@ -258,7 +275,7 @@ body.overlay-open {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 30;
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     border: none;
     border-radius: 0.45rem;
     padding: 4rem;
@@ -279,7 +296,7 @@ body.overlay-open {
     width: 100%;
     height: 55px;
     margin: 10px 0;
-    background-color: #F0F0F0;
+    background-color: var(--bg-primary);
     border-radius: 55px;
     display: grid;
     grid-template-columns: 15% 85%;
@@ -375,7 +392,7 @@ body.overlay-open {
 
 .radio-label {
     display: inline-block;
-    background-color: #F0F0F0;
+    background-color: var(--bg-primary-translucent);
     width: 33%;
     height: 100%;
     text-align: center;
@@ -463,7 +480,7 @@ body.overlay-open {
     width: 65%;
     padding: 2rem;
     display: inline-block;
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     border: none;
     border-radius: 0.45rem;
     color: var(--name-color);
@@ -479,7 +496,7 @@ body.overlay-open {
 }
 
 .payment-methods {
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     padding: 2rem;
     padding-bottom: 4rem;
     border: none;
@@ -681,7 +698,7 @@ body.overlay-open {
     max-height: 40rem;
     width: 30%;
     padding: 1rem;
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     border: none;
     border-radius: 0.45rem;
     position: absolute;
@@ -695,7 +712,7 @@ body.overlay-open {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     opacity: 0.7;
     z-index: 15;
     pointer-events: all;
@@ -732,7 +749,7 @@ body.overlay-open {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
 
     display: flex;
     align-items: center;
@@ -759,7 +776,7 @@ body.overlay-open {
     height: fit-content;
     width: 100%;
     padding: 1rem;
-    box-shadow: 0 0.3rem 0.5rem -0.5rem rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0.3rem 0.5rem -0.5rem var(--font-color-primary);
 }
 
 .shop-details img {

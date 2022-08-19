@@ -2,14 +2,32 @@
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     --bg-primary: #E8EBF3;
-    --bg-primary-translucent: #ced6ee;
+    --bg-primary-translucent: #fff;
     --green-primary: #32be8f;
     --blue-primary: #5C8AFF;
     --blue-primary-translucent: #5c8affb0;
     --gray-primary: #a5a5a5;
     --name-color: #515D76;
+    --name-color-dark: #292f3b;
     --yellow-primary: #F4D03F;
     --yellow-hover: #F5B041;
+    --green-primary: #58D68D;
+    --font-color-primary: #000;
+}
+
+.dark-mode {
+    --bg-primary: #383736;
+    --bg-primary-translucent: #292727;
+    --green-primary: #32be8f;
+    --blue-primary: #5C8AFF;
+    --blue-primary-translucent: #5c8affb0;
+    --gray-primary: #a5a5a5;
+    --name-color: #FFF;
+    --name-color-dark: #a5a5a5;
+    --yellow-primary: #F4D03F;
+    --yellow-hover: #F5B041;
+    --green-primary: #58D68D;
+    --font-color-primary: #FFF;
 }
 
 * {
@@ -23,7 +41,7 @@ body {
     width: 100%;
     height: 100%;
     min-height: 100vh !important;
-    color: #000;
+    color: var(--font-color-primary);
     text-decoration: none;
     position: relative;
 }
@@ -83,7 +101,7 @@ body::-webkit-scrollbar-thumb {
     border: 1px solid #aaa;
     border-radius: 0.45rem;
     outline: none;
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     color: var(--name-color);
     font-size: 1.5rem;
     padding: 1rem;
@@ -325,6 +343,7 @@ body::-webkit-scrollbar-thumb {
 
 .heading {
     width: 60%;
+    color: var(--font-color-primary);
 }
 
 .heading h2 {
@@ -354,7 +373,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .card {
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     border: none;
     border-radius: 0.5rem;
     padding: 0.625rem;
@@ -375,7 +394,7 @@ body::-webkit-scrollbar-thumb {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     opacity: 0.7;
     z-index: 25;
     pointer-events: all;
@@ -507,7 +526,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .card .description {
-    background-color: #FFF;
+    background-color: var(--bg-primary-translucent);
     border: none;
     border-radius: 0.5rem;
     padding: 0.625rem;

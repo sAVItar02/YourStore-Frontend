@@ -2,9 +2,24 @@
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     --bg-primary: #E8EBF3;
+    --bg-navbar: #fff;
     --green-primary: #32be8f;
     --blue-primary: #5C8AFF;
     --gray-primary: #a5a5a5;
+    --font-color-primary: #000;
+    --font-color-secondary: #252525;
+    --font-color-icon: #575656;
+}
+
+.dark-mode {
+    --bg-primary: #383736;
+    --bg-navbar: #292727;
+    --green-primary: #32be8f;
+    --blue-primary: #5C8AFF;
+    --gray-primary: #a5a5a5;
+    --font-color-primary: #FFF;
+    --font-color-secondary: #a5a5a5;
+    --font-color-icon: #c7c5c5;
 }
 
 * {
@@ -33,7 +48,7 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     align-items: center;
     height: 100%;
-    background-color: #FFF;
+    background-color: var(--bg-navbar);
     height: 4rem;
     box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
 }
@@ -88,7 +103,7 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #000;
+    color: var(--font-color-primary);
 }
 
 .nav-link img {
@@ -99,7 +114,7 @@ body::-webkit-scrollbar-thumb {
 
 .nav-link i {
     font-size: 1.8rem;
-    color: #575656;
+    color: var(--font-color-icon);
 }
 
 .link-text {
@@ -125,7 +140,7 @@ body::-webkit-scrollbar-thumb {
     outline: none;
     border-radius: 2rem;
     background-color: var(--bg-primary);
-    color: #252525;
+    color: var(--font-color-secondary);
     font-size: 1.07rem;
     font-weight: 500;
     padding: 0.625rem;
@@ -147,6 +162,14 @@ body::-webkit-scrollbar-thumb {
     right: 0%;
 }
 
+.hidden {
+    display: none;
+}
+
+#sun {
+    display: none;
+}
+
 footer { 
     /* position: absolute;
     bottom: 0; */
@@ -159,7 +182,7 @@ footer {
 }
 
 footer p {
-    color: #FFF;
+    color: var(--bg-navbar);
     font-weight: 500;
     font-size: 1.1rem;
 }
